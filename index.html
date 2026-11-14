@@ -1,0 +1,3612 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Периоды детского возраста. Нервно-психическое развитие</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-page: #F8FAFC;
+      --bg-surface: #FFFFFF;
+      --bg-subtle: #F1F5F9;
+      --border-color: #E2E8F0;
+      --border-strong: #CBD5E1;
+      --text-primary: #0F172A;
+      --text-secondary: #475569;
+      --text-muted: #64748B;
+      --brand-primary: #0284C7;
+      --brand-dark: #0369A1;
+      --brand-light: #E0F2FE;
+      --danger: #DC2626;
+      --danger-bg: #FEF2F2;
+      --danger-border: #FECACA;
+      --warning: #D97706;
+      --warning-bg: #FFFBEB;
+      --success: #16A34A;
+      --success-bg: #F0FDF4;
+
+      /* 7 Stage Palettes (WCAG AA compliant pairings) */
+      --s1-bg: #F3E8FF; --s1-accent: #7E22CE; --s1-text: #581C87; --s1-border: #D8B4FE;
+      --s2-bg: #FCE7F3; --s2-accent: #BE185D; --s2-text: #831843; --s2-border: #F9A8D4;
+      --s3-bg: #E0F2FE; --s3-accent: #0369A1; --s3-text: #0C4A6E; --s3-border: #7DD3FC;
+      --s4-bg: #DCFCE7; --s4-accent: #15803D; --s4-text: #14532D; --s4-border: #86EFAC;
+      --s5-bg: #FEF3C7; --s5-accent: #B45309; --s5-text: #78350F; --s5-border: #FCD34D;
+      --s6-bg: #FFEDD5; --s6-accent: #C2410C; --s6-text: #7C2D12; --s6-border: #FDBA74;
+      --s7-bg: #E0E7FF; --s7-accent: #4338CA; --s7-text: #312E81; --s7-border: #A5B4FC;
+
+      --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.05);
+      --shadow-md: 0 4px 12px -2px rgba(15, 23, 42, 0.07), 0 2px 6px -1px rgba(15, 23, 42, 0.04);
+      --shadow-lg: 0 20px 35px -8px rgba(15, 23, 42, 0.12), 0 8px 14px -4px rgba(15, 23, 42, 0.05);
+      --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+      --radius-md: 12px;
+      --radius-lg: 18px;
+      --radius-xl: 24px;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-primary);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, .font-display {
+      font-family: 'Nunito', 'Inter', system-ui, sans-serif;
+      margin: 0;
+      letter-spacing: -0.015em;
+    }
+
+    button, input, select {
+      font-family: inherit;
+    }
+
+    /* Sticky Header */
+    .app-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .header-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex: 1 1 300px;
+      min-width: 0;
+    }
+
+    .brand-logo {
+      width: 44px;
+      height: 44px;
+      flex-shrink: 0;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #E0F2FE 0%, #F3E8FF 100%);
+      border: 1px solid #BAE6FD;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .brand-text {
+      min-width: 0;
+    }
+
+    .brand-text h1 {
+      font-size: 1.08rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      line-height: 1.25;
+    }
+
+    .brand-text p {
+      margin: 0;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* Top Mode Tabs */
+    .mode-nav {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--bg-subtle);
+      padding: 4px;
+      border-radius: 14px;
+      border: 1px solid var(--border-color);
+      overflow-x: auto;
+      max-width: 100%;
+      flex-shrink: 0;
+    }
+
+    .mode-btn {
+      border: none;
+      background: transparent;
+      color: var(--text-secondary);
+      padding: 8px 14px;
+      border-radius: 10px;
+      font-size: 0.86rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      white-space: nowrap;
+      transition: all 0.2s var(--ease-out);
+    }
+
+    .mode-btn:hover {
+      color: var(--text-primary);
+      background: rgba(255, 255, 255, 0.65);
+    }
+
+    .mode-btn.active {
+      background: var(--bg-surface);
+      color: var(--brand-dark);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .mode-btn svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
+    /* Main Container */
+    .main-container {
+      max-width: 1440px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 20px 24px 48px;
+      flex: 1;
+    }
+
+    .view-section {
+      display: none;
+      animation: fadeSlideUp 0.35s var(--ease-out);
+    }
+
+    .view-section.active {
+      display: block;
+    }
+
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Map Controls Bar */
+    .map-controls {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 16px 20px;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .controls-top-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .search-box {
+      position: relative;
+      flex: 1 1 260px;
+      min-width: min(250px, 100%);
+      max-width: 440px;
+    }
+
+    .search-box svg {
+      position: absolute;
+      left: 13px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 18px;
+      height: 18px;
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 10px 36px 10px 40px;
+      border-radius: 11px;
+      border: 1px solid var(--border-strong);
+      background: var(--bg-page);
+      font-size: 0.9rem;
+      color: var(--text-primary);
+      transition: all 0.2s var(--ease-out);
+    }
+
+    .search-input:focus {
+      outline: none;
+      background: var(--bg-surface);
+      border-color: var(--brand-primary);
+      box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.14);
+    }
+
+    .search-clear {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      border: none;
+      background: var(--border-color);
+      color: var(--text-secondary);
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      line-height: 1;
+    }
+
+    .search-clear.visible {
+      display: flex;
+    }
+
+    .quick-hints {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .hint-chip {
+      border: 1px dashed var(--border-strong);
+      background: var(--bg-page);
+      color: var(--text-secondary);
+      padding: 3px 9px;
+      border-radius: 999px;
+      font-size: 0.76rem;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .hint-chip:hover {
+      border-style: solid;
+      border-color: var(--brand-primary);
+      color: var(--brand-dark);
+      background: var(--brand-light);
+    }
+
+    .layer-toggles {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .layer-pill {
+      border: 1px solid var(--border-color);
+      background: var(--bg-page);
+      color: var(--text-secondary);
+      padding: 7px 13px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s var(--ease-out);
+    }
+
+    .layer-pill:hover {
+      border-color: var(--border-strong);
+      background: var(--bg-subtle);
+      color: var(--text-primary);
+    }
+
+    .layer-pill.active {
+      background: #0F172A;
+      color: #FFFFFF;
+      border-color: #0F172A;
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.18);
+    }
+
+    .layer-pill[data-layer="flags"].active {
+      background: #DC2626;
+      border-color: #DC2626;
+    }
+
+    .layer-pill[data-layer="crisis"].active {
+      background: #B45309;
+      border-color: #B45309;
+    }
+
+    /* Mini Map Navigation Strip */
+    .route-header-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .mini-dots {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .mini-dot-btn {
+      border: 1px solid var(--border-color);
+      background: var(--bg-surface);
+      padding: 5px 10px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s var(--ease-out);
+    }
+
+    .mini-dot-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-sm);
+      color: var(--text-primary);
+    }
+
+    .mini-dot-swatch {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .scroll-arrows {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+
+    .arrow-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      border: 1px solid var(--border-color);
+      background: var(--bg-surface);
+      color: var(--text-primary);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.18s ease;
+    }
+
+    .arrow-btn:hover {
+      background: var(--bg-subtle);
+      border-color: var(--border-strong);
+    }
+
+    /* Interactive Horizontal Route (Desktop) / Vertical (Mobile) */
+    .atlas-route-wrapper {
+      position: relative;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-xl);
+      padding: 20px 16px 18px;
+      box-shadow: var(--shadow-md);
+      margin-bottom: 24px;
+      overflow: hidden;
+    }
+
+    .atlas-scroll-area {
+      overflow-x: auto;
+      overflow-y: visible;
+      padding: 12px 12px 20px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border-strong) transparent;
+      scroll-behavior: smooth;
+    }
+
+    .atlas-scroll-area::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .atlas-scroll-area::-webkit-scrollbar-track {
+      background: var(--bg-subtle);
+      border-radius: 999px;
+    }
+
+    .atlas-scroll-area::-webkit-scrollbar-thumb {
+      background: var(--border-strong);
+      border-radius: 999px;
+    }
+
+    .atlas-track {
+      position: relative;
+      display: flex;
+      align-items: stretch;
+      gap: 22px;
+      min-width: max-content;
+      padding: 8px 6px;
+    }
+
+    /* Decorative curved SVG path behind stations on desktop */
+    .route-svg-line {
+      position: absolute;
+      left: 40px;
+      right: 40px;
+      top: 64px;
+      height: 64px;
+      width: calc(100% - 80px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Stage Card */
+    .stage-card {
+      position: relative;
+      z-index: 1;
+      width: 288px;
+      flex-shrink: 0;
+      background: var(--bg-surface);
+      border: 1.5px solid var(--border-color);
+      border-radius: 20px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      cursor: pointer;
+      transition: transform 0.28s var(--ease-out), box-shadow 0.28s var(--ease-out), border-color 0.28s ease, opacity 0.25s ease;
+      box-shadow: var(--shadow-sm);
+    }
+
+    article.stage-card:nth-of-type(odd) {
+      margin-bottom: 20px;
+    }
+
+    article.stage-card:nth-of-type(even) {
+      margin-top: 20px;
+    }
+
+    .stage-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--stage-accent);
+    }
+
+    .stage-card.dimmed {
+      opacity: 0.35;
+      filter: grayscale(35%);
+    }
+
+    .stage-card.search-match {
+      border-color: var(--brand-primary);
+      box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.2), var(--shadow-lg);
+    }
+
+    .stage-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .stage-icon-badge {
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      background: var(--stage-bg);
+      border: 1px solid var(--stage-border);
+      color: var(--stage-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .stage-badges {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 4px;
+      min-width: 0;
+      flex: 1;
+    }
+
+    .stage-num-pill {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: var(--stage-bg);
+      color: var(--stage-text);
+      border: 1px solid var(--stage-border);
+      white-space: nowrap;
+    }
+
+    .crisis-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 4px;
+      font-size: 0.71rem;
+      font-weight: 700;
+      line-height: 1.25;
+      text-align: right;
+      max-width: 100%;
+      color: #92400E;
+      background: #FEF3C7;
+      border: 1px solid #FDE68A;
+      padding: 3px 8px;
+      border-radius: 999px;
+    }
+
+    .pulse-bolt {
+      display: inline-block;
+      flex-shrink: 0;
+      animation: pulseBolt 1.8s infinite ease-in-out;
+    }
+
+    @keyframes pulseBolt {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.22); opacity: 0.75; }
+    }
+
+    .stage-title-wrap h3 {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      line-height: 1.25;
+      margin-bottom: 3px;
+    }
+
+    .stage-age {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--stage-accent);
+    }
+
+    .stage-summary {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.45;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    /* Interactive Mini Chips inside Station */
+    .stage-nodes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: auto;
+      padding-top: 4px;
+    }
+
+    .node-chip {
+      font-size: 0.74rem;
+      font-weight: 600;
+      line-height: 1.25;
+      max-width: 100%;
+      padding: 4px 8px;
+      border-radius: 8px;
+      background: var(--bg-subtle);
+      color: var(--text-secondary);
+      border: 1px solid var(--border-color);
+      transition: all 0.18s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .node-chip.highlighted {
+      background: var(--stage-bg);
+      color: var(--stage-text);
+      border-color: var(--stage-border);
+      font-weight: 700;
+    }
+
+    .node-chip.flag-chip {
+      background: var(--danger-bg);
+      color: #991B1B;
+      border-color: var(--danger-border);
+    }
+
+    .stage-card-footer {
+      border-top: 1px solid var(--border-color);
+      padding-top: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      font-size: 0.79rem;
+      font-weight: 600;
+      color: var(--stage-accent);
+    }
+
+    /* Sensitive Periods Gantt Strip */
+    .sensitive-panel {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-xl);
+      padding: 20px 22px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .sensitive-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .sensitive-header h2 {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--text-primary);
+    }
+
+    .sensitive-header p {
+      margin: 2px 0 0;
+      font-size: 0.83rem;
+      color: var(--text-muted);
+    }
+
+    .gantt-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .gantt-axis {
+      display: grid;
+      grid-template-columns: 220px repeat(7, minmax(0, 1fr));
+      gap: 6px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border-color);
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-align: center;
+      align-items: center;
+    }
+
+    .gantt-axis span {
+      min-width: 0;
+      line-height: 1.25;
+      overflow-wrap: break-word;
+    }
+
+    .gantt-axis span:first-child {
+      text-align: left;
+    }
+
+    .gantt-row {
+      display: grid;
+      grid-template-columns: 220px minmax(0, 1fr);
+      gap: 6px;
+      align-items: center;
+    }
+
+    .gantt-label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      padding-right: 8px;
+      line-height: 1.3;
+    }
+
+    .gantt-bar-wrap {
+      grid-column: 2;
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap: 6px;
+      position: relative;
+      height: 30px;
+      align-items: center;
+      min-width: 0;
+    }
+
+    .gantt-bg-slot {
+      grid-row: 1;
+      height: 30px;
+      background: rgba(241, 245, 249, 0.8);
+      border-radius: 7px;
+      pointer-events: none;
+    }
+
+    .gantt-bar {
+      grid-row: 1;
+      position: relative;
+      z-index: 1;
+      height: 24px;
+      width: 100%;
+      min-width: 0;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .gantt-bar:hover {
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .gantt-bar.active {
+      outline: 2px solid #0F172A;
+      outline-offset: 1px;
+    }
+
+    .sensitive-detail-box {
+      margin-top: 16px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-strong);
+      display: none;
+      animation: fadeSlideUp 0.25s var(--ease-out);
+    }
+
+    .sensitive-detail-box.visible {
+      display: block;
+    }
+
+    .sensitive-detail-box h4 {
+      font-size: 0.96rem;
+      font-weight: 800;
+      margin-bottom: 4px;
+      color: var(--text-primary);
+    }
+
+    .sensitive-detail-box p {
+      margin: 0;
+      font-size: 0.86rem;
+      color: var(--text-secondary);
+    }
+
+    /* Floating Hover Tooltip */
+    .atlas-tooltip {
+      position: fixed;
+      z-index: 90;
+      max-width: 300px;
+      background: #0F172A;
+      color: #F8FAFC;
+      padding: 10px 13px;
+      border-radius: 11px;
+      font-size: 0.8rem;
+      line-height: 1.45;
+      box-shadow: 0 12px 24px rgba(15, 23, 42, 0.28);
+      pointer-events: none;
+      opacity: 0;
+      transform: translateY(4px);
+      transition: opacity 0.15s ease, transform 0.15s ease;
+    }
+
+    .atlas-tooltip.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .atlas-tooltip strong {
+      display: block;
+      font-size: 0.83rem;
+      margin-bottom: 3px;
+      color: #7DD3FC;
+    }
+
+    /* Detail Modal */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: rgba(15, 23, 42, 0.52);
+      backdrop-filter: blur(4px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      opacity: 0;
+      transition: opacity 0.24s ease;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+      opacity: 1;
+    }
+
+    .modal-dialog {
+      width: 100%;
+      max-width: 960px;
+      max-height: 90vh;
+      background: var(--bg-surface);
+      border-radius: 24px;
+      box-shadow: 0 28px 60px -12px rgba(15, 23, 42, 0.35);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      animation: modalPop 0.28s var(--ease-out);
+    }
+
+    @keyframes modalPop {
+      from { opacity: 0; transform: scale(0.96) translateY(12px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    .modal-header {
+      padding: 20px 24px;
+      background: var(--stage-bg, #E0F2FE);
+      border-bottom: 1px solid var(--stage-border, #BAE6FD);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .modal-title-group {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex: 1 1 280px;
+      min-width: 0;
+    }
+
+    .modal-icon-wrap {
+      width: 54px;
+      height: 54px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid var(--stage-border);
+      color: var(--stage-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .modal-title-group > div:last-child {
+      min-width: 0;
+    }
+
+    .modal-title-group h2 {
+      font-size: 1.32rem;
+      font-weight: 800;
+      color: var(--stage-text);
+      line-height: 1.25;
+    }
+
+    .modal-subtitle {
+      font-size: 0.86rem;
+      font-weight: 600;
+      color: var(--stage-accent);
+      margin-top: 2px;
+    }
+
+    .modal-nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      flex-shrink: 0;
+    }
+
+    .modal-nav-btn {
+      border: 1px solid rgba(15, 23, 42, 0.14);
+      background: rgba(255, 255, 255, 0.88);
+      color: var(--text-primary);
+      padding: 7px 12px;
+      border-radius: 10px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .modal-nav-btn:hover:not(:disabled) {
+      background: #FFFFFF;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .modal-nav-btn:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+
+    .modal-close-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      border: 1px solid rgba(15, 23, 42, 0.14);
+      background: rgba(255, 255, 255, 0.88);
+      color: var(--text-primary);
+      font-size: 1.25rem;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .modal-close-btn:hover {
+      background: #FFFFFF;
+    }
+
+    .modal-tabs {
+      display: flex;
+      gap: 4px;
+      padding: 10px 24px 0;
+      border-bottom: 1px solid var(--border-color);
+      background: var(--bg-page);
+      overflow-x: auto;
+      flex-shrink: 0;
+    }
+
+    .modal-tab-btn {
+      border: none;
+      background: transparent;
+      padding: 10px 14px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      border-bottom: 2.5px solid transparent;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.18s ease;
+    }
+
+    .modal-tab-btn:hover {
+      color: var(--text-primary);
+    }
+
+    .modal-tab-btn.active {
+      color: var(--stage-accent, var(--brand-dark));
+      border-bottom-color: var(--stage-accent, var(--brand-dark));
+      background: var(--bg-surface);
+      border-radius: 10px 10px 0 0;
+    }
+
+    .modal-body {
+      padding: 22px 24px 28px;
+      overflow-y: auto;
+      flex: 1;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+      gap: 14px;
+    }
+
+    .info-card {
+      background: var(--bg-page);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 15px 16px;
+      min-width: 0;
+    }
+
+    .info-card h4 {
+      font-size: 0.92rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .info-card p, .info-card ul {
+      margin: 0;
+      font-size: 0.86rem;
+      color: var(--text-secondary);
+    }
+
+    .info-card ul {
+      padding-left: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    /* Infant Month Sub-switcher */
+    .month-switcher {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+      padding: 10px 12px;
+      background: #F0F9FF;
+      border: 1px solid #BAE6FD;
+      border-radius: 12px;
+    }
+
+    .month-switcher-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #0369A1;
+      margin-right: 4px;
+    }
+
+    .month-btn {
+      border: 1px solid #7DD3FC;
+      background: #FFFFFF;
+      color: #0C4A6E;
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .month-btn.active {
+      background: #0369A1;
+      color: #FFFFFF;
+      border-color: #0369A1;
+    }
+
+    /* Crisis & Red Flags Boxes */
+    .crisis-banner {
+      margin-top: 14px;
+      padding: 16px;
+      border-radius: 14px;
+      background: var(--warning-bg);
+      border: 1px solid #FDE68A;
+    }
+
+    .crisis-banner h4 {
+      color: #92400E;
+      font-size: 0.95rem;
+      margin-bottom: 6px;
+    }
+
+    .crisis-banner p {
+      margin: 0;
+      font-size: 0.86rem;
+      color: #78350F;
+    }
+
+    .flags-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .flag-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      background: var(--danger-bg);
+      border: 1px solid var(--danger-border);
+      color: #7F1D1D;
+      font-size: 0.87rem;
+      font-weight: 500;
+    }
+
+    .practice-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+      gap: 12px;
+    }
+
+    .practice-item {
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: var(--success-bg);
+      border: 1px solid #BBF7D0;
+      color: #14532D;
+      font-size: 0.86rem;
+      min-width: 0;
+    }
+
+    .practice-item strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 0.9rem;
+    }
+
+    /* =======================================================
+       MODE 2: ANALYTICS & LAWS
+       ======================================================= */
+    .section-heading {
+      margin-bottom: 18px;
+    }
+
+    .section-heading h2 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--text-primary);
+    }
+
+    .section-heading p {
+      margin: 4px 0 0;
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+    }
+
+    .laws-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+      gap: 18px;
+      margin-bottom: 26px;
+    }
+
+    .law-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 18px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .law-card-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .law-card h3 {
+      font-size: 1.03rem;
+      font-weight: 800;
+      color: var(--text-primary);
+    }
+
+    .law-tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: var(--brand-light);
+      color: var(--brand-dark);
+      white-space: nowrap;
+    }
+
+    .law-svg-box {
+      background: var(--bg-page);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 200px;
+      overflow: hidden;
+    }
+
+    .law-svg-box svg {
+      width: 100%;
+      max-width: 300px;
+      height: auto;
+      display: block;
+    }
+
+    .law-interactive-note {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      background: var(--bg-subtle);
+      padding: 10px 12px;
+      border-radius: 10px;
+      min-height: 58px;
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+    }
+
+    .svg-interactive-zone {
+      cursor: pointer;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .svg-interactive-zone:hover {
+      opacity: 0.85;
+    }
+
+    /* Dynamic Curves Chart */
+    .chart-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-xl);
+      padding: 22px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .chart-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    .curve-toggles {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .curve-btn {
+      border: 1px solid var(--border-color);
+      background: var(--bg-page);
+      color: var(--text-secondary);
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: 0.81rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      transition: all 0.18s ease;
+    }
+
+    .curve-btn.active {
+      background: var(--bg-surface);
+      color: var(--text-primary);
+      border-color: var(--curve-color);
+      box-shadow: 0 0 0 1px var(--curve-color);
+    }
+
+    .curve-swatch {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--curve-color);
+      flex-shrink: 0;
+    }
+
+    .chart-svg-wrap {
+      position: relative;
+      width: 100%;
+      overflow-x: auto;
+    }
+
+    .chart-point-info {
+      margin-top: 12px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-color);
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      min-height: 48px;
+    }
+
+    /* =======================================================
+       MODE 3: COMPARATIVE MATRIX
+       ======================================================= */
+    .matrix-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    .table-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+    }
+
+    .table-scroll {
+      overflow-x: auto;
+    }
+
+    .matrix-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 860px;
+      text-align: left;
+    }
+
+    .matrix-table thead th {
+      background: var(--bg-subtle);
+      color: var(--text-primary);
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .matrix-table tbody tr {
+      border-bottom: 1px solid var(--border-color);
+      cursor: pointer;
+      transition: background 0.16s ease;
+    }
+
+    .matrix-table tbody tr:hover {
+      background: #F8FAFC;
+    }
+
+    .matrix-table tbody td {
+      padding: 14px 16px;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      vertical-align: top;
+    }
+
+    .matrix-stage-badge {
+      display: inline-flex;
+      flex-direction: column;
+      gap: 3px;
+      padding: 6px 10px;
+      border-radius: 10px;
+      background: var(--stage-bg);
+      border: 1px solid var(--stage-border);
+      max-width: 100%;
+    }
+
+    .matrix-stage-badge strong {
+      color: var(--stage-text);
+      font-size: 0.86rem;
+    }
+
+    .matrix-stage-badge span {
+      color: var(--stage-accent);
+      font-size: 0.76rem;
+      font-weight: 600;
+    }
+
+    /* =======================================================
+       MODE 4: CASE TRAINER & SOURCES
+       ======================================================= */
+    .trainer-layout {
+      display: grid;
+      grid-template-columns: 1.25fr 0.95fr;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .trainer-card, .sources-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-xl);
+      padding: 22px;
+      box-shadow: var(--shadow-md);
+      min-width: 0;
+    }
+
+    .trainer-progress {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .progress-bar-track {
+      flex: 1;
+      height: 8px;
+      background: var(--bg-subtle);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #0284C7, #7E22CE);
+      border-radius: 999px;
+      transition: width 0.3s var(--ease-out);
+    }
+
+    .case-box {
+      background: var(--bg-page);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 18px;
+      margin-bottom: 16px;
+    }
+
+    .case-age-tag {
+      display: inline-block;
+      font-size: 0.76rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: var(--brand-light);
+      color: var(--brand-dark);
+      margin-bottom: 8px;
+    }
+
+    .case-question {
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    .case-options {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .case-opt-btn {
+      text-align: left;
+      padding: 13px 16px;
+      border-radius: 12px;
+      border: 1.5px solid var(--border-color);
+      background: var(--bg-surface);
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      cursor: pointer;
+      transition: all 0.18s ease;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .case-opt-btn:hover:not(:disabled) {
+      border-color: var(--brand-primary);
+      background: #F0F9FF;
+    }
+
+    .case-opt-btn.correct {
+      background: var(--success-bg);
+      border-color: var(--success);
+      color: #14532D;
+    }
+
+    .case-opt-btn.wrong {
+      background: var(--danger-bg);
+      border-color: var(--danger);
+      color: #7F1D1D;
+    }
+
+    .case-feedback {
+      display: none;
+      padding: 15px 16px;
+      border-radius: 14px;
+      font-size: 0.87rem;
+      margin-bottom: 14px;
+      animation: fadeSlideUp 0.25s ease;
+    }
+
+    .case-feedback.visible {
+      display: block;
+    }
+
+    .case-feedback.is-correct {
+      background: var(--success-bg);
+      border: 1px solid #86EFAC;
+      color: #14532D;
+    }
+
+    .case-feedback.is-wrong {
+      background: var(--danger-bg);
+      border: 1px solid var(--danger-border);
+      color: #7F1D1D;
+    }
+
+    .trainer-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .primary-btn {
+      border: none;
+      background: var(--brand-dark);
+      color: #FFFFFF;
+      padding: 10px 18px;
+      border-radius: 11px;
+      font-size: 0.87rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.18s ease;
+    }
+
+    .primary-btn:hover {
+      background: #075985;
+    }
+
+    .secondary-btn {
+      border: 1px solid var(--border-strong);
+      background: var(--bg-surface);
+      color: var(--text-primary);
+      padding: 9px 15px;
+      border-radius: 11px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .secondary-btn:hover {
+      background: var(--bg-subtle);
+    }
+
+    .sources-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .source-item {
+      padding: 11px 13px;
+      border-radius: 12px;
+      background: var(--bg-page);
+      border: 1px solid var(--border-color);
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 5px;
+    }
+
+    .source-item strong {
+      display: block;
+      color: var(--text-primary);
+      font-size: 0.84rem;
+    }
+
+    .source-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 6px;
+      background: var(--bg-subtle);
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* Footer */
+    .app-footer {
+      border-top: 1px solid var(--border-color);
+      background: var(--bg-surface);
+      padding: 16px 24px;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 980px) {
+      .trainer-layout {
+        grid-template-columns: 1fr;
+      }
+      .gantt-axis {
+        grid-template-columns: 160px repeat(7, minmax(0, 1fr));
+      }
+      .gantt-row {
+        grid-template-columns: 160px minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header-inner {
+        padding: 10px 14px;
+      }
+      .main-container {
+        padding: 14px 14px 36px;
+      }
+      .scroll-arrows {
+        display: none;
+      }
+      .atlas-route-wrapper {
+        padding: 14px 12px;
+      }
+      .atlas-scroll-area {
+        overflow-x: visible;
+        padding: 6px 0;
+      }
+      .atlas-track {
+        flex-direction: column;
+        min-width: 100%;
+        gap: 16px;
+        padding-left: 18px;
+      }
+      .atlas-track::before {
+        content: "";
+        position: absolute;
+        left: 6px;
+        top: 24px;
+        bottom: 24px;
+        width: 3px;
+        border-radius: 3px;
+        background: linear-gradient(to bottom, #D8B4FE, #F9A8D4, #7DD3FC, #86EFAC, #FCD34D, #FDBA74, #A5B4FC);
+      }
+      .route-svg-line {
+        display: none;
+      }
+      .stage-card {
+        width: 100%;
+      }
+      article.stage-card:nth-of-type(odd),
+      article.stage-card:nth-of-type(even) {
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+      .stage-card::before {
+        content: "";
+        position: absolute;
+        left: -17px;
+        top: 28px;
+        width: 11px;
+        height: 11px;
+        border-radius: 50%;
+        background: var(--stage-accent);
+        border: 2px solid #FFFFFF;
+        box-shadow: 0 0 0 2px var(--stage-border);
+      }
+      .gantt-axis {
+        display: none;
+      }
+      .gantt-row {
+        grid-template-columns: 1fr;
+        gap: 4px;
+        margin-bottom: 6px;
+      }
+      .gantt-bar-wrap {
+        grid-column: 1;
+      }
+      .modal-header {
+        padding: 16px;
+      }
+      .modal-tabs {
+        padding: 8px 14px 0;
+      }
+      .modal-body {
+        padding: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- STICKY HEADER -->
+  <header class="app-header">
+    <div class="header-inner">
+      <div class="brand">
+        <div class="brand-logo" aria-hidden="true">
+          <!-- Custom SVG: Human Brain -->
+          <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
+            <!-- Левое полушарие -->
+            <path d="M16 9C15.2 7.2 12.5 6.5 10.5 7.8C8.5 8.2 7.2 10.2 7.4 12.5C5.6 13.8 5.4 17.0 6.8 19.0C6.2 21.6 8.2 24.2 11.0 24.4C12.8 25.8 15.2 25.0 16 23.2V9Z" fill="#E0F2FE" stroke="#0369A1" stroke-width="1.9" stroke-linejoin="round"/>
+            <!-- Правое полушарие -->
+            <path d="M16 9C16.8 7.2 19.5 6.5 21.5 7.8C23.5 8.2 24.8 10.2 24.6 12.5C26.4 13.8 26.6 17.0 25.2 19.0C25.8 21.6 23.8 24.2 21.0 24.4C19.2 25.8 16.8 25.0 16 23.2V9Z" fill="#F3E8FF" stroke="#7E22CE" stroke-width="1.9" stroke-linejoin="round"/>
+            <!-- Извилины левого полушария -->
+            <path d="M11.5 10.5C10.5 12.2 11.5 13.8 13.5 13.5" stroke="#0369A1" stroke-width="1.6" stroke-linecap="round"/>
+            <path d="M7.5 15.8C9.5 15.8 10.5 17.2 9.8 18.8" stroke="#0369A1" stroke-width="1.6" stroke-linecap="round"/>
+            <path d="M10.8 21.5C12.2 21.5 13.5 20.2 13.2 18.5" stroke="#0369A1" stroke-width="1.6" stroke-linecap="round"/>
+            <!-- Извилины правого полушария -->
+            <path d="M20.5 10.5C21.5 12.2 20.5 13.8 18.5 13.5" stroke="#7E22CE" stroke-width="1.6" stroke-linecap="round"/>
+            <path d="M24.5 15.8C22.5 15.8 21.5 17.2 22.2 18.8" stroke="#7E22CE" stroke-width="1.6" stroke-linecap="round"/>
+            <path d="M21.2 21.5C19.8 21.5 18.5 20.2 18.8 18.5" stroke="#7E22CE" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <h1>Периоды детского возраста. Нервно-психическое развитие</h1>
+          <p>Интерактивная педиатрическая и нейропсихологическая карта</p>
+        </div>
+      </div>
+
+      <nav class="mode-nav" aria-label="Основные разделы">
+        <button class="mode-btn active" data-view="map">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+          Интерактивная карта
+        </button>
+        <button class="mode-btn" data-view="analytics">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18 9l-5 5-4-4-3 3"/></svg>
+          Закономерности и графики
+        </button>
+        <button class="mode-btn" data-view="matrix">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/></svg>
+          Сравнительная матрица
+        </button>
+        <button class="mode-btn" data-view="trainer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          Тренажёр и Источники
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-container">
+    <!-- =========================================================
+         VIEW 1: INTERACTIVE MAP
+         ========================================================= -->
+    <section id="view-map" class="view-section active">
+      <div class="map-controls">
+        <div class="controls-top-row">
+          <div class="search-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="mapSearchInput" class="search-input" placeholder="Поиск по этапам и вехам (напр.: пинцетный, кризис, Моро, речь)..." aria-label="Поиск по карте развития" />
+            <button id="mapSearchClear" class="search-clear" title="Очистить поиск" aria-label="Очистить поиск">&times;</button>
+          </div>
+          <div class="quick-hints">
+            <span>Быстрый поиск:</span>
+            <button class="hint-chip" data-query="кризис">кризис</button>
+            <button class="hint-chip" data-query="пинцетный">пинцетный</button>
+            <button class="hint-chip" data-query="Моро">Моро</button>
+            <button class="hint-chip" data-query="речь">речь</button>
+            <button class="hint-chip" data-query="префронтальн">префронтальная кора</button>
+          </div>
+        </div>
+
+        <div class="layer-toggles" role="group" aria-label="Фильтры слоёв карты">
+          <button class="layer-pill active" data-layer="all">Все слои</button>
+          <button class="layer-pill" data-layer="motor">🧠 ЦНС и Моторика</button>
+          <button class="layer-pill" data-layer="sensory">👁️ Сенсорика и Когниция</button>
+          <button class="layer-pill" data-layer="speech">💬 Речь и Коммуникация</button>
+          <button class="layer-pill" data-layer="social">🤝 Эмоции и Социум</button>
+          <button class="layer-pill" data-layer="crisis">⚡ Ведущая деятельность и Кризисы</button>
+          <button class="layer-pill" data-layer="flags">🚩 Красные флаги</button>
+        </div>
+      </div>
+
+      <div class="route-header-bar">
+        <div class="mini-dots" id="miniStageNav"></div>
+        <div class="scroll-arrows">
+          <button class="arrow-btn" id="scrollLeftBtn" title="Прокрутить карту влево" aria-label="Прокрутить влево">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button class="arrow-btn" id="scrollRightBtn" title="Прокрутить карту вправо" aria-label="Прокрутить вправо">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="atlas-route-wrapper">
+        <div class="atlas-scroll-area" id="atlasScrollArea">
+          <div class="atlas-track" id="atlasTrack">
+            <svg class="route-svg-line" viewBox="0 0 1800 80" preserveAspectRatio="none" aria-hidden="true">
+              <defs>
+                <linearGradient id="routeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#C084FC"/>
+                  <stop offset="16%" stop-color="#F472B6"/>
+                  <stop offset="33%" stop-color="#38BDF8"/>
+                  <stop offset="50%" stop-color="#4ADE80"/>
+                  <stop offset="66%" stop-color="#FBBF24"/>
+                  <stop offset="83%" stop-color="#FB923C"/>
+                  <stop offset="100%" stop-color="#818CF8"/>
+                </linearGradient>
+              </defs>
+              <path d="M 10 35 C 150 10, 250 65, 390 35 C 530 5, 650 65, 790 35 C 930 5, 1050 65, 1190 35 C 1330 5, 1450 65, 1590 35 C 1670 15, 1740 45, 1790 35" fill="none" stroke="url(#routeGrad)" stroke-width="5" stroke-dasharray="10 8" stroke-linecap="round"/>
+            </svg>
+            <!-- Stage cards injected by JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Sensitive Periods Gantt Bars -->
+      <div class="sensitive-panel">
+        <div class="sensitive-header">
+          <div>
+            <h2>Сенситивные периоды развития (окна максимальной нейропластичности)</h2>
+            <p>Нажмите на любую цветную полосу, чтобы увидеть нейробиологическое обоснование высокой восприимчивости мозга в данный интервал.</p>
+          </div>
+        </div>
+        <div class="gantt-grid" id="sensitiveGantt"></div>
+        <div class="sensitive-detail-box" id="sensitiveDetailBox">
+          <h4 id="sensitiveDetailTitle"></h4>
+          <p id="sensitiveDetailText"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         VIEW 2: ANALYTICS & LAWS
+         ========================================================= -->
+    <section id="view-analytics" class="view-section">
+      <div class="section-heading">
+        <h2>Фундаментальные закономерности нервно-психического развития</h2>
+        <p>Интерактивные нейробиологические модели и психолого-педагогические законы онтогенеза (нажимайте на элементы схем и точки графика).</p>
+      </div>
+
+      <div class="laws-grid">
+        <!-- Law 1: Cephalocaudal -->
+        <div class="law-card">
+          <div class="law-card-head">
+            <h3>1. Цефалокаудальный закон</h3>
+            <span class="law-tag">Сверху вниз</span>
+          </div>
+          <div class="law-svg-box">
+            <svg viewBox="0 0 260 180" aria-label="Схема цефалокаудального закона">
+              <defs>
+                <marker id="arrowDown" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+                  <path d="M0,0 L8,4 L0,8 Z" fill="#0369A1"/>
+                </marker>
+              </defs>
+              <!-- Vertical direction arrow -->
+              <line x1="38" y1="20" x2="38" y2="158" stroke="#0369A1" stroke-width="3" marker-end="url(#arrowDown)"/>
+              <text x="18" y="90" text-anchor="middle" fill="#0369A1" font-size="10.5" font-weight="700" transform="rotate(-90 18 90)">ОСЬ СОЗРЕВАНИЯ</text>
+              <!-- Head -->
+              <g class="svg-interactive-zone" data-law="cephalo" data-info="1. Голова и шея (1–3 мес.): миелинизация шейного отдела и глазодвигательных нервов опережает ноги — ребёнок сначала фиксирует взгляд и удерживает голову.">
+                <rect x="92" y="14" width="124" height="42" rx="21" fill="#E0F2FE" stroke="#0369A1" stroke-width="2.2"/>
+                <text x="154" y="39" text-anchor="middle" font-size="11.5" font-weight="700" fill="#0C4A6E">Голова (2–3 мес.)</text>
+              </g>
+              <!-- Trunk -->
+              <g class="svg-interactive-zone" data-law="cephalo" data-info="2. Туловище и плечевой пояс (4–7 мес.): созревание грудного и поясничного отделов позволяет переворачиваться, опираться на руки и самостоятельно сидеть.">
+                <rect x="86" y="64" width="136" height="46" rx="12" fill="#DCFCE7" stroke="#15803D" stroke-width="2.2"/>
+                <text x="154" y="91" text-anchor="middle" font-size="11.5" font-weight="700" fill="#14532D">Корпус (6–7 мес.)</text>
+              </g>
+              <!-- Legs -->
+              <g class="svg-interactive-zone" data-law="cephalo" data-info="3. Таз и нижние конечности (8–12 мес.): завершение контроля над крестцово-поясничными путями открывает путь к четверенькам, стоянию и ходьбе.">
+                <rect x="102" y="118" width="44" height="46" rx="10" fill="#FEF3C7" stroke="#B45309" stroke-width="2.2"/>
+                <rect x="162" y="118" width="44" height="46" rx="10" fill="#FEF3C7" stroke="#B45309" stroke-width="2.2"/>
+                <rect x="94" y="129" width="120" height="24" rx="8" fill="#FEF3C7" stroke="#B45309" stroke-width="1.6"/>
+                <text x="154" y="145" text-anchor="middle" font-size="11" font-weight="700" fill="#78350F">Ноги (10–12 мес.)</text>
+              </g>
+            </svg>
+          </div>
+          <div class="law-interactive-note" id="note-cephalo">Нажмите на уровень тела (голова, корпус, ноги), чтобы увидеть последовательность моторного контроля.</div>
+        </div>
+
+        <!-- Law 2: Proximodistal -->
+        <div class="law-card">
+          <div class="law-card-head">
+            <h3>2. Проксимодистальный закон</h3>
+            <span class="law-tag">От центра к периферии</span>
+          </div>
+          <div class="law-svg-box">
+            <svg viewBox="0 0 280 175" aria-label="Схема проксимодистального закона">
+              <defs>
+                <marker id="arrowRight" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+                  <path d="M0,0 L8,4 L0,8 Z" fill="#7E22CE"/>
+                </marker>
+              </defs>
+              <line x1="28" y1="34" x2="248" y2="34" stroke="#7E22CE" stroke-width="2.8" marker-end="url(#arrowRight)"/>
+              <text x="140" y="21" text-anchor="middle" font-size="10.5" font-weight="700" fill="#581C87">ОТ ОСИ ТЕЛА К КОНЧИКАМ ПАЛЬЦЕВ</text>
+              <!-- Shoulder -->
+              <g class="svg-interactive-zone" data-law="proximo" data-info="1. Плечевой пояс (3–4 мес.): хаотичные взмахи от плеча сменяются направленным движением всей руки к игрушке.">
+                <circle cx="48" cy="100" r="28" fill="#F3E8FF" stroke="#7E22CE" stroke-width="2.2"/>
+                <text x="48" y="104" text-anchor="middle" font-size="11.5" font-weight="700" fill="#581C87">Плечо</text>
+              </g>
+              <!-- Palm -->
+              <g class="svg-interactive-zone" data-law="proximo" data-info="2. Предплечье и ладонь (5–6 мес.): формируется ульнарный и ладонный захват всей кистью без участия отдельных пальцев.">
+                <rect x="92" y="78" width="76" height="44" rx="12" fill="#FCE7F3" stroke="#BE185D" stroke-width="2.2"/>
+                <text x="130" y="104" text-anchor="middle" font-size="11.5" font-weight="700" fill="#831843">Ладонь</text>
+              </g>
+              <!-- Fingers / Pincer -->
+              <g class="svg-interactive-zone" data-law="proximo" data-info="3. Пинцетный захват (9–10 мес.): кортикоспинальный тракт обеспечивает тонкую оппозицию большого и указательного пальцев.">
+                <rect x="184" y="74" width="84" height="52" rx="14" fill="#E0F2FE" stroke="#0369A1" stroke-width="2.2"/>
+                <text x="226" y="96" text-anchor="middle" font-size="11" font-weight="700" fill="#0C4A6E">Пинцетный</text>
+                <text x="226" y="111" text-anchor="middle" font-size="11" font-weight="700" fill="#0C4A6E">захват</text>
+              </g>
+            </svg>
+          </div>
+          <div class="law-interactive-note" id="note-proximo">Нажмите на сегмент руки, чтобы проследить эволюцию от размашистых движений к тонкой моторике.</div>
+        </div>
+
+        <!-- Law 3: Heterochrony -->
+        <div class="law-card">
+          <div class="law-card-head">
+            <h3>3. Гетерохронность созревания</h3>
+            <span class="law-tag">Неравномерность</span>
+          </div>
+          <div class="law-svg-box">
+            <svg viewBox="0 0 300 175" aria-label="Схема гетерохронности созревания отделов ЦНС">
+              <g class="svg-interactive-zone" data-law="hetero" data-info="Ствол мозга и подкорка (внутриутробно – 1 мес.): созревают первыми, обеспечивая дыхание, сосание, терморегуляцию и базовые рефлексы.">
+                <rect x="10" y="16" width="280" height="42" rx="10" fill="#FCE7F3" stroke="#BE185D" stroke-width="2"/>
+                <text x="22" y="34" font-size="11" font-weight="700" fill="#831843">Ствол мозга и подкорка</text>
+                <text x="22" y="48" font-size="9.5" font-weight="500" fill="#9D174D">витальные функции и рефлексы</text>
+                <rect x="226" y="27" width="54" height="20" rx="7" fill="#BE185D"/>
+                <text x="253" y="41" text-anchor="middle" font-size="10" font-weight="700" fill="#FFF">0 мес.</text>
+              </g>
+              <g class="svg-interactive-zone" data-law="hetero" data-info="Сенсомоторная и височная кора (3 мес. – 3 года): пик синаптогенеза в зонах зрения, слуха, движений и речи (зоны Брока и Вернике).">
+                <rect x="10" y="66" width="280" height="42" rx="10" fill="#DCFCE7" stroke="#15803D" stroke-width="2"/>
+                <text x="22" y="84" font-size="11" font-weight="700" fill="#14532D">Сенсорная и речевая кора</text>
+                <text x="22" y="98" font-size="9.5" font-weight="500" fill="#166534">пик синаптогенеза и речи</text>
+                <rect x="226" y="77" width="54" height="20" rx="7" fill="#15803D"/>
+                <text x="253" y="91" text-anchor="middle" font-size="10" font-weight="700" fill="#FFF">1–3 г.</text>
+              </g>
+              <g class="svg-interactive-zone" data-law="hetero" data-info="Префронтальная кора (7 – 20+ лет): миелинизируется последней! Отвечает за произвольность, планирование, торможение импульсов и самоконтроль.">
+                <rect x="10" y="116" width="280" height="42" rx="10" fill="#E0E7FF" stroke="#4338CA" stroke-width="2"/>
+                <text x="22" y="134" font-size="11" font-weight="700" fill="#312E81">Префронтальная кора</text>
+                <text x="22" y="148" font-size="9.5" font-weight="500" fill="#3730A3">произвольность и самоконтроль</text>
+                <rect x="226" y="127" width="54" height="20" rx="7" fill="#4338CA"/>
+                <text x="253" y="141" text-anchor="middle" font-size="10" font-weight="700" fill="#FFF">18+ лет</text>
+              </g>
+            </svg>
+          </div>
+          <div class="law-interactive-note" id="note-hetero">Нажмите на слой мозга: эволюционно более древние и базовые структуры созревают раньше высших ассоциативных зон.</div>
+        </div>
+
+        <!-- Law 4: ZPD Vygotsky -->
+        <div class="law-card">
+          <div class="law-card-head">
+            <h3>4. Зона ближайшего развития (ЗБР)</h3>
+            <span class="law-tag">Л.С. Выготский</span>
+          </div>
+          <div class="law-svg-box">
+            <svg viewBox="0 0 280 190" aria-label="Диаграмма Зоны ближайшего развития Выготского">
+              <g class="svg-interactive-zone" data-law="zpd" data-info="Внешний контур — пока недоступно даже с поддержкой (требует созревания структур мозга и накопления предшествующего опыта).">
+                <circle cx="140" cy="95" r="88" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2" stroke-dasharray="5 4"/>
+                <text x="140" y="30" text-anchor="middle" font-size="10.5" font-weight="700" fill="#475569">Пока недоступно</text>
+              </g>
+              <g class="svg-interactive-zone" data-law="zpd" data-info="Зона ближайшего развития (ЗБР) — то, что ребёнок делает в сотрудничестве со взрослым сегодня и сможет делать самостоятельно завтра. Именно на неё должно опираться обучение!">
+                <circle cx="140" cy="110" r="68" fill="#FEF3C7" stroke="#D97706" stroke-width="2.2"/>
+                <text x="140" y="64" text-anchor="middle" font-size="10.5" font-weight="800" fill="#92400E">Могу с помощью</text>
+                <text x="140" y="77" text-anchor="middle" font-size="10" font-weight="800" fill="#92400E">(ЗБР)</text>
+              </g>
+              <g class="svg-interactive-zone" data-law="zpd" data-info="Зона актуального развития (ЗАР) — задачи, которые ребёнок уже уверенно решает полностью самостоятельно.">
+                <circle cx="140" cy="128" r="35" fill="#DCFCE7" stroke="#15803D" stroke-width="2.2"/>
+                <text x="140" y="125" text-anchor="middle" font-size="11" font-weight="800" fill="#14532D">Могу</text>
+                <text x="140" y="139" text-anchor="middle" font-size="11" font-weight="800" fill="#14532D">сам</text>
+              </g>
+            </svg>
+          </div>
+          <div class="law-interactive-note" id="note-zpd">Нажмите на концентрическую зону: «Обучение ведёт за собой развитие» (Л.С. Выготский).</div>
+        </div>
+      </div>
+
+      <!-- Dynamic Curves SVG Chart -->
+      <div class="chart-card">
+        <div class="chart-controls">
+          <div>
+            <h3 style="font-size: 1.15rem; font-weight: 800;">Динамические кривые интенсивности развития ЦНС и психики</h3>
+            <p style="margin: 2px 0 0; font-size: 0.84rem; color: var(--text-muted);">Включайте и отключайте траектории и наводите/нажимайте на узлы графика для чтения клинического комментария.</p>
+          </div>
+          <div class="curve-toggles" id="curveToggles"></div>
+        </div>
+        <div class="chart-svg-wrap">
+          <svg id="dynamicsChartSvg" viewBox="0 0 920 340" style="width: 100%; min-width: 680px; height: auto; display: block;"></svg>
+        </div>
+        <div class="chart-point-info" id="chartPointInfo">
+          Нажмите или наведите курсор на любую точку на графике, чтобы увидеть научное объяснение пика или спада на данном возрастном этапе.
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         VIEW 3: COMPARATIVE MATRIX
+         ========================================================= -->
+    <section id="view-matrix" class="view-section">
+      <div class="section-heading">
+        <h2>Сравнительная матрица возрастных периодов</h2>
+        <p>Сводный анализ по периодизации Д.Б. Эльконина, стадиям интеллекта Ж. Пиаже, Э. Эриксону и клиническим шкалам НПР. Нажмите на любую строку для открытия полной карты этапа.</p>
+      </div>
+
+      <div class="matrix-controls">
+        <div class="search-box" style="max-width: 380px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="matrixSearchInput" class="search-input" placeholder="Фильтр матрицы (напр.: игра, Пиаже, кризис)..." />
+        </div>
+        <div class="layer-toggles">
+          <button class="layer-pill active" data-matrix-filter="all">Все 7 периодов</button>
+          <button class="layer-pill" data-matrix-filter="crisis">Этапы с яркими возрастными кризисами ⚡</button>
+          <button class="layer-pill" data-matrix-filter="early">Ранние этапы (0–3 года)</button>
+        </div>
+      </div>
+
+      <div class="table-card">
+        <div class="table-scroll">
+          <table class="matrix-table">
+            <thead>
+              <tr>
+                <th style="width: 17%;">Возрастной этап</th>
+                <th style="width: 18%;">Ведущая деятельность</th>
+                <th style="width: 20%;">Мышление (Пиаже) и Задача (Эриксон)</th>
+                <th style="width: 21%;">Кризис и Новообразование</th>
+                <th style="width: 24%;">Ключевые достижения НПР</th>
+              </tr>
+            </thead>
+            <tbody id="matrixTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         VIEW 4: TRAINER & SOURCES
+         ========================================================= -->
+    <section id="view-trainer" class="view-section">
+      <div class="section-heading">
+        <h2>Клинико-психологический тренажёр и научная база</h2>
+        <p>Проверьте умение дифференцировать физиологическую норму, возрастной кризис и «красные флаги» задержки НПР.</p>
+      </div>
+
+      <div class="trainer-layout">
+        <!-- Case Trainer -->
+        <div class="trainer-card">
+          <div class="trainer-progress">
+            <span id="trainerStepLabel" style="font-size: 0.85rem; font-weight: 700; color: var(--text-primary);">Кейс 1 из 6</span>
+            <div class="progress-bar-track">
+              <div class="progress-bar-fill" id="trainerProgressBar" style="width: 16.6%;"></div>
+            </div>
+            <span id="trainerScoreLabel" style="font-size: 0.84rem; font-weight: 700; color: var(--brand-dark);">Счёт: 0</span>
+          </div>
+
+          <div id="trainerActiveArea">
+            <div class="case-box">
+              <span class="case-age-tag" id="caseAgeTag"></span>
+              <p class="case-question" id="caseQuestion"></p>
+            </div>
+            <div class="case-options" id="caseOptions"></div>
+            <div class="case-feedback" id="caseFeedback"></div>
+            <div class="trainer-actions">
+              <button class="secondary-btn" id="caseJumpStageBtn" style="display: none;">Открыть этот этап на карте</button>
+              <button class="primary-btn" id="caseNextBtn" style="display: none; margin-left: auto;">Следующий кейс →</button>
+            </div>
+          </div>
+
+          <div id="trainerSummaryArea" style="display: none; text-align: center; padding: 20px 10px;">
+            <h3 style="font-size: 1.35rem; font-weight: 800; margin-bottom: 8px;">Тренажёр завершён!</h3>
+            <p id="trainerFinalText" style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 18px;"></p>
+            <button class="primary-btn" id="trainerRestartBtn">Пройти тренажёр заново</button>
+          </div>
+        </div>
+
+        <!-- Scientific Sources -->
+        <div class="sources-card">
+          <h3 style="font-size: 1.12rem; font-weight: 800; margin-bottom: 4px;">Научные источники и клинические стандарты</h3>
+          <p style="margin: 0; font-size: 0.83rem; color: var(--text-muted);">Контент атласа верифицирован по отечественным и международным протоколам педиатрии и психологии развития.</p>
+          <div class="sources-list">
+            <div class="source-item">
+              <strong>ВОЗ (WHO Multicentre Growth Reference Study)</strong>
+              <span>«Стандарты моторного развития детей: окна достижения шести основных этапов крупной моторики» (сидение без поддержки, ползание, стояние и ходьба).</span>
+              <span class="source-tag">Международный стандарт</span>
+            </div>
+            <div class="source-item">
+              <strong>Приказ Минздрава РФ № 514н (ред. актуальная)</strong>
+              <span>«О Порядке проведения профилактических медицинских осмотров несовершеннолетних» — скрининг НПР и раннее выявление расстройств развития.</span>
+              <span class="source-tag">Клинический протокол</span>
+            </div>
+            <div class="source-item">
+              <strong>Шабалов Н.П.</strong>
+              <span>«Детские болезни» (учебник в 2 томах) — анатомо-физиологические особенности ЦНС, рефлексы новорожденного и возрастная периодизация.</span>
+              <span class="source-tag">Педиатрия</span>
+            </div>
+            <div class="source-item">
+              <strong>Воронцов И.М., Мазурин А.В.</strong>
+              <span>«Пропедевтика детских болезней» — законы цефалокаудального и проксимодистального развития, оценка нервно-психического статуса.</span>
+              <span class="source-tag">Пропедевтика</span>
+            </div>
+            <div class="source-item">
+              <strong>Печора К.Л., Пантюхина Г.В., Фрухт Э.Л.</strong>
+              <span>«Диагностика нервно-психического развития детей первых трёх лет жизни» — помесячные линии НПР (моторика, сенсорика, речь, игра).</span>
+              <span class="source-tag">Диагностика НПР</span>
+            </div>
+            <div class="source-item">
+              <strong>Выготский Л.С.</strong>
+              <span>«Вопросы детской психологии» — учение о возрастных кризисах, социальной ситуации развития, зоне ближайшего развития (ЗБР).</span>
+              <span class="source-tag">Культурно-историческая школа</span>
+            </div>
+            <div class="source-item">
+              <strong>Эльконин Д.Б.</strong>
+              <span>«К проблеме периодизации психического развития в детском возрасте» — чередование мотивационно-потребностной и операционально-технической сфер.</span>
+              <span class="source-tag">Возрастная психология</span>
+            </div>
+            <div class="source-item">
+              <strong>Пиаже Ж. / Эриксон Э.</strong>
+              <span>Теория стадий когнитивного развития интеллекта (сенсомоторная, дооперациональная, конкретные и формальные операции) и эпигенетическая теория психосоциального развития.</span>
+              <span class="source-tag">Когнитивная и психосоциальная модели</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    Интерактивная карта «Периоды детского возраста» • Авторы: Скребцов Николай Сергеевич, Салфетников Артем Викторович; Ф-931, 2 бригада • Урюпинский филиал ГАПОУ "Волгоградский медицинский колледж"
+
+  <!-- FLOATING TOOLTIP -->
+  <div class="atlas-tooltip" id="atlasTooltip" role="tooltip"></div>
+
+  <!-- STAGE DETAIL MODAL -->
+  <div class="modal-backdrop" id="stageModalBackdrop" aria-hidden="true">
+    <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modalStageTitle">
+      <div class="modal-header" id="modalHeader">
+        <div class="modal-title-group">
+          <div class="modal-icon-wrap" id="modalStageIcon"></div>
+          <div>
+            <h2 id="modalStageTitle"></h2>
+            <div class="modal-subtitle" id="modalStageSubtitle"></div>
+          </div>
+        </div>
+        <div class="modal-nav-actions">
+          <button class="modal-nav-btn" id="modalPrevBtn">← Предыдущий этап</button>
+          <button class="modal-nav-btn" id="modalNextBtn">Следующий этап →</button>
+          <button class="modal-close-btn" id="modalCloseBtn" title="Закрыть (Esc)" aria-label="Закрыть окно">&times;</button>
+        </div>
+      </div>
+
+      <div class="modal-tabs" role="tablist">
+        <button class="modal-tab-btn active" data-tab="cns">1. Физиология ЦНС</button>
+        <button class="modal-tab-btn" data-tab="npr">2. Линии НПР (подробно)</button>
+        <button class="modal-tab-btn" data-tab="psych">3. Психология развития</button>
+        <button class="modal-tab-btn" data-tab="practice">4. Практика для взрослых</button>
+        <button class="modal-tab-btn" data-tab="flags">5. Красные флаги 🚩</button>
+      </div>
+
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      'use strict';
+
+      /* =====================================================================
+         1. COMPLETE SCIENTIFIC DATASET (7 STAGES + INFANCY MONTHLY NORMS)
+         ===================================================================== */
+      const STAGES_DATA = [
+        {
+          id: 1,
+          shortName: 'Внутриутробный',
+          title: 'Внутриутробный этап (антенатальный)',
+          age: '0–40 недель гестации',
+          colors: { bg: 'var(--s1-bg)', accent: 'var(--s1-accent)', text: 'var(--s1-text)', border: 'var(--s1-border)' },
+          swatch: '#7E22CE',
+          hasCrisis: false,
+          crisisShort: 'Родовой стресс на границе',
+          summary: 'Закладка нервной трубки (3–4 нед.), бурная пролиферация нейронов, первые шевеления (18–20 нед.) и формирование слуховых реакций.',
+          tooltipMain: 'Закладка ЦНС (3–4 нед.), 1-е шевеления плода (18–20 нед.), созревание слуха (24–26 нед.). Высокая уязвимость к тератогенам.',
+          nodes: [
+            { label: 'Нервная трубка 3–4 нед.', layer: 'motor', tip: 'Нейруляция: закрытие переднего и заднего нейропоров к 28-му дню.' },
+            { label: 'Шевеления 18–20 нед.', layer: 'motor', tip: 'Первые ощущаемые матерью генерализованные движения плода.' },
+            { label: 'Слух 24–26 нед.', layer: 'sensory', tip: 'Созревание улитки: плод слышит сердцебиение и голос матери.' },
+            { label: 'Риск тератогенов 🚩', layer: 'flags', tip: 'Критическое окно уязвимости ЦНС к гипоксии, инфекциям и токсинам.' }
+          ],
+          cns: {
+            structures: 'Эмбриональный период (до 8–10 нед.): нейруляция, формирование 3 и затем 5 мозговых пузырей. Фетальный период: миграция нейробластов (пик 12–20 нед.), закладка извилин и борозд коры (с 24–26 нед.).',
+            myelination: 'Начинается со ствола мозга, вестибулярного и слухового трактов (с 20–24 нед.). Синаптогенез запускается во II триместре, к рождению мозг весит ~350–400 г (около 25% веса мозга взрослого).',
+            reflexes: 'К 7–8 нед. появляются первые рефлекторные сгибания шеи; к 12–14 нед. — глотательные и сосательные движения; к 28–32 нед. — чёткие циклы «сон–бодрствование» (REM-фаза занимает до 80% сна, стимулируя эндогенную активность коры).'
+          },
+          npr: {
+            motor: 'Первые спонтанные движения с 7–8 нед. (УЗИ). К 18–20 нед. мать ощущает толчки; к 28 нед. движения координируются в виде отталкивания, сгибания конечностей и сосания пальца.',
+            sensory: 'Тактильная чувствительность вокруг рта появляется с 8 нед. Вестибулярный аппарат созревает к 16–20 нед. Слух — к 24–26 нед. (реакция вздрагиванием на резкий звук и успокоение на низкочастотный голос матери). Реакция зрачков на яркий свет через брюшную стенку — с 28–32 нед.',
+            speech: 'Предпосылки речи: слуховое научение просодике (ритму и интонации родного языка матери) в III триместре. Плод запоминает повторяющиеся мелодии и тембр голоса.',
+            social: 'Формирование биологического диалога «мать–плод»: гормональный ответ плода на кортизол и катехоламины матери при хроническом стрессе, ритмическая синхронизация циклов активности.'
+          },
+          psychology: {
+            situation: 'Симбиотическая биологическая общность с организмом матери (пренатальная психофизиологическая диада).',
+            leadingActivity: 'Внутриутробное созревание и сенсомоторная адаптация к водно-акустической среде матки.',
+            newFormations: 'Первичная сенсорная память, суточные ритмы сна–бодрствования, готовность к внеутробному переходу.',
+            piaget: 'Пренатальная подготовка сенсомоторных рефлекторных схем.',
+            erikson: 'Предпосылки базового доверия через стабильность внутриутробной среды.',
+            crisis: 'Критический переход в конце периода — родовой стресс (выброс катехоламинов, резкая смена среды от невесомости и 37 °C к гравитации, воздуху и яркому свету).'
+          },
+          practice: [
+            { title: 'Антенатальная профилактика', text: 'Приём фолиевой кислоты (профилактика дефектов нервной трубки), йода, отказ от алкоголя, никотина и несогласованных препаратов.' },
+            { title: 'Эмоциональная стабильность матери', text: 'Снижение хронического стресса: высокий уровень материнского кортизола меняет реактивность гипоталамо-гипофизарной оси плода.' },
+            { title: 'Мягкая сенсорная стимуляция', text: 'Спокойные разговоры с ребёнком, чтение вслух, спокойная музыка в III триместре способствуют формированию слуховой памяти.' }
+          ],
+          flags: [
+            'Отсутствие или резкое снижение шевелений плода после 20–24 недель гестации (менее 10 шевелений за 12 часов бодрствования в III триместре).',
+            'Внутриутробные инфекции (TORCH-комплекс: ЦМВ, токсоплазмоз, краснуха) и тяжёлая фетоплацентарная недостаточность с гипоксией.',
+            'Признаки аномалий ЦНС по УЗИ (вентрикуломегалия, spina bifida, задержка роста окружности головы).'
+          ],
+          iconSvg: '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7.5a2.5 2.5 0 1 0 0 5c1.8 0 3 1.3 3 3a2.5 2.5 0 0 1-5 0"/><circle cx="11.5" cy="9.5" r="0.8" fill="currentColor"/></svg>'
+        },
+        {
+          id: 2,
+          shortName: 'Новорожденность',
+          title: 'Период новорожденности (неонатальный)',
+          age: '0–28 дней жизни',
+          colors: { bg: 'var(--s2-bg)', accent: 'var(--s2-accent)', text: 'var(--s2-text)', border: 'var(--s2-border)' },
+          swatch: '#BE185D',
+          hasCrisis: true,
+          crisisShort: 'Кризис ⚡',
+          summary: 'Адаптация к внеутробной жизни, доминирование подкорки, гипертонус сгибателей и комплекс безусловных рефлексов (Моро, Робинсона и др.).',
+          tooltipMain: 'Кризис новорожденности, физиологический гипертонус сгибателей, безусловные рефлексы, 1-я фиксация взгляда на лице матери.',
+          nodes: [
+            { label: 'Рефлексы Моро/Робинсона', layer: 'motor', tip: 'Базовые безусловные рефлексы спинального и стволового уровня.' },
+            { label: 'Фиксация взгляда', layer: 'sensory', tip: 'Кратковременное удержание взгляда на ярком предмете или лице (20–30 см).' },
+            { label: 'Кризис ⚡', layer: 'crisis', tip: 'Переход от полной физиологической зависимости к индивидуальной жизни и психической общности «Пра-мы».' },
+            { label: 'Атония / судороги 🚩', layer: 'flags', tip: 'Отсутствие сосательного рефлекса, слабый крик или резкая мышечная гипотония.' }
+          ],
+          cns: {
+            structures: 'Функционально преобладают ствол мозга и таламо-паллидарная система (подкорка). Кора больших полушарий анатомически сформирована, но её нейроны имеют мало дендритных ветвлений и незрелы; процессы возбуждения легко иррадиируют.',
+            myelination: 'Активна миелинизация черепных нервов и проводящих путей проприоцепции. Физиологический гипертонус мышц-сгибателей конечностей («эмбриональная поза») обусловлен незрелостью тормозных влияний пирамидной системы.',
+            reflexes: 'Обязательные безусловные рефлексы: поисковый (Куссмауля), хоботковый, сосательный, ладонно-ротовой (Бабкина), хватательный (Робинсона), рефлекс Моро (испуг с разведением и сведением рук), опоры и автоматической походки, ползания (Бауэра), защитный (поворот головы на животе), Бабинского.'
+          },
+          npr: {
+            motor: 'Хаотические, атетозоподобные движения конечностей без чёткой координации. В положении на животе к концу 1-го месяца ребёнок пытается приподнять и на 1–2 секунды удержать голову.',
+            sensory: 'Зрение: врождённая дальнозоркость, оптимальный фокус — 20–30 см (расстояние от груди до лица матери). Кратковременная фиксация взгляда на лице/ярком предмете, физиологическое непостоянное косоглазие. Слух: вздрагивание и мигание на громкий звук (акустико-пальпебральный рефлекс). Хорошо развиты вкус (предпочтение сладкого) и обоняние (узнавание запаха матери).',
+            speech: 'Коммуникация через крик (голод, дискомфорт, холод). К 3–4 неделям крик становится интонационно дифференцированным, появляются отдельные гортанные звуки при комфорте.',
+            social: 'Формирование симбиотической связи с матерью. Насыщение базовых витальных и тактильных потребностей закладывает основу эмоциональной безопасности («контакт кожа к коже»).'
+          },
+          psychology: {
+            situation: 'По Л.С. Выготскому — «Пра-мы»: физически ребёнок отделён от матери, но психически и биологически полностью зависит от взрослого.',
+            leadingActivity: 'Переход к непосредственно-эмоциональному общению (предпосылки формируются к концу месяца).',
+            newFormations: 'Индивидуальная психическая жизнь, появление зрительного и слухового сосредоточения (замирание при рассматривании лица или слушании голоса).',
+            piaget: 'Сенсомоторная стадия, подстадия 1 (0–1 мес.): упражнение врождённых рефлексов (сосание, схватывание).',
+            erikson: 'Начало стадии «Базовое доверие против базового недоверия» (0–1 год).',
+            crisis: 'Кризис ⚡ — резкий скачок от внутриутробного гомеостаза к самостоятельному дыханию, терморегуляции и энтеральному питанию; в первые дни — физиологическая потеря массы тела (до 6–8%) и транзиторные состояния.'
+          },
+          practice: [
+            { title: 'Контакт «кожа к коже» и отклик на крик', text: 'Немедленный отзыв взрослого на плач не «разбалует» младенца, а стабилизирует уровень кортизола и формирует базовое доверие к миру.' },
+            { title: 'Выкладывание на живот', text: 'Короткие сессии на твёрдой поверхности перед кормлением (под присмотром) тренируют мышцы шеи и профилактируют кишечные колики.' },
+            { title: 'Оптимальная дистанция общения', text: 'Разговаривайте с малышом мягким, мелодичным голосом на расстоянии 20–30 см от его лица, ловя моменты зрительного сосредоточения.' }
+          ],
+          flags: [
+            'Отсутствие или резкое ослабление сосательного и глотательного рефлексов, срыгивания «фонтаном».',
+            'Выраженная асимметрия мышечного тонуса и рефлексов (например, отсутствие движения одной рукой — подозрение на парез Эрба) или резкая общая гипотония («поза лягушки»).',
+            'Отсутствие реакции вздрагивания или замирания на резкий громкий звук (риск тугоухости).',
+            'Монотонный пронзительный «мозговой» крик, судороги, постоянный тремор подбородка и конечностей в покое.'
+          ],
+          iconSvg: '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="9" r="4.5"/><path d="M5 19c0-3.5 3.1-5.5 7-5.5s7 2 7 5.5"/><path d="M10 9h.01M14 9h.01"/></svg>'
+        },
+        {
+          id: 3,
+          shortName: 'Грудной возраст',
+          title: 'Грудной возраст (младенчество)',
+          age: '29 дней – 1 год',
+          colors: { bg: 'var(--s3-bg)', accent: 'var(--s3-accent)', text: 'var(--s3-text)', border: 'var(--s3-border)' },
+          swatch: '#0369A1',
+          hasCrisis: true,
+          crisisShort: 'Кризис 1 года ⚡',
+          summary: 'Самый бурный темп развития за всю жизнь: от удержания головы и «комплекса оживления» до пинцетного захвата, первых шагов и первых слов.',
+          tooltipMain: 'Комплекс оживления (2–3 мес.), перевороты и сидение (5–7 мес.), пинцетный захват (9 мес.), первые шаги и слова (12 мес.).',
+          nodes: [
+            { label: '1–3 м: Комплекс оживления', layer: 'social', tip: 'Улыбка, гуление и двигательная радость при виде взрослого — граница конца новорожденности.' },
+            { label: '4–6 м: Перевороты и лепет', layer: 'motor', tip: 'Целенаправленный захват игрушек, переворот со спины на живот, слоговой лепет.' },
+            { label: '7–9 м: Ползание и пинцетный захват', layer: 'motor', tip: 'Четвереньки, вставание у опоры, точный захват двумя пальцами.' },
+            { label: '10–12 м: Шаги, указ. жест, слова ⚡', layer: 'speech', tip: 'Совместное внимание, первые 5–10 слов, кризис 1 года.' },
+            { label: 'Нет гуления/сидения 🚩', layer: 'flags', tip: 'Отсутствие гуления к 4–5 мес., сидения к 9 мес. или указательного жеста к 12 мес.' }
+          ],
+          cns: {
+            structures: 'К 1 году масса мозга удваивается (с ~380–400 г до 850–950 г) за счёт стремительного роста дендритных связей и глиальных клеток. Плотность синапсов в сенсорной и моторной коре взлетает в десятки раз.',
+            myelination: 'Идёт волнообразная миелинизация по цефалокаудальному и проксимодистальному законам: от шейного отдела и глазодвигательных путей к корково-спинномозговому (пирамидному) тракту, позволяющему контролировать кисть и ноги.',
+            reflexes: 'Угасание большинства врождённых безусловных рефлексов к 3–5 месяцам (рефлекс Моро, автоматическая походка, Бауэра) — критический маркер зрелости тормозных функций коры! На их месте формируются условные рефлексы и произвольные движения (установочные рефлексы Ландау и цепные выпрямительные).'
+          },
+          nprMonthly: [
+            {
+              month: '1 мес.',
+              motor: 'В положении на животе пытается удерживать голову 5–10 сек. Физиологический гипертонус сгибателей сохраняется, кисти сжаты в кулачки.',
+              sensory: 'Плавное прослеживание за ярким предметом в горизонтальной плоскости; зрительное и слуховое сосредоточение на лице взрослого.',
+              speech: 'Первые короткие гортанные звуки («кх», «а-а») в ответ на разговор взрослого; дифференцированный крик.',
+              social: 'Первая спонтанная («физиологическая») улыбка во сне и робкая ответная улыбка к концу месяца.'
+            },
+            {
+              month: '3 мес.',
+              motor: 'Уверенно держит голову в вертикальном положении и на животе с опорой на предплечья. Тонус рук снижается, кисти раскрываются, тянется к игрушкам.',
+              sensory: 'Следит за предметом во всех направлениях, поворачивает голову на звук, активно рассматривает свои руки («открытие рук»).',
+              speech: 'Протяжное певучее гуление («агу», «гы», «а-а-а») с гласными звуками, вокализирует при общении.',
+              social: 'Яркий «КОМПЛЕКС ОЖИВЛЕНИЯ» при приближении взрослого: улыбка, двигательное оживление рук и ног, радостное гуление.'
+            },
+            {
+              month: '6 мес.',
+              motor: 'Свободно переворачивается со спины на живот и обратно, опирается на выпрямленные руки, начинает присаживаться (некоторые сидят с поддержкой). Уверенный захват игрушки всей ладонью и перекладывание из руки в руку.',
+              sensory: 'Дифференцирует формы, тянется к упавшей игрушке, изучает предметы ртом и ощупыванием.',
+              speech: 'Активный ЛЕПЕТ — произносит повторные слоги («ба-ба», «ма-ма», «та-та»). Прислушивается к интонациям.',
+              social: 'Чёткое различение «свой–чужой»: радуется близким, настораживается или плачет при виде незнакомца; понимает эмоциональный тон голоса.'
+            },
+            {
+              month: '9 мес.',
+              motor: 'Самостоятельно сидит с прямой спиной, ползает на четвереньках, встаёт на ноги, держась за опору. Формируется точный ПИНЦЕТНЫЙ ЗАХВАТ (большим и указательным пальцами).',
+              sensory: 'Понимает постоянство объекта (по Пиаже): ищет игрушку, спрятанную на его глазах под платком. Открывает коробочки, стучит предметом о предмет.',
+              speech: 'Разнообразный лепет с интонацией диалога; понимает простые слова-инструкции («дай», «нельзя», «где мама?»), откликается на имя.',
+              social: 'Страх сепарации от матери, играет в «ладушки» и «ку-ку», активно подражает мимике и жестам взрослых.'
+            },
+            {
+              month: '12 мес.',
+              motor: 'Стоит без опоры, делает первые самостоятельные шаги (норма ВОЗ для ходьбы без поддержки: 8,5–17,5 мес.). Уверенно пьёт из чашки, вкладывает мелкие предметы в ёмкость.',
+              sensory: 'Устанавливает причинно-следственные связи (тянет за верёвочку, чтобы достать машинку). Различает простые формы (круг/куб).',
+              speech: 'Произносит первые 5–10 осмысленных слов (включая звукоподражания «ав-ав», «би-би»); понимает до 30–50 слов и простые просьбы.',
+              social: 'Ключевой маркер: УКАЗАТЕЛЬНЫЙ ЖЕСТ (протоимперативный и протодекларативный — деление интересом со взрослым). Начало кризиса 1 года.'
+            }
+          ],
+          npr: {
+            motor: 'Революция мобильности: от лёжа на спине -> удержание головы (2–3 м) -> перевороты (4–5 м) -> сидение (6–8 м) -> четвереньки (7–9 м) -> стояние и ходьба (10–14 м). Тонкая моторика: ладонный захват -> пинцетный захват (9–10 м).',
+            sensory: 'Бинокулярное зрение, зрительно-моторная координация «глаз–рука», формирование перцептивной схемы постоянства объекта (игрушка продолжает существовать, даже если её накрыли платком).',
+            speech: 'Чёткая стадийность: крик -> гуление (2–4 м) -> лепет (5–8 м) -> лепетные цепи (9–10 м) -> первые осмысленные слова и понимание обращённой речи (11–12 м).',
+            social: 'Центральное достижение — формирование надёжной привязанности (по Дж. Боулби) и указательного жеста как основы совместного внимания.'
+          },
+          psychology: {
+            situation: 'Эмоциональное единство со взрослым (младенец открывает предметный мир только через руки и эмоции матери).',
+            leadingActivity: 'Непосредственно-эмоциональное общение со взрослым (по Д.Б. Эльконину).',
+            newFormations: 'Комплекс оживления (в 2–3 мес.), потребность в общении, первичная привязанность, прямохождение и первые слова (к 1 году).',
+            piaget: 'Сенсомоторная стадия (подстадии 2–4): от первичных круговых реакций к координации схем и поиску спрятанного предмета.',
+            erikson: '«Базовое доверие против базового недоверия» (исход — чувство безопасности или тревожная настороженность).',
+            crisis: 'Кризис 1 года ⚡ — возникает при овладении ходьбой и появлении «автономной речи» (понятной только близким). Ребёнок уже хочет действовать сам, но ещё не умеет, отсюда первые бурные аффекты протеста (падает на пол, кричит при запрете).'
+          },
+          practice: [
+            { title: 'Эмоциональный отклик и «речь матери»', text: 'Отвечайте на гуление и лепет в режиме диалога с паузами («бэби-ток»), называйте все действия и предметы — это питает речевые зоны мозга.' },
+            { title: 'Безопасное пространство на полу', text: 'Минимизируйте манежи и ходунки: свободное ползание на тёплом полу укрепляет межполушарные связи и правильную осанку.' },
+            { title: 'Сенсорно-моторные игры', text: 'Игры «ку-ку» (постоянство объекта), пирамидки, стаканчики-вкладыши и пальчиковые игры («сорока-ворона»).' }
+          ],
+          flags: [
+            'К 3–4 месяцам: не держит голову, отсутствует зрительный контакт, ответная улыбка и комплекс оживления.',
+            'К 6 месяцам: не переворачивается, не тянется к игрушкам, сохраняются ранние патологические рефлексы или выраженный гипертонус; нет гуления.',
+            'К 9 месяцам: не сидит самостоятельно без опоры, отсутствует лепет со слогами («ба», «ма», «да»), не реагирует на своё имя.',
+            'К 12 месяцам: отсутствует указательный жест, нет разделённого внимания (не смотрит туда, куда показывает взрослый), не использует жесты («пока-пока»), не понимает простые слова; потеря ранее приобретённых навыков в любом возрасте!'
+          ],
+          iconSvg: '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="3.5"/><path d="M8 14c0-1.5 1.8-2.5 4-2.5s4 1 4 2.5v3.5a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2V14z"/><path d="M9.5 6.5c.8-1.2 4.2-1.2 5 0"/></svg>'
+        },
+        {
+          id: 4,
+          shortName: 'Раннее детство',
+          title: 'Раннее детство (преддошкольный возраст)',
+          age: '1–3 года',
+          colors: { bg: 'var(--s4-bg)', accent: 'var(--s4-accent)', text: 'var(--s4-text)', border: 'var(--s4-border)' },
+          swatch: '#15803D',
+          hasCrisis: true,
+          crisisShort: 'Кризис 3 лет «Я сам!» ⚡',
+          summary: 'Предметно-манипулятивная деятельность, прямохождение, взрывной рост словаря (до 1000+ слов), наглядно-действенное мышление и кризис 3 лет.',
+          tooltipMain: 'Ведущая деятельность — предметная; взрыв речи (фраза из 3+ слов к 3 г.); кризис 3 лет (негативизм, упрямство, «Я сам!»).',
+          nodes: [
+            { label: 'Предметная деятельность', layer: 'crisis', tip: 'Освоение культурного назначения предметов: ложкой едят, расчёской чешут, кубики ставят.' },
+            { label: 'Словарный взрыв (1000+ слов)', layer: 'speech', tip: 'От первых слов к двухсловной фразе (1,5–2 г.) и развёрнутым предложениям (2,5–3 г.).' },
+            { label: 'Мышление в действии', layer: 'sensory', tip: 'Наглядно-действенное мышление и освоение сенсорных эталонов (форма, цвет, величина).' },
+            { label: 'Кризис 3 лет ⚡', layer: 'crisis', tip: 'Семизвездие симптомов Л.С. Выготского: негативизм, упрямство, строптивость, своеволие, протест, обесценивание, деспотизм.' },
+            { label: 'Нет фразовой речи к 2,5 г. 🚩', layer: 'flags', tip: 'Отсутствие двусловных фраз к 2 годам, эхолалия или отсутствие зрительного контакта.' }
+          ],
+          cns: {
+            structures: 'К 3 годам масса мозга достигает 1000–1100 г (~75–80% от мозга взрослого). Максимальная плотность синапсов в коре («синаптическое изобилие» — в 2 раза больше синапсов, чем у взрослого). Начинается избирательный синаптический прунинг (сохраняются используемые связи).',
+            myelination: 'Интенсивная миелинизация ассоциативных волокон, соединяющих речевые центры Вернике (понимание) и Брока (продукция речи), а также мозолистого тела (межполушарное взаимодействие).',
+            reflexes: 'Совершенствуется координация двигательной коры и мозжечка: формируются сложные моторные автоматизмы (ходьба по лестнице, бег, прыжки, удержание ложки и карандаша), контроль над сфинктерами (готовность к горшку в 18–24 мес.).'
+          },
+          npr: {
+            motor: '1,5 года: уверенная ходьба, приседает за игрушкой, поднимается по лестнице за руку. 2 года: бегает, пинает мяч, перелистывает страницы по одной, строит башню из 4–6 кубиков. 3 года: прыгает на двух ногах, едет на трёхколёсном велосипеде, самостоятельно ест, держит карандаш пальцами и рисует круг/крест.',
+            sensory: 'Усвоение сенсорных эталонов (3–4 основных цвета, круг–квадрат–треугольник, большой–маленький). Мышление НАГЛЯДНО-ДЕЙСТВЕННОЕ: ребёнок решает задачу через реальные пробы и ошибки с предметами («орудийные действия»).',
+            speech: 'К 1,5 г. — 30–50 слов; в 1,8–2 года — лексический взрыв и 2-словная фраза («дай пить», «мама би-би»); к 2,5 г. — вопросы «Что это?», «Где?»; к 3 годам — словарь 1000–1500 слов, грамматически оформленные предложения из 3–5 слов, употребляет местоимение «Я».',
+            social: 'Переход от игры «рядом» к процессуальной игре с предметами-заместителями. Осознаёт своё имя, пол и границы «Я» (узнаёт себя в зеркале — тест с пятном с 18–24 мес.).'
+          },
+          psychology: {
+            situation: 'Совместная деятельность со взрослым в предметном мире («Ребёнок – Предмет – Взрослый»). Взрослый — образец способа действия с вещами.',
+            leadingActivity: 'Предметно-манипулятивная (орудийно-предметная) деятельность (по Д.Б. Эльконину).',
+            newFormations: 'Речь как средство мышления и общения, наглядно-действенное мышление, «Я-система» (личностное действие «Я сам!»), гордость за достижения.',
+            piaget: 'Завершение сенсомоторной стадии (к 2 г. — символизация) и начало дооперациональной стадии (символическая функция, игра-понарошку).',
+            erikson: '«Автономия против стыда и сомнений» (1–3 года): ребёнок учится управлять телом и выбором.',
+            crisis: 'Кризис 3 лет ⚡ — перестройка социальной ситуации из-за психологического отделения «Я» от взрослого. Классическое «семизвездие» Л.С. Выготского: 1) негативизм (делаю наоборот именно потому, что попросили), 2) упрямство (настаиваю, потому что сказал я), 3) строптивость (против всего уклада), 4) своеволие («я сам!»), 5) протест-бунт, 6) обесценивание (ругает любимые вещи/близких), 7) деспотизм (требует подчинения взрослых).'
+          },
+          practice: [
+            { title: 'Поддержка самостоятельности в границах', text: 'Предлагайте «выбор без выбора» («Ты наденешь синюю куртку или зелёную?»): это снижает негативизм и тренирует автономию.' },
+            { title: 'Сенсорно-предметная среда', text: 'Сортеры, конструкторы, пластилин, шнуровки, игры с водой и крупами под присмотром развивают ручной праксис и речь.' },
+            { title: 'Ограничение гаджетов (по рекомендациям ВОЗ)', text: 'До 2 лет — исключить пассивный экран, в 2–3 года — не более 30–40 мин/сутки с совместным обсуждением, чтобы не тормозить живую диалоговую речь.' }
+          ],
+          flags: [
+            'К 18 месяцам: не ходит самостоятельно, не использует указательный жест, не произносит даже простых слов-обозначений (мама, дай).',
+            'К 2 годам: менее 20–30 слов, нет двухсловной фразы, не понимает простых двухступенчатых инструкций («возьми мяч и дай папе»), нет имитации действий.',
+            'К 3 годам: речь непонятна даже близким, нет развёрнутой фразы, выраженные эхолалии (механическое повторение фраз без смысла), избегание контакта со сверстниками, стереотипные движения или фиксация только на одном действии.',
+            'Любой регресс речи, навыков самообслуживания или социальных контактов.'
+          ],
+          iconSvg: '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/><rect x="8.5" y="5" width="7" height="7" rx="1.5"/></svg>'
+        },
+        {
+          id: 5,
+          shortName: 'Дошкольный возраст',
+          title: 'Дошкольный возраст',
+          age: '3–7 лет',
+          colors: { bg: 'var(--s5-bg)', accent: 'var(--s5-accent)', text: 'var(--s5-text)', border: 'var(--s5-border)' },
+          swatch: '#B45309',
+          hasCrisis: true,
+          crisisShort: 'Кризис 7 лет ⚡',
+          summary: 'Расцвет сюжетно-ролевой игры, воображения и наглядно-образного мышления; появление произвольности, соподчинения мотивов и готовности к школе.',
+          tooltipMain: 'Сюжетно-ролевая игра, наглядно-образное мышление (Пиаже), «возраст почемучек», произвольность и кризис 7 лет.',
+          nodes: [
+            { label: 'Сюжетно-ролевая игра', layer: 'social', tip: 'Моделирование социальных отношений («доктор», «семья», «школа») и добровольное подчинение правилам роли.' },
+            { label: 'Наглядно-образное мышление', layer: 'sensory', tip: 'Дооперациональная стадия по Пиаже, преодоление когнитивного эгоцентризма к 6–7 годам.' },
+            { label: 'Связная речь и фонематика', layer: 'speech', tip: 'К 5–6 годам освоение всех звуков, пересказ историй, внутренняя речь для планирования.' },
+            { label: 'Кризис 7 лет ⚡', layer: 'crisis', tip: 'Утрата детской непосредственности, внутренняя позиция школьника, обобщение переживаний.' },
+            { label: 'Нарушение внимания/звуков 🚩', layer: 'flags', tip: 'Отсутствие ролевой игры к 4–5 г., грубые речевые нарушения к 5,5 г. или неумение удерживать правило.' }
+          ],
+          cns: {
+            structures: 'К 6–7 годам вес мозга достигает ~90% веса мозга взрослого (1250–1350 г). Происходит скачкообразный рост связей между лобной корой и лимбической системой (эмоциональная саморегуляция).',
+            myelination: 'Завершается миелинизация зрительно-пространственных и речевых трактов; активно созревает третичная височно-теменно-затылочная область (зона ТРО), отвечающая за пространственный синтез и предпосылки счёта и письма.',
+            reflexes: 'К 6–7 годам резко возрастает уровень произвольного коркового торможения (появляется способность сидеть на месте, подавлять импульсивный порыв ради правила игры — «школьная зрелость»).'
+          },
+          npr: {
+            motor: 'Тонкая моторика: правильный пинцетно-трёхпальцевый захват карандаша, рисование человека (от «головонога» в 3 г. до детализированной фигуры в 6 л.), вырезание ножницами по контуру, застёгивание пуговиц, шнуровка. Крупная моторика: прыжки на одной ноге, ловля мяча, езда на двухколёсном велосипеде.',
+            sensory: 'Доминирует НАГЛЯДНО-ОБРАЗНОЕ мышление (оперирует образами в уме без опоры на реальное действие). Развивается наглядно-схематическое мышление (понимание карт, схем, пиктограмм). К 6–7 годам формируются «модель психического» (Theory of Mind — понимание, что у других людей свои знания и чувства).',
+            speech: '«Возраст почемучек» (4–5 лет). Словотворчество («отмухиваться»), освоение всех групп звуков (шипящие, соноры «Р/Л» к 5–6 годам), развёрнутый рассказ по серии картинок, фонематический слух — база для обучения чтению.',
+            social: 'Переход от эгоцентризма к кооперативной игре по правилам со сверстниками. Формирование моральных оценок («хорошо–плохо»), соподчинение мотивов (способен сделать неинтересное дело ради похвалы или цели), развитие самооценки.'
+          },
+          psychology: {
+            situation: 'Выход за пределы семьи в мир социальных отношений и норм; взрослый выступает как носитель общественной функции.',
+            leadingActivity: 'Сюжетно-ролевая игра (по Д.Б. Эльконину) — «девятый вал» детского воображения и саморегуляции.',
+            newFormations: 'Соподчинение мотивов, произвольность поведения и внимания, первичные этические инстанции, воображение, внутренняя позиция школьника (к 6–7 г.).',
+            piaget: 'Дооперациональная стадия (2–7 лет): эгоцентризм мышления, анимизм (одушевление неживого), отсутствие понимания сохранения количества (феномены Пиаже со стаканами воды).',
+            erikson: '«Инициатива против чувства вины» (3–6 лет): ребёнок активно придумывает игры, пробует роли, задаёт вопросы.',
+            crisis: 'Кризис 7 лет ⚡ — утрата детской непосредственности (между переживанием и поступком вклинивается интеллектуальная оценка «как это выглядит со стороны?»). Внешние симптомы: манерничанье, кривляние, закрытость, споры о правилах.'
+          },
+          practice: [
+            { title: 'Не заменяйте игру ранним «сидением за партой»', text: 'Именно ролевая игра со сверстниками и настольные игры с правилами лучше всего развивают произвольность (префронтальную кору), нужную в 1 классе.' },
+            { title: 'Подготовка руки и речи без перегрузок', text: 'Лепка, оригами, рисование, чтение вслух с пересказом и обсуждением мотивов героев («Почему заяц так поступил?»).' },
+            { title: 'Приучение к бытовым правилам и режиму', text: 'Посильные домашние обязанности и чёткий режим сна (10–11 часов) поддерживают созревание регуляторных систем мозга.' }
+          ],
+          flags: [
+            'В 4–5 лет: отсутствие сюжетно-ролевой игры, неспособность играть с другими детьми, эгоцентрическая замкнутость.',
+            'К 5–5,5 годам: выраженная неразборчивость речи, грубый аграмматизм, неспособность пересказать короткую сказку из 3–4 фраз.',
+            'Трудности моторной координации: не может прыгать на двух/одной ноге к 5 годам, не держит карандаш, постоянно роняет предметы.',
+            'К 6,5–7 годам: неспособность удерживать простую инструкцию более 5 минут, импульсивная агрессия, энурез/энкопрез, панические страхи или тики.'
+          ],
+          iconSvg: '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2l3 6 6.5.9-4.7 4.6 1.1 6.5L12 17l-5.9 3 1.1-6.5L2.5 8.9 9 8l3-6z"/></svg>'
+        },
+        {
+          id: 6,
+          shortName: 'Младший школьный',
+          title: 'Младший школьный возраст',
+          age: '7–11 лет',
+          colors: { bg: 'var(--s6-bg)', accent: 'var(--s6-accent)', text: 'var(--s6-text)', border: 'var(--s6-border)' },
+          swatch: '#C2410C',
+          hasCrisis: false,
+          crisisShort: 'Адаптация к школе (1 класс)',
+          summary: 'Ведущая учебная деятельность, созревание лобных долей, стадия конкретных операций по Пиаже, словесно-логическое мышление и рефлексия.',
+          tooltipMain: 'Учебная деятельность, произвольное внимание и логическая память, конкретные операции (закон сохранения по Пиаже), трудолюбие (Эриксон).',
+          nodes: [
+            { label: 'Учебная деятельность', layer: 'crisis', tip: 'Умение учиться ради результата и по правилам: «надо» становится сильнее сиюминутного «хочу».' },
+            { label: 'Конкретные операции (Пиаже)', layer: 'sensory', tip: 'Понимание сохранения числа, массы и объёма; обратимость мыслительных операций, классификация.' },
+            { label: 'Письмо, чтение, диалог', layer: 'speech', tip: 'Автоматизация чтения и письма, письменная речь как новый уровень абстракции.' },
+            { label: 'Лобные доли и произвольность', layer: 'motor', tip: 'Возрастает контроль движений, почерк, устойчивость произвольного внимания до 25–35 мин.' },
+            { label: 'Трудности чтения/СДВГ 🚩', layer: 'flags', tip: 'Стойкие дислексия/дисграфия, выраженная гиперактивность или школьная дезадаптация.' }
+          ],
+          cns: {
+            structures: 'Интенсивно развиваются лобные (префронтальные) доли и их связи с гиппокампом и базальными ганглиями. В электроэнцефалограмме (ЭЭГ) к 9–10 годам доминирует зрелый альфа-ритм (8–12 Гц), отражающий готовность к сложной умственной работе.',
+            myelination: 'Завершается миелинизация комиссуральных путей (мозолистого тела) — оба полушария эффективно интегрируют зрительно-пространственные и вербально-логические операции (ключ к письму и математике).',
+            reflexes: 'Высокая пластичность моторной коры позволяет автоматизировать сложные тонкокоординированные навыки (беглое письмо, игра на музыкальных инструментах, спортивная техника).'
+          },
+          npr: {
+            motor: 'Твёрдое освоение зрительно-моторного навыка письма, точная координация глаз–рука, выносливость мелких мышц кисти, ловкость в командных и индивидуальных видах спорта.',
+            sensory: 'Интеллектуализация всех психических процессов: память становится осмысленной и логической, внимание — произвольным (способность удерживать цель при наличии отвлекающих факторов). Мышление переходит от наглядно-образного к СЛОВЕСНО-ЛОГИЧЕСКОМУ (в пределах наглядного/конкретного опыта).',
+            speech: 'Овладение письменной речью (самой сложной и осознанной формой речи), расширение понятийного словаря, понимание переносных смыслов, метафор, пословиц, умение аргументировать свою мысль.',
+            social: 'Референтным взрослым наряду с родителями становится учитель. Формируется рефлексия (оценка своих действий и знаний), внутренний план действий («делаю в уме»), самооценка тесно связана с учебной успешностью.'
+          },
+          psychology: {
+            situation: 'Система «Ребёнок – Учитель (общественный взрослый)»: впервые деятельность ребёнка оценивается по объективным социальным критериям (отметки, нормативы).',
+            leadingActivity: 'Учебная деятельность (направленная на усвоение научных понятий и способов действия).',
+            newFormations: 'Произвольность всех психических функций, внутренний план действий (умение планировать шаги в уме), рефлексия, теоретическое отношение к действительности.',
+            piaget: 'Стадия КОНКРЕТНЫХ ОПЕРАЦИЙ (7–11 лет): преодоление эгоцентризма, децентрация, понимание законов сохранения вещества/числа/длины, сериация и обратимость операций.',
+            erikson: '«Трудолюбие против чувства неполноценности» (6–11 лет): успех в учебе и делах рождает компетентность, постоянные неудачи и критика — выученную беспомощность.',
+            crisis: 'Кризис адаптации в 1 классе и предпубертатный сдвиг к 10–11 годам (нарастает важность оценки сверстников, снижается безусловный авторитет учителя и родителей).'
+          },
+          practice: [
+            { title: 'Акцент на усилиях, а не только на оценке', text: 'Поддерживайте «мышление роста»: хвалите стратегию и старание, чтобы избежать страха ошибок и чувства неполноценности (по Эриксону).' },
+            { title: 'Двигательная разгрузка и сон 9–10 часов', text: 'После школы ребёнку критически нужна физическая активность на свежем воздухе, так как длительное статическое сидение утомляет неокрепшую систему контроля.' },
+            { title: 'Развитие метакогнитивных навыков', text: 'Учите составлять план, проверять свою работу, разбивать большое задание на шаги — это тренирует префронтальную кору.' }
+          ],
+          flags: [
+            'Стойкие трудности освоения чтения (дислексия) и письма (дисграфия: зеркальное письмо, пропуски и замены букв после 1–2 класса) при сохранном интеллекте.',
+            'Выраженная невнимательность, импульсивность и двигательное беспокойство в нескольких средах (школа + дом), мешающие учёбе (признаки СДВГ).',
+            'Хроническая школьная тревожность, психосоматические боли (живот/голова по утрам перед школой), тики, энурез или социальная изоляция (буллинг).'
+          ],
+          iconSvg: '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M8 7h8M8 11h5"/></svg>'
+        },
+        {
+          id: 7,
+          shortName: 'Подростковый',
+          title: 'Подростковый (пубертатный) и ранний юношеский возраст',
+          age: '11/12–17/18 лет',
+          colors: { bg: 'var(--s7-bg)', accent: 'var(--s7-accent)', text: 'var(--s7-text)', border: 'var(--s7-border)' },
+          swatch: '#4338CA',
+          hasCrisis: true,
+          crisisShort: 'Подростковый кризис ⚡',
+          summary: 'Интимно-личностное общение со сверстниками, «чувство взрослости», дисбаланс между активной лимбической системой и зреющей префронтальной корой, формальное мышление.',
+          tooltipMain: 'Общение со сверстниками, формальные операции (Пиаже), идентичность (Эриксон), нейродисбаланс «лимбика vs префронтальная кора».',
+          nodes: [
+            { label: 'Нейродисбаланс: лимбика vs ПФК', layer: 'motor', tip: 'Половые гормоны активируют лимбику (эмоции, риск), а префронтальный тормоз созревает лишь к 21–25 г.' },
+            { label: 'Формальные операции (Пиаже)', layer: 'sensory', tip: 'Гипотетико-дедуктивное и абстрактное мышление, философия, критический анализ систем.' },
+            { label: 'Общение со сверстниками', layer: 'social', tip: 'Ведущая деятельность (11–15 л.), сменяющаяся учебно-профессиональной (15–17 л.).' },
+            { label: 'Кризис идентичности ⚡', layer: 'crisis', tip: '«Чувство взрослости», сепарация от родителей, поиск ответа на вопрос «Кто Я?».' },
+            { label: 'Депрессия / аутоагрессия 🚩', layer: 'flags', tip: 'Стойкая апатия >2 недель, самоповреждение, резкий отрыв от реальности или зависимости.' }
+          ],
+          cns: {
+            structures: 'Вторая масштабная волна реорганизации мозга («генеральная уборка»): активный синаптический прунинг в коре (удаление неиспользуемых связей, повышение КПД нейросетей) на фоне всплеска половых гормонов и дофаминергической системы.',
+            myelination: 'Дисбаланс созревания (модель «двух систем»): лимбическая система (миндалина, прилежащее ядро — эмоции, азарт, поиск новизны и одобрения сверстников) резко активируется в 12–14 лет, тогда как префронтальная кора (самоконтроль, оценка долгосрочных рисков) завершает миелинизацию только к 20–25 годам!',
+            reflexes: 'Вследствие быстрого пубертатного скачка роста тела возможна временная «подростковая неуклюжесть» (схема тела в теменной коре не успевает перестроиться за длиной костей) и вегетативная лабильность.'
+          },
+          npr: {
+            motor: 'Быстрый рост мышечной массы и силы (особенно у юношей), завершение тонкой дифференцировки двигательных программ; после временной дискоординации (12–14 л.) достигается взрослая точность и выносливость движений.',
+            sensory: 'Формирование АБСТРАКТНО-ЛОГИЧЕСКОГО и гипотетико-дедуктивного мышления: способность оперировать отвлечёнными понятиями (справедливость, бесконечность, вероятность), строить гипотезы, анализировать противоречия, формировать собственное мировоззрение.',
+            speech: 'Индивидуальный стиль речи, освоение сложной научной терминологии и риторики, сленг как маркер групповой принадлежности («код своих»), способность к глубокой рефлексивной дискуссии и иронии.',
+            social: 'Смещение авторитета с родителей на референтную группу сверстников. Болезненная чувствительность к оценке внешности и статуса («воображаемая аудитория» по Элкинду). Первые романтические чувства, осознание ценностей и выбор жизненного пути.'
+          },
+          psychology: {
+            situation: 'Противоречие между физической зрелостью и социальным статусом зависимого ученика; перестройка отношений с родителями на равноправные и уважительные.',
+            leadingActivity: 'В младшем подростковом возрасте (11–15 лет) — интимно-личностное общение со сверстниками; в старшем (15–17 лет) — учебно-профессиональная деятельность (Д.Б. Эльконин).',
+            newFormations: '«Чувство взрослости» (ключевое новообразование по Т.В. Драгуновой и Д.Б. Эльконину), самосознание, Я-идентичность, жизненное самоопределение и личностная рефлексия.',
+            piaget: 'Стадия ФОРМАЛЬНЫХ ОПЕРАЦИЙ (с 11–12 лет): мышление «о возможном», системный перебор вариантов, научное теоретическое рассуждение.',
+            erikson: '«Идентичность против ролевой спутанности» (12–18 лет): интеграция ролей, ценностей и призвания в целостное «Я» или диффузия идентичности.',
+            crisis: 'Подростковый кризис ⚡ — кризис сепарации и самоопределения. Проявления: протест против директивного контроля, скрытность, поляризация эмоций (максимализм), обесценивание прежних правил ради обретения собственной позиции.'
+          },
+          practice: [
+            { title: 'Переход от приказа к партнёрству и договору', text: 'Уважайте границы и личное пространство подростка; обсуждайте правила и последствия, а не диктуйте их авторитарно.' },
+            { title: 'Безопасный выход для дофамина и самореализации', text: 'Спорт, творческие проекты, волонтёрство, олимпиады или подработка дают здоровое ощущение компетентности и признания среди сверстников.' },
+            { title: 'Учёт физиологического сдвига циркадного ритма', text: 'В пубертате выработка мелатонина смещается на ~1,5–2 часа позже: хронический недосып (<8 часов) резко усиливает тревожность и импульсивность.' }
+          ],
+          flags: [
+            'Стойкое снижение настроения, ангедония (ничего не радует), выраженная апатия или раздражительность более 2 недель подряд.',
+            'Любые признаки самоповреждения (селфхарм), суицидальные высказывания или прощальные намёки — требуют немедленной помощи психиатра/психотерапевта!',
+            'Экстремальное похудение/отказ от еды или приступы переедания (расстройства пищевого поведения — РПП).',
+            'Употребление психоактивных веществ, полный разрыв социальных связей, уход в деструктивные онлайн-сообщества, стойкие нарушения сна.'
+          ],
+          iconSvg: '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>'
+        }
+      ];
+
+      /* =====================================================================
+         2. SENSITIVE PERIODS DATA (GANTT BARS)
+         ===================================================================== */
+      const SENSITIVE_PERIODS = [
+        {
+          id: 'sens-motor',
+          label: 'Крупная и мелкая моторика',
+          startCol: 2, spanCols: 3,
+          bg: '#E0F2FE', border: '#7DD3FC', text: '#0C4A6E',
+          barText: '0–3,5 года (пик: грудной – ранний)',
+          detailTitle: 'Сенситивный период развития моторики (0–4 года)',
+          detailText: 'Миелинизация пирамидного тракта и мозжечковых путей идёт максимально быстро в первые 3 года. Двигательная свобода (выкладывание, ползание, ходьба, лепка, пинцетный захват) напрямую стимулирует развитие коры и межполушарных связей.'
+        },
+        {
+          id: 'sens-speech',
+          label: 'Речь и фонематический слух',
+          startCol: 3, spanCols: 3,
+          bg: '#DCFCE7', border: '#86EFAC', text: '#14532D',
+          barText: '6 мес. – 5,5 лет (пик: 1–3,5 г.)',
+          detailTitle: 'Сенситивный период развития речи (0,5–6 лет)',
+          detailText: 'В период с 1 до 3,5 лет пластичность височно-лобных речевых зон (Вернике и Брока) максимальна: ребёнок впитывает лексику и грамматику родного (и второго) языка без усилий. После 6–7 лет освоение фонологии нового языка требует уже осознанных когнитивных усилий.'
+        },
+        {
+          id: 'sens-sensory',
+          label: 'Сенсорные эталоны и предметность',
+          startCol: 3, spanCols: 3,
+          bg: '#F3E8FF', border: '#D8B4FE', text: '#581C87',
+          barText: '1–5 лет (восприятие форм, цвета, пространства)',
+          detailTitle: 'Сенситивный период сенсорного развития (1–5 лет)',
+          detailText: 'Мозг тонко настраивает перцептивные каналы (зрение, осязание, слух, проприоцепцию). Игры с формами, величинами, цветами и фактурами создают фундамент для будущего пространственного и математического мышления.'
+        },
+        {
+          id: 'sens-play',
+          label: 'Воображение и ролевая игра',
+          startCol: 4, spanCols: 2,
+          bg: '#FEF3C7', border: '#FCD34D', text: '#78350F',
+          barText: '3–7 лет (расцвет символической игры)',
+          detailTitle: 'Сенситивный период игры и воображения (3–7 лет)',
+          detailText: 'В сюжетно-ролевой игре ребёнок добровольно сдерживает импульсивные желания ради роли («я врач, я лечу, а не убегаю»), что впервые запускает механизмы произвольной саморегуляции и социального интеллекта.'
+        },
+        {
+          id: 'sens-logic',
+          label: 'Логика, счёт и произвольность',
+          startCol: 5, spanCols: 3,
+          bg: '#FFEDD5', border: '#FDBA74', text: '#7C2D12',
+          barText: '6–13 лет (созревание лобных долей)',
+          detailTitle: 'Сенситивный период учебной логики и произвольности (6–13 лет)',
+          detailText: 'Миелинизация ассоциативных связей коры позволяет переходить к систематическим знаниям, чтению, счёту и планированию собственных действий в уме (внутренний план действий).'
+        },
+        {
+          id: 'sens-identity',
+          label: 'Самосознание и идентичность',
+          startCol: 6, spanCols: 2,
+          bg: '#E0E7FF', border: '#A5B4FC', text: '#312E81',
+          barText: '10–18 лет (поиск «Кто Я?» и ценностей)',
+          detailTitle: 'Сенситивный период социальной идентичности (10–18 лет)',
+          detailText: 'Перестройка префронтальной коры и социальной нейросети («social brain») делает подростка сверхчувствительным к нормам группы, справедливости, дружбе и поиску собственного жизненного призвания.'
+        }
+      ];
+
+      /* =====================================================================
+         3. DYNAMIC CURVES DATA (SVG ANALYTICAL CHART)
+         ===================================================================== */
+      const CURVES_DATA = [
+        {
+          id: 'plasticity',
+          name: 'Синаптогенез и нейропластичность',
+          color: '#7E22CE',
+          active: true,
+          points: [
+            { stageIdx: 0, val: 65, note: 'Внутриутробно: стремительная пролиферация и миграция нейронов (~250 тыс./мин на пике).' },
+            { stageIdx: 1, val: 82, note: 'Новорожденность: взрывной старт образования синапсов в ответ на внеутробные стимулы.' },
+            { stageIdx: 2, val: 96, note: 'Грудной возраст: пик скорости синаптогенеза; мозг удваивает массу за 1 год.' },
+            { stageIdx: 3, val: 100, note: 'Раннее детство (2–3 г.): абсолютный максимум плотности синапсов (~1000 триллионов — вдвое больше, чем у взрослого).' },
+            { stageIdx: 4, val: 80, note: 'Дошкольный: продолжается активный синаптический прунинг («отсечение» неиспользуемых связей).' },
+            { stageIdx: 5, val: 62, note: 'Младший школьный: высокая обучаемость при оптимизации уже сложившихся нейросетей.' },
+            { stageIdx: 6, val: 54, note: 'Подростковый: вторая волна ремоделирования и прунинга преимущественно в лобных долях.' }
+          ]
+        },
+        {
+          id: 'motor',
+          name: 'Темп прироста крупной моторики',
+          color: '#0369A1',
+          active: true,
+          points: [
+            { stageIdx: 0, val: 25, note: 'Внутриутробно: генерализованные спонтанные движения плода в водной среде.' },
+            { stageIdx: 1, val: 38, note: 'Новорожденность: доминируют подкорковые безусловные двигательные рефлексы.' },
+            { stageIdx: 2, val: 98, note: 'Грудной возраст: колоссальный рывок — от полной беспомощности до сидения, ползания и ходьбы!' },
+            { stageIdx: 3, val: 82, note: 'Раннее детство: совершенствование бега, прыжков, равновесия и орудийных движений рук.' },
+            { stageIdx: 4, val: 60, note: 'Дошкольный: автоматизация сложных координаций (велосипед, мяч, ножницы).' },
+            { stageIdx: 5, val: 45, note: 'Младший школьный: оттачивание ловкости, выносливости и скорости движений.' },
+            { stageIdx: 6, val: 35, note: 'Подростковый: временная неловкость из-за скачка роста костей, затем выход на взрослые показатели силы.' }
+          ]
+        },
+        {
+          id: 'speech',
+          name: 'Сенситивность к развитию речи',
+          color: '#15803D',
+          active: true,
+          points: [
+            { stageIdx: 0, val: 30, note: 'Внутриутробно (III триместр): настройка слуха на ритм и интонации голоса матери.' },
+            { stageIdx: 1, val: 48, note: 'Новорожденность: слуховое сосредоточение на человеческой речи и дифференциация крика.' },
+            { stageIdx: 2, val: 84, note: 'Грудной возраст: гуление, лепет, фонематическая настройка под родной язык и первые слова.' },
+            { stageIdx: 3, val: 100, note: 'Раннее детство: взрыв словаря (с 10 до 1500 слов) и становление фразовой грамматики.' },
+            { stageIdx: 4, val: 86, note: 'Дошкольный: связная монологическая речь, чистое звукопроизношение и база для чтения.' },
+            { stageIdx: 5, val: 58, note: 'Младший школьный: овладение письменной речью и научными понятиями.' },
+            { stageIdx: 6, val: 42, note: 'Подростковый: развитие риторики, метафор и стилистики; базовые речевые схемы уже зрелые.' }
+          ]
+        },
+        {
+          id: 'prefrontal',
+          name: 'Зрелость префронтальной коры и саморегуляции',
+          color: '#C2410C',
+          active: true,
+          points: [
+            { stageIdx: 0, val: 5, note: 'Внутриутробно: закладка префронтальных областей, функционально незрелы.' },
+            { stageIdx: 1, val: 8, note: 'Новорожденность: корковый контроль минимален, преобладают стволово-подкорковые реакции.' },
+            { stageIdx: 2, val: 16, note: 'Грудной возраст: появляются первые следы коркового торможения врождённых рефлексов.' },
+            { stageIdx: 3, val: 28, note: 'Раннее детство: эмоции импульсивны, самоконтроль только формируется (через взрослого).' },
+            { stageIdx: 4, val: 50, note: 'Дошкольный: скачок произвольности через игру по правилам; к 7 г. — готовность к школьной дисциплине.' },
+            { stageIdx: 5, val: 72, note: 'Младший школьный: устойчивое произвольное внимание, планирование и учебная рефлексия.' },
+            { stageIdx: 6, val: 86, note: 'Подростковый: продолжается активная миелинизация (полная зрелость наступает к 21–25 годам!).' }
+          ]
+        }
+      ];
+
+      /* =====================================================================
+         4. CASE TRAINER DATA (6 CLINICAL-PSYCHOLOGICAL CASES)
+         ===================================================================== */
+      const TRAINER_CASES = [
+        {
+          id: 1,
+          stageId: 3,
+          ageTag: 'Грудной возраст • 9 месяцев',
+          question: 'На приёме ребёнок 9 месяцев: активно улыбается родителям, но до сих пор не сидит самостоятельно без поддержки, не ползает, при попытке опоры ноги подгибаются, в речи нет слогового лепета (лишь редкие гласные звуки). Как расценить данную картину?',
+          options: [
+            { text: 'Вариант физиологической нормы (индивидуальный темп)', type: 'norm' },
+            { text: 'Типичный возрастной кризис развития', type: 'crisis' },
+            { text: 'Красный флаг 🚩 (требуется углублённая диагностика невролога и сурдолога)', type: 'flag' }
+          ],
+          correctIdx: 2,
+          explanation: 'Верно! Отсутствие самостоятельного сидения и слогового лепета к 9 месяцам — это классические «красные флаги» задержки моторного и доречевого развития (в 9 мес. ребёнок должен сидеть с прямой спиной, ползать/пытаться вставать и лепетать слоги). Необходимо проверить мышечный тонус у невролога и исключить снижение слуха.'
+        },
+        {
+          id: 2,
+          stageId: 4,
+          ageTag: 'Раннее детство • 2 года 10 месяцев',
+          question: 'Родители обеспокоены: послушный ранее мальчик внезапно стал говорить «Нет!» на любые просьбы, даже на любимую прогулку; требует сам застёгивать сложную молнию, а при попытке помочь бросает куртку на пол и кричит «Я сам!». Что происходит с ребёнком?',
+          options: [
+            { text: 'Патологическое расстройство поведения (требует медикаментов)', type: 'flag' },
+            { text: 'Возрастной кризис 3 лет (нормативный этап становления «Я»)', type: 'crisis' },
+            { text: 'Задержка речевого и эмоционального развития', type: 'norm' }
+          ],
+          correctIdx: 1,
+          explanation: 'Точно! Это хрестоматийная картина кризиса 3 лет по Л.С. Выготскому (симптомы негативизма, упрямства и своеволия «Я сам!»). Так ребёнок психологически отделяется от взрослого и открывает собственную волю. Важно давать безопасную самостоятельность и «выбор без выбора».'
+        },
+        {
+          id: 3,
+          stageId: 3,
+          ageTag: 'Грудной возраст • 12 месяцев',
+          question: 'Девочка в 12 месяцев уверенно ходит вдоль дивана, собирает мелкие крошки двумя пальцами, но при этом не откликается на своё имя, не смотрит в глаза матери, не использует указательный жест, чтобы показать интересную игрушку, и не реагирует на жест «смотри туда». Ваш вывод:',
+          options: [
+            { text: 'Вариант нормы: просто у ребёнка «интровертный характер»', type: 'norm' },
+            { text: 'Кризис 1 года (проявление автономности)', type: 'crisis' },
+            { text: 'Красный флаг 🚩 (признаки нарушения коммуникации / риск РАС или тугоухости)', type: 'flag' }
+          ],
+          correctIdx: 2,
+          explanation: 'Абсолютно верно! Моторика у девочки сохранна (пинцетный захват, ходьба у опоры), но отсутствуют ключевые маркеры социального мозга в 12 мес.: указательный жест (совместное внимание), отклик на имя и глазной контакт. Это важный красный флаг, требующий раннего скрининга слуха и консультации специалиста по раннему развитию.'
+        },
+        {
+          id: 4,
+          stageId: 5,
+          ageTag: 'Дошкольный возраст • 4,5 года',
+          question: 'Психолог провёл опыт Ж. Пиаже: при мальчике воду из низкого широкого стакана перелили в высокий узкий стакан. Ребёнок уверенно сказал, что в высоком стакане «воды стало больше, потому что он выше». О чём это свидетельствует?',
+          options: [
+            { text: 'Возрастная норма (особенность дооперационального мышления)', type: 'norm' },
+            { text: 'Красный флаг задержки интеллектуального развития', type: 'flag' },
+            { text: 'Возрастной кризис 7 лет', type: 'crisis' }
+          ],
+          correctIdx: 0,
+          explanation: 'Правильно! В 4–5 лет ребёнок находится на дооперациональной стадии интеллекта по Ж. Пиаже: мышление опирается на один яркий наглядный признак (высоту столба воды) и ещё не владеет принципом сохранения объёма (он сформируется ближе к 7 годам).'
+        },
+        {
+          id: 5,
+          stageId: 5,
+          ageTag: 'Граница дошкольного и школьного возраста • 6,5–7 лет',
+          question: 'Девочка 6,5 лет, готовящаяся к школе, стала манерничать, отвечать «по-взрослому» с паузами, спорить о правилах домашних дел и обижаться на то, что с ней «разговаривают как с маленькой». Как классифицировать это состояние?',
+          options: [
+            { text: 'Признак начинающегося пубертата (раннее половое созревание)', type: 'flag' },
+            { text: 'Нормативный кризис 7 лет (утрата детской непосредственности)', type: 'crisis' },
+            { text: 'Педагогическая запущенность и нарушение привязанности', type: 'norm' }
+          ],
+          correctIdx: 1,
+          explanation: 'Верно! Это классические проявления кризиса 7 лет (по Л.С. Выготскому): утрата детской непосредственности и формирование внутренней позиции школьника — ребёнок осознаёт свои переживания и стремится к новой социальной роли.'
+        },
+        {
+          id: 6,
+          stageId: 7,
+          ageTag: 'Подростковый возраст • 14 лет',
+          question: 'Подросток 14 лет, ранее успешный в школе, последние 4 недели резко перестал общаться с друзьями, бросил любимую секцию, жалуется на постоянную усталость, спит по 12 часов или не спит ночами и заявил родителям: «Я никому не нужен, всё бессмысленно». На что это указывает?',
+          options: [
+            { text: 'Обычный подростковый кризис: «само пройдёт к 16 годам»', type: 'crisis' },
+            { text: 'Красный флаг 🚩 (риск клинической депрессии, срочная консультация специалиста)', type: 'flag' },
+            { text: 'Вариант нормы для стадии формальных операций по Пиаже', type: 'norm' }
+          ],
+          correctIdx: 1,
+          explanation: 'Совершенно верно! Важно отличать нормативную подростковую сепарацию (где сохраняется интерес к друзьям и жизни) от депрессивного эпизода. Стойкая ангедония более 2 недель, социальная изоляция и мысли о собственной ненужности — это серьёзный красный флаг, требующий бережного обращения к детскому психиатру/психотерапевту.'
+        }
+      ];
+
+      /* =====================================================================
+         5. STATE & DOM REFERENCES
+         ===================================================================== */
+      const state = {
+        activeView: 'map',
+        activeLayer: 'all',
+        searchQuery: '',
+        selectedStageId: null,
+        selectedModalTab: 'cns',
+        selectedInfantMonthIdx: 1,
+        matrixFilter: 'all',
+        matrixSearch: '',
+        trainerIdx: 0,
+        trainerScore: 0,
+        trainerAnswered: false
+      };
+
+      const els = {
+        modeBtns: document.querySelectorAll('.mode-btn'),
+        views: document.querySelectorAll('.view-section'),
+        atlasTrack: document.getElementById('atlasTrack'),
+        atlasScrollArea: document.getElementById('atlasScrollArea'),
+        miniStageNav: document.getElementById('miniStageNav'),
+        mapSearchInput: document.getElementById('mapSearchInput'),
+        mapSearchClear: document.getElementById('mapSearchClear'),
+        layerPills: document.querySelectorAll('.layer-pill[data-layer]'),
+        hintChips: document.querySelectorAll('.hint-chip'),
+        scrollLeftBtn: document.getElementById('scrollLeftBtn'),
+        scrollRightBtn: document.getElementById('scrollRightBtn'),
+        sensitiveGantt: document.getElementById('sensitiveGantt'),
+        sensitiveDetailBox: document.getElementById('sensitiveDetailBox'),
+        sensitiveDetailTitle: document.getElementById('sensitiveDetailTitle'),
+        sensitiveDetailText: document.getElementById('sensitiveDetailText'),
+        tooltip: document.getElementById('atlasTooltip'),
+        modalBackdrop: document.getElementById('stageModalBackdrop'),
+        modalHeader: document.getElementById('modalHeader'),
+        modalStageIcon: document.getElementById('modalStageIcon'),
+        modalStageTitle: document.getElementById('modalStageTitle'),
+        modalStageSubtitle: document.getElementById('modalStageSubtitle'),
+        modalPrevBtn: document.getElementById('modalPrevBtn'),
+        modalNextBtn: document.getElementById('modalNextBtn'),
+        modalCloseBtn: document.getElementById('modalCloseBtn'),
+        modalTabBtns: document.querySelectorAll('.modal-tab-btn'),
+        modalBody: document.getElementById('modalBody'),
+        curveToggles: document.getElementById('curveToggles'),
+        dynamicsChartSvg: document.getElementById('dynamicsChartSvg'),
+        chartPointInfo: document.getElementById('chartPointInfo'),
+        matrixTableBody: document.getElementById('matrixTableBody'),
+        matrixSearchInput: document.getElementById('matrixSearchInput'),
+        matrixFilterBtns: document.querySelectorAll('[data-matrix-filter]')
+      };
+
+      /* =====================================================================
+         6. NAVIGATION BETWEEN TOP VIEWS
+         ===================================================================== */
+      function switchView(viewName) {
+        state.activeView = viewName;
+        els.modeBtns.forEach(btn => {
+          btn.classList.toggle('active', btn.dataset.view === viewName);
+        });
+        els.views.forEach(sec => {
+          sec.classList.toggle('active', sec.id === `view-${viewName}`);
+        });
+        if (viewName === 'analytics') {
+          renderDynamicsChart();
+        }
+      }
+
+      els.modeBtns.forEach(btn => {
+        btn.addEventListener('click', () => switchView(btn.dataset.view));
+      });
+
+      /* =====================================================================
+         7. RENDER INTERACTIVE MAP, MINI-NAV & SENSITIVE PERIODS
+         ===================================================================== */
+      function stageMatchesSearch(stage, query) {
+        if (!query) return true;
+        const q = query.toLowerCase().trim();
+        const blob = [
+          stage.title,
+          stage.shortName,
+          stage.age,
+          stage.summary,
+          stage.crisisShort,
+          stage.cns.structures,
+          stage.cns.myelination,
+          stage.cns.reflexes,
+          stage.npr.motor,
+          stage.npr.sensory,
+          stage.npr.speech,
+          stage.npr.social,
+          stage.psychology.leadingActivity,
+          stage.psychology.crisis,
+          stage.psychology.newFormations,
+          stage.flags.join(' '),
+          stage.nodes.map(n => n.label + ' ' + n.tip).join(' '),
+          stage.nprMonthly ? stage.nprMonthly.map(m => m.motor + ' ' + m.speech + ' ' + m.social).join(' ') : ''
+        ].join(' ').toLowerCase();
+        return blob.includes(q);
+      }
+
+      function renderMiniStageNav() {
+        els.miniStageNav.innerHTML = STAGES_DATA.map(stage => `
+          <button class="mini-dot-btn" data-jump-stage="${stage.id}" title="Перейти к этапу: ${stage.title}">
+            <span class="mini-dot-swatch" style="background:${stage.swatch}"></span>
+            <span>${stage.id}. ${stage.shortName}</span>
+          </button>
+        `).join('');
+
+        els.miniStageNav.querySelectorAll('.mini-dot-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const id = Number(btn.dataset.jumpStage);
+            const card = els.atlasTrack.querySelector(`.stage-card[data-stage-id="${id}"]`);
+            if (card) {
+              card.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+              card.style.boxShadow = `0 0 0 3px ${STAGES_DATA[id - 1].swatch}44`;
+              setTimeout(() => { card.style.boxShadow = ''; }, 900);
+            }
+          });
+        });
+      }
+
+      function renderMapCards() {
+        const existingCards = els.atlasTrack.querySelectorAll('.stage-card');
+        existingCards.forEach(c => c.remove());
+
+        const q = state.searchQuery.trim();
+        const activeLayer = state.activeLayer;
+
+        STAGES_DATA.forEach(stage => {
+          const isSearchMatch = stageMatchesSearch(stage, q);
+          const hasLayerNodes = activeLayer === 'all' || stage.nodes.some(n => n.layer === activeLayer) || (activeLayer === 'crisis' && stage.hasCrisis);
+
+          const card = document.createElement('article');
+          card.className = 'stage-card';
+          card.dataset.stageId = stage.id;
+          card.setAttribute('tabindex', '0');
+          card.setAttribute('role', 'button');
+          card.setAttribute('aria-label', `${stage.title} (${stage.age}). Нажмите для подробностей.`);
+          card.style.setProperty('--stage-bg', stage.colors.bg);
+          card.style.setProperty('--stage-accent', stage.colors.accent);
+          card.style.setProperty('--stage-text', stage.colors.text);
+          card.style.setProperty('--stage-border', stage.colors.border);
+
+          if (q && !isSearchMatch) {
+            card.classList.add('dimmed');
+          } else if (q && isSearchMatch) {
+            card.classList.add('search-match');
+          } else if (!hasLayerNodes) {
+            card.classList.add('dimmed');
+          }
+
+          const nodesHtml = stage.nodes.map(node => {
+            const isHighlighted = activeLayer !== 'all' && node.layer === activeLayer;
+            const isSearchHit = q && (node.label.toLowerCase().includes(q.toLowerCase()) || node.tip.toLowerCase().includes(q.toLowerCase()));
+            const isFlag = node.layer === 'flags';
+            return `<span class="node-chip ${isFlag ? 'flag-chip' : ''} ${(isHighlighted || isSearchHit) ? 'highlighted' : ''}" data-tip-title="${node.label}" data-tip-body="${node.tip}">${node.label}</span>`;
+          }).join('');
+
+          card.innerHTML = `
+            <div class="stage-card-top">
+              <div class="stage-icon-badge" aria-hidden="true">${stage.iconSvg}</div>
+              <div class="stage-badges">
+                <span class="stage-num-pill">Этап ${stage.id}</span>
+                ${stage.hasCrisis ? `<span class="crisis-badge"><span class="pulse-bolt">⚡</span><span>${stage.crisisShort}</span></span>` : ''}
+              </div>
+            </div>
+            <div class="stage-title-wrap">
+              <h3>${stage.title}</h3>
+              <div class="stage-age">${stage.age}</div>
+            </div>
+            <div class="stage-summary">${stage.summary}</div>
+            <div class="stage-nodes">${nodesHtml}</div>
+            <div class="stage-card-footer">
+              <span>${stage.id === 3 ? 'Анализ НПР' : 'Анализ НПР'}</span>
+              <span>Открыть →</span>
+            </div>
+          `;
+
+          card.addEventListener('mouseenter', (e) => {
+            showTooltip(e, `${stage.shortName} (${stage.age})`, stage.tooltipMain);
+          });
+          card.addEventListener('mousemove', positionTooltip);
+          card.addEventListener('mouseleave', hideTooltip);
+
+          card.querySelectorAll('.node-chip').forEach(chip => {
+            chip.addEventListener('mouseenter', (e) => {
+              e.stopPropagation();
+              showTooltip(e, chip.dataset.tipTitle, chip.dataset.tipBody);
+            });
+            chip.addEventListener('mousemove', positionTooltip);
+            chip.addEventListener('mouseleave', hideTooltip);
+          });
+
+          card.addEventListener('click', () => openStageModal(stage.id));
+          card.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              openStageModal(stage.id);
+            }
+          });
+
+          els.atlasTrack.appendChild(card);
+        });
+      }
+
+      function renderSensitiveGantt() {
+        const axisHtml = `
+          <div class="gantt-axis">
+            <span>Сенситивное окно</span>
+            ${STAGES_DATA.map(s => `<span>${s.id}. ${s.shortName}</span>`).join('')}
+          </div>
+        `;
+
+        const bgSlotsHtml = Array.from({ length: 7 }, (_, i) =>
+          `<span class="gantt-bg-slot" style="grid-column: ${i + 1};" aria-hidden="true"></span>`
+        ).join('');
+
+        const rowsHtml = SENSITIVE_PERIODS.map(item => `
+          <div class="gantt-row">
+            <div class="gantt-label">${item.label}</div>
+            <div class="gantt-bar-wrap">
+              ${bgSlotsHtml}
+              <button
+                class="gantt-bar"
+                data-sens-id="${item.id}"
+                style="grid-column: ${item.startCol} / span ${item.spanCols}; background: ${item.bg}; border-color: ${item.border}; color: ${item.text};"
+                title="Нажмите для научного пояснения"
+              >
+                ${item.barText}
+              </button>
+            </div>
+          </div>
+        `).join('');
+
+        els.sensitiveGantt.innerHTML = axisHtml + rowsHtml;
+
+        els.sensitiveGantt.querySelectorAll('.gantt-bar').forEach(bar => {
+          bar.addEventListener('click', () => {
+            const id = bar.dataset.sensId;
+            const found = SENSITIVE_PERIODS.find(s => s.id === id);
+            if (!found) return;
+
+            els.sensitiveGantt.querySelectorAll('.gantt-bar').forEach(b => b.classList.remove('active'));
+            bar.classList.add('active');
+
+            els.sensitiveDetailTitle.textContent = found.detailTitle;
+            els.sensitiveDetailText.textContent = found.detailText;
+            els.sensitiveDetailBox.classList.add('visible');
+          });
+        });
+      }
+
+      /* Tooltip Helpers */
+      function showTooltip(e, title, body) {
+        els.tooltip.innerHTML = `<strong>${title}</strong>${body}`;
+        els.tooltip.classList.add('visible');
+        positionTooltip(e);
+      }
+
+      function positionTooltip(e) {
+        const pad = 14;
+        const rect = els.tooltip.getBoundingClientRect();
+        let left = e.clientX + pad;
+        let top = e.clientY + pad;
+        if (left + rect.width > window.innerWidth - 10) {
+          left = e.clientX - rect.width - pad;
+        }
+        if (top + rect.height > window.innerHeight - 10) {
+          top = e.clientY - rect.height - pad;
+        }
+        els.tooltip.style.left = `${Math.max(8, left)}px`;
+        els.tooltip.style.top = `${Math.max(8, top)}px`;
+      }
+
+      function hideTooltip() {
+        els.tooltip.classList.remove('visible');
+      }
+
+      /* Map Search & Layer Events */
+      els.mapSearchInput.addEventListener('input', (e) => {
+        state.searchQuery = e.target.value;
+        els.mapSearchClear.classList.toggle('visible', state.searchQuery.length > 0);
+        renderMapCards();
+      });
+
+      els.mapSearchClear.addEventListener('click', () => {
+        state.searchQuery = '';
+        els.mapSearchInput.value = '';
+        els.mapSearchClear.classList.remove('visible');
+        renderMapCards();
+      });
+
+      els.hintChips.forEach(chip => {
+        chip.addEventListener('click', () => {
+          state.searchQuery = chip.dataset.query;
+          els.mapSearchInput.value = chip.dataset.query;
+          els.mapSearchClear.classList.add('visible');
+          renderMapCards();
+        });
+      });
+
+      els.layerPills.forEach(pill => {
+        pill.addEventListener('click', () => {
+          state.activeLayer = pill.dataset.layer;
+          els.layerPills.forEach(p => p.classList.toggle('active', p === pill));
+          renderMapCards();
+        });
+      });
+
+      els.scrollLeftBtn.addEventListener('click', () => {
+        els.atlasScrollArea.scrollBy({ left: -340, behavior: 'smooth' });
+      });
+
+      els.scrollRightBtn.addEventListener('click', () => {
+        els.atlasScrollArea.scrollBy({ left: 340, behavior: 'smooth' });
+      });
+
+      /* =====================================================================
+         8. STAGE DETAIL MODAL (5 TABS + INFANCY MONTHLY SWITCHER)
+         ===================================================================== */
+      function openStageModal(stageId, initialTab = 'cns') {
+        const stage = STAGES_DATA.find(s => s.id === stageId);
+        if (!stage) return;
+
+        state.selectedStageId = stageId;
+        state.selectedModalTab = initialTab;
+        hideTooltip();
+
+        const dialog = els.modalBackdrop.querySelector('.modal-dialog');
+        dialog.style.setProperty('--stage-bg', stage.colors.bg);
+        dialog.style.setProperty('--stage-accent', stage.colors.accent);
+        dialog.style.setProperty('--stage-text', stage.colors.text);
+        dialog.style.setProperty('--stage-border', stage.colors.border);
+
+        els.modalStageIcon.innerHTML = stage.iconSvg;
+        els.modalStageTitle.textContent = `${stage.id}. ${stage.title}`;
+        els.modalStageSubtitle.textContent = `Возрастные границы: ${stage.age}${stage.hasCrisis ? ' • ' + stage.crisisShort : ''}`;
+
+        els.modalPrevBtn.disabled = stageId === 1;
+        els.modalNextBtn.disabled = stageId === STAGES_DATA.length;
+
+        els.modalTabBtns.forEach(btn => {
+          btn.classList.toggle('active', btn.dataset.tab === state.selectedModalTab);
+        });
+
+        renderModalTabContent();
+
+        els.modalBackdrop.classList.add('open');
+        els.modalBackdrop.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeStageModal() {
+        els.modalBackdrop.classList.remove('open');
+        els.modalBackdrop.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+
+      function renderModalTabContent() {
+        const stage = STAGES_DATA.find(s => s.id === state.selectedStageId);
+        if (!stage) return;
+        const tab = state.selectedModalTab;
+
+        if (tab === 'cns') {
+          els.modalBody.innerHTML = `
+            <div class="info-grid">
+              <div class="info-card">
+                <h4>🧠 Созревание структур мозга</h4>
+                <p>${stage.cns.structures}</p>
+              </div>
+              <div class="info-card">
+                <h4>⚡ Миелинизация и синаптогенез</h4>
+                <p>${stage.cns.myelination}</p>
+              </div>
+              <div class="info-card" style="grid-column: 1 / -1;">
+                <h4>🔄 Рефлекторная и регуляторная база</h4>
+                <p>${stage.cns.reflexes}</p>
+              </div>
+            </div>
+          `;
+        } else if (tab === 'npr') {
+          if (stage.id === 3 && stage.nprMonthly) {
+            const mData = stage.nprMonthly[state.selectedInfantMonthIdx] || stage.nprMonthly[0];
+            els.modalBody.innerHTML = `
+              <div class="month-switcher" role="group" aria-label="Помесячные нормы грудного возраста">
+                <span class="month-switcher-label">Выберите ключевой возраст младенца:</span>
+                ${stage.nprMonthly.map((item, idx) => `
+                  <button class="month-btn ${idx === state.selectedInfantMonthIdx ? 'active' : ''}" data-month-idx="${idx}">${item.month}</button>
+                `).join('')}
+              </div>
+              <div class="info-grid">
+                <div class="info-card">
+                  <h4>🏃 Моторика (общая и тонкая) — ${mData.month}</h4>
+                  <p>${mData.motor}</p>
+                </div>
+                <div class="info-card">
+                  <h4>👁️ Сенсорика и когниция — ${mData.month}</h4>
+                  <p>${mData.sensory}</p>
+                </div>
+                <div class="info-card">
+                  <h4>💬 Речь (понимаемая и активная) — ${mData.month}</h4>
+                  <p>${mData.speech}</p>
+                </div>
+                <div class="info-card">
+                  <h4>🤝 Эмоции и социум — ${mData.month}</h4>
+                  <p>${mData.social}</p>
+                </div>
+              </div>
+              <div class="info-card" style="margin-top: 14px; background: #F8FAFC;">
+                <h4>📌 Сводная траектория 1-го года жизни</h4>
+                <p><strong>Моторика:</strong> ${stage.npr.motor}<br/><strong>Речь:</strong> ${stage.npr.speech}</p>
+              </div>
+            `;
+
+            els.modalBody.querySelectorAll('.month-btn').forEach(btn => {
+              btn.addEventListener('click', () => {
+                state.selectedInfantMonthIdx = Number(btn.dataset.monthIdx);
+                renderModalTabContent();
+              });
+            });
+          } else {
+            els.modalBody.innerHTML = `
+              <div class="info-grid">
+                <div class="info-card">
+                  <h4>🏃 Моторика (общая и тонкая)</h4>
+                  <p>${stage.npr.motor}</p>
+                </div>
+                <div class="info-card">
+                  <h4>👁️ Сенсорика и когнитивные функции</h4>
+                  <p>${stage.npr.sensory}</p>
+                </div>
+                <div class="info-card">
+                  <h4>💬 Речь (понимаемая и активная)</h4>
+                  <p>${stage.npr.speech}</p>
+                </div>
+                <div class="info-card">
+                  <h4>🤝 Эмоции и социальные навыки</h4>
+                  <p>${stage.npr.social}</p>
+                </div>
+              </div>
+            `;
+          }
+        } else if (tab === 'psych') {
+          els.modalBody.innerHTML = `
+            <div class="info-grid">
+              <div class="info-card">
+                <h4>🌍 Социальная ситуация развития</h4>
+                <p>${stage.psychology.situation}</p>
+              </div>
+              <div class="info-card">
+                <h4>🎯 Ведущая деятельность (Эльконин)</h4>
+                <p>${stage.psychology.leadingActivity}</p>
+              </div>
+              <div class="info-card">
+                <h4>✨ Главные новообразования</h4>
+                <p>${stage.psychology.newFormations}</p>
+              </div>
+              <div class="info-card">
+                <h4>🧩 Интеллект (Пиаже) и Задача (Эриксон)</h4>
+                <p><strong>Пиаже:</strong> ${stage.psychology.piaget}<br/><strong>Эриксон:</strong> ${stage.psychology.erikson}</p>
+              </div>
+            </div>
+            <div class="crisis-banner">
+              <h4>⚡ Возрастной кризис и перестройка</h4>
+              <p>${stage.psychology.crisis}</p>
+            </div>
+          `;
+        } else if (tab === 'practice') {
+          els.modalBody.innerHTML = `
+            <div class="practice-list">
+              ${stage.practice.map(p => `
+                <div class="practice-item">
+                  <strong>✅ ${p.title}</strong>
+                  <span>${p.text}</span>
+                </div>
+              `).join('')}
+            </div>
+          `;
+        } else if (tab === 'flags') {
+          els.modalBody.innerHTML = `
+            <div class="flags-list">
+              ${stage.flags.map(flag => `
+                <div class="flag-item">
+                  <span aria-hidden="true">🚩</span>
+                  <span>${flag}</span>
+                </div>
+              `).join('')}
+            </div>
+            <p style="margin-top: 14px; font-size: 0.82rem; color: var(--text-muted);">
+              Примечание: наличие одного или нескольких «красных флагов» — повод не для паники, а для своевременной очной консультации педиатра, детского невролога, логопеда или клинического психолога (окно высокой нейропластичности делает раннюю помощь максимально эффективной).
+            </p>
+          `;
+        }
+      }
+
+      els.modalTabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          state.selectedModalTab = btn.dataset.tab;
+          els.modalTabBtns.forEach(b => b.classList.toggle('active', b === btn));
+          renderModalTabContent();
+        });
+      });
+
+      els.modalPrevBtn.addEventListener('click', () => {
+        if (state.selectedStageId > 1) openStageModal(state.selectedStageId - 1, state.selectedModalTab);
+      });
+
+      els.modalNextBtn.addEventListener('click', () => {
+        if (state.selectedStageId < STAGES_DATA.length) openStageModal(state.selectedStageId + 1, state.selectedModalTab);
+      });
+
+      els.modalCloseBtn.addEventListener('click', closeStageModal);
+
+      els.modalBackdrop.addEventListener('click', (e) => {
+        if (e.target === els.modalBackdrop) closeStageModal();
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && els.modalBackdrop.classList.contains('open')) {
+          closeStageModal();
+        }
+      });
+
+      /* =====================================================================
+         9. MODE 2: LAWS INTERACTION & DYNAMIC SVG CURVES CHART
+         ===================================================================== */
+      document.querySelectorAll('.svg-interactive-zone').forEach(zone => {
+        zone.addEventListener('click', () => {
+          const lawKey = zone.dataset.law;
+          const noteEl = document.getElementById(`note-${lawKey}`);
+          if (noteEl) {
+            noteEl.textContent = zone.dataset.info;
+            noteEl.style.background = '#E0F2FE';
+            noteEl.style.color = '#0C4A6E';
+            setTimeout(() => {
+              noteEl.style.background = '';
+              noteEl.style.color = '';
+            }, 600);
+          }
+        });
+      });
+
+      function renderCurveToggles() {
+        els.curveToggles.innerHTML = CURVES_DATA.map(c => `
+          <button class="curve-btn ${c.active ? 'active' : ''}" data-curve-id="${c.id}" style="--curve-color: ${c.color};">
+            <span class="curve-swatch"></span>
+            <span>${c.name}</span>
+          </button>
+        `).join('');
+
+        els.curveToggles.querySelectorAll('.curve-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const curve = CURVES_DATA.find(c => c.id === btn.dataset.curveId);
+            if (!curve) return;
+            curve.active = !curve.active;
+            btn.classList.toggle('active', curve.active);
+            renderDynamicsChart();
+          });
+        });
+      }
+
+      function renderDynamicsChart() {
+        const svg = els.dynamicsChartSvg;
+        const padL = 66, padR = 64, padT = 28, padB = 56;
+        const W = 920, H = 340;
+        const plotW = W - padL - padR;
+        const plotH = H - padT - padB;
+        const xStep = plotW / (STAGES_DATA.length - 1);
+
+        let html = '';
+
+        // Grid lines (0, 25, 50, 75, 100%)
+        [0, 25, 50, 75, 100].forEach(pct => {
+          const y = padT + plotH - (pct / 100) * plotH;
+          html += `<line x1="${padL}" y1="${y}" x2="${W - padR}" y2="${y}" stroke="#E2E8F0" stroke-width="1" stroke-dasharray="${pct === 0 ? '' : '4 4'}"/>`;
+          html += `<text x="${padL - 10}" y="${y + 4}" text-anchor="end" font-size="11" fill="#64748B" font-weight="600">${pct}%</text>`;
+        });
+
+        // Vertical axis guides & Stage labels
+        STAGES_DATA.forEach((s, idx) => {
+          const x = padL + idx * xStep;
+          html += `<line x1="${x}" y1="${padT}" x2="${x}" y2="${padT + plotH}" stroke="#F1F5F9" stroke-width="1.5"/>`;
+          html += `<circle cx="${x}" cy="${padT + plotH + 14}" r="4.5" fill="${s.swatch}"/>`;
+          html += `<text x="${x}" y="${padT + plotH + 32}" text-anchor="middle" font-size="11" font-weight="700" fill="#334155">${s.shortName}</text>`;
+          html += `<text x="${x}" y="${padT + plotH + 46}" text-anchor="middle" font-size="9.5" fill="#64748B">${s.age}</text>`;
+        });
+
+        // Curves (smooth cubic path + interactive points)
+        CURVES_DATA.filter(c => c.active).forEach(curve => {
+          const coords = curve.points.map((pt, i) => ({
+            x: padL + i * xStep,
+            y: padT + plotH - (pt.val / 100) * plotH,
+            val: pt.val,
+            note: pt.note,
+            stageName: STAGES_DATA[i].title
+          }));
+
+          let d = `M ${coords[0].x} ${coords[0].y}`;
+          for (let i = 0; i < coords.length - 1; i++) {
+            const p0 = coords[i];
+            const p1 = coords[i + 1];
+            const cx = (p0.x + p1.x) / 2;
+            d += ` C ${cx} ${p0.y}, ${cx} ${p1.y}, ${p1.x} ${p1.y}`;
+          }
+
+          html += `<path d="${d}" fill="none" stroke="${curve.color}" stroke-width="3.2" stroke-linecap="round"/>`;
+
+          coords.forEach((pt) => {
+            html += `
+              <circle
+                class="chart-node"
+                cx="${pt.x}"
+                cy="${pt.y}"
+                r="6.5"
+                fill="#FFFFFF"
+                stroke="${curve.color}"
+                stroke-width="3"
+                style="cursor: pointer;"
+                data-curve-name="${curve.name}"
+                data-stage-name="${pt.stageName}"
+                data-val="${pt.val}"
+                data-note="${pt.note}"
+              />
+            `;
+          });
+        });
+
+        svg.innerHTML = html;
+
+        svg.querySelectorAll('.chart-node').forEach(node => {
+          const updateInfo = () => {
+            els.chartPointInfo.innerHTML = `
+              <strong style="color: var(--text-primary);">${node.dataset.curveName} — ${node.dataset.stageName} (${node.dataset.val}%):</strong>
+              ${node.dataset.note}
+            `;
+          };
+          node.addEventListener('mouseenter', (e) => {
+            updateInfo();
+            showTooltip(e, `${node.dataset.curveName} (${node.dataset.val}%)`, node.dataset.note);
+          });
+          node.addEventListener('mousemove', positionTooltip);
+          node.addEventListener('mouseleave', hideTooltip);
+          node.addEventListener('click', updateInfo);
+        });
+      }
+
+      /* =====================================================================
+         10. MODE 3: COMPARATIVE MATRIX
+         ===================================================================== */
+      function renderMatrix() {
+        const q = state.matrixSearch.toLowerCase().trim();
+        const f = state.matrixFilter;
+
+        const filtered = STAGES_DATA.filter(stage => {
+          if (f === 'crisis' && !stage.hasCrisis) return false;
+          if (f === 'early' && stage.id > 4) return false;
+          if (q) {
+            const text = `${stage.title} ${stage.age} ${stage.psychology.leadingActivity} ${stage.psychology.piaget} ${stage.psychology.erikson} ${stage.psychology.crisis} ${stage.summary}`.toLowerCase();
+            if (!text.includes(q)) return false;
+          }
+          return true;
+        });
+
+        if (filtered.length === 0) {
+          els.matrixTableBody.innerHTML = `<tr><td colspan="5" style="text-align: center; padding: 28px; color: var(--text-muted);">По вашему запросу этапы не найдены.</td></tr>`;
+          return;
+        }
+
+        els.matrixTableBody.innerHTML = filtered.map(stage => `
+          <tr data-stage-id="${stage.id}" style="--stage-bg:${stage.colors.bg}; --stage-border:${stage.colors.border}; --stage-text:${stage.colors.text}; --stage-accent:${stage.colors.accent};">
+            <td>
+              <div class="matrix-stage-badge">
+                <strong>${stage.id}. ${stage.shortName}</strong>
+                <span>${stage.age}</span>
+              </div>
+            </td>
+            <td><strong>${stage.psychology.leadingActivity}</strong></td>
+            <td>
+              <div><strong>Пиаже:</strong> ${stage.psychology.piaget}</div>
+              <div style="margin-top: 4px;"><strong>Эриксон:</strong> ${stage.psychology.erikson}</div>
+            </td>
+            <td>
+              <div><strong>${stage.hasCrisis ? '⚡ ' + stage.crisisShort : stage.crisisShort}</strong></div>
+              <div style="margin-top: 4px; font-size: 0.81rem;"><em>Новообразования:</em> ${stage.psychology.newFormations}</div>
+            </td>
+            <td>${stage.summary}</td>
+          </tr>
+        `).join('');
+
+        els.matrixTableBody.querySelectorAll('tr[data-stage-id]').forEach(row => {
+          row.addEventListener('click', () => {
+            openStageModal(Number(row.dataset.stageId));
+          });
+        });
+      }
+
+      els.matrixSearchInput.addEventListener('input', (e) => {
+        state.matrixSearch = e.target.value;
+        renderMatrix();
+      });
+
+      els.matrixFilterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          state.matrixFilter = btn.dataset.matrixFilter;
+          els.matrixFilterBtns.forEach(b => b.classList.toggle('active', b === btn));
+          renderMatrix();
+        });
+      });
+
+      /* =====================================================================
+         11. MODE 4: CLINICAL-PSYCHOLOGICAL CASE TRAINER
+         ===================================================================== */
+      function renderTrainerCase() {
+        const total = TRAINER_CASES.length;
+        const current = TRAINER_CASES[state.trainerIdx];
+        state.trainerAnswered = false;
+
+        document.getElementById('trainerActiveArea').style.display = 'block';
+        document.getElementById('trainerSummaryArea').style.display = 'none';
+
+        document.getElementById('trainerStepLabel').textContent = `Кейс ${state.trainerIdx + 1} из ${total}`;
+        document.getElementById('trainerProgressBar').style.width = `${((state.trainerIdx + 1) / total) * 100}%`;
+        document.getElementById('trainerScoreLabel').textContent = `Счёт: ${state.trainerScore}`;
+
+        document.getElementById('caseAgeTag').textContent = current.ageTag;
+        document.getElementById('caseQuestion').textContent = current.question;
+
+        const feedbackEl = document.getElementById('caseFeedback');
+        feedbackEl.className = 'case-feedback';
+        feedbackEl.innerHTML = '';
+
+        const jumpBtn = document.getElementById('caseJumpStageBtn');
+        const nextBtn = document.getElementById('caseNextBtn');
+        jumpBtn.style.display = 'none';
+        nextBtn.style.display = 'none';
+
+        const optionsWrap = document.getElementById('caseOptions');
+        optionsWrap.innerHTML = current.options.map((opt, idx) => `
+          <button class="case-opt-btn" data-opt-idx="${idx}">
+            <span>${opt.text}</span>
+          </button>
+        `).join('');
+
+        optionsWrap.querySelectorAll('.case-opt-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            if (state.trainerAnswered) return;
+            state.trainerAnswered = true;
+            const chosenIdx = Number(btn.dataset.optIdx);
+            const isRight = chosenIdx === current.correctIdx;
+
+            if (isRight) state.trainerScore += 1;
+            document.getElementById('trainerScoreLabel').textContent = `Счёт: ${state.trainerScore}`;
+
+            optionsWrap.querySelectorAll('.case-opt-btn').forEach((b, i) => {
+              b.disabled = true;
+              if (i === current.correctIdx) b.classList.add('correct');
+              else if (i === chosenIdx && !isRight) b.classList.add('wrong');
+            });
+
+            feedbackEl.className = `case-feedback visible ${isRight ? 'is-correct' : 'is-wrong'}`;
+            feedbackEl.innerHTML = `<strong>${isRight ? '✅ Верный разбор!' : '❌ Обратите внимание:'}</strong> ${current.explanation}`;
+
+            jumpBtn.style.display = 'inline-block';
+            jumpBtn.onclick = () => openStageModal(current.stageId, current.options[current.correctIdx].type === 'flag' ? 'flags' : 'psych');
+
+            nextBtn.style.display = 'inline-block';
+            nextBtn.textContent = state.trainerIdx < total - 1 ? 'Следующий кейс →' : 'Показать итоговый результат';
+          });
+        });
+      }
+
+      document.getElementById('caseNextBtn').addEventListener('click', () => {
+        if (state.trainerIdx < TRAINER_CASES.length - 1) {
+          state.trainerIdx += 1;
+          renderTrainerCase();
+        } else {
+          document.getElementById('trainerActiveArea').style.display = 'none';
+          document.getElementById('trainerSummaryArea').style.display = 'block';
+          const total = TRAINER_CASES.length;
+          const pct = Math.round((state.trainerScore / total) * 100);
+          document.getElementById('trainerFinalText').textContent =
+            `Вы правильно разобрали ${state.trainerScore} из ${total} клинико-психологических ситуаций (${pct}%). Вы уверенно различаете физиологическую норму, возрастные кризисы и «красные флаги» НПР!`;
+        }
+      });
+
+      document.getElementById('trainerRestartBtn').addEventListener('click', () => {
+        state.trainerIdx = 0;
+        state.trainerScore = 0;
+        renderTrainerCase();
+      });
+
+      /* =====================================================================
+         12. INITIALIZATION
+         ===================================================================== */
+      renderMiniStageNav();
+      renderMapCards();
+      renderSensitiveGantt();
+      renderCurveToggles();
+      renderDynamicsChart();
+      renderMatrix();
+      renderTrainerCase();
+    })();
+  </script>
+</body>
+</html>

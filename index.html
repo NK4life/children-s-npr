@@ -649,11 +649,43 @@
       gap: 4px;
     }
 
-    .node-chip.highlighted {
-      background: var(--stage-bg);
-      color: var(--stage-text);
-      border-color: var(--stage-border);
-      font-weight: 700;
+    /* Активный флаг-чип: делаем заметно жирнее и объёмнее */
+  .node-chip.flag-chip.highlighted {
+      font-weight: 900;
+      font-size: 0.8rem;                /* чуть крупнее базовых 0.74rem */
+      padding: 5px 10px;
+      letter-spacing: 0.01em;
+      background: linear-gradient(135deg, #FEE2E2, #FCA5A5);
+      color: #7F1D1D;
+      border: 2px solid #EF4444;
+      box-shadow:
+        0 0 0 3px rgba(239, 68, 68, 0.18),
+        0 3px 10px -2px rgba(239, 68, 68, 0.35);
+      text-shadow: 0 0 0.01px currentColor;
+      animation: flagChipBold 2.2s ease-in-out infinite;
+    }
+
+    @keyframes flagChipBold {
+      0%, 100% {
+        box-shadow:
+          0 0 0 3px rgba(239, 68, 68, 0.18),
+          0 3px 10px -2px rgba(239, 68, 68, 0.35);
+      }
+      50% {
+        box-shadow:
+          0 0 0 7px rgba(239, 68, 68, 0.05),
+          0 3px 12px -2px rgba(239, 68, 68, 0.5);
+      }
+    }
+
+    /* Плашка «🚩» внутри активного флага — тоже жирнее */
+    .node-chip.flag-chip.highlighted::first-letter {
+      font-weight: 900;
+    }
+
+    /* Disabled для reduced-motion */
+    @media (prefers-reduced-motion: reduce) {
+      .node-chip.flag-chip.highlighted { animation: none; }
     }
 
     .node-chip.flag-chip {

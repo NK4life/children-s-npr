@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Периоды детского возраста. Нервно-психическое развитие</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -62,6 +62,7 @@
       line-height: 1.55;
       -webkit-font-smoothing: antialiased;
       min-height: 100vh;
+      min-height: 100dvh;
       display: flex;
       flex-direction: column;
       overflow-x: hidden;
@@ -92,7 +93,7 @@
     .header-inner {
       max-width: 1440px;
       margin: 0 auto;
-      padding: 12px 24px;
+      padding: 12px max(24px, env(safe-area-inset-right)) 12px max(24px, env(safe-area-inset-left));
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -126,15 +127,15 @@
     }
 
     .brand-text h1 {
-      font-size: 1.5rem;
+      font-size: clamp(1.06rem, 2vw, 1.5rem);
       font-weight: 800;
       color: var(--text-primary);
       line-height: 1.2;
     }
 
     .brand-text p {
-      margin: 0;
-      font-size: 0.78rem;
+      margin: 2px 0 0;
+      font-size: clamp(0.72rem, 1.1vw, 0.78rem);
       color: var(--text-muted);
       font-weight: 500;
     }
@@ -149,8 +150,14 @@
       border-radius: 14px;
       border: 1px solid var(--border-color);
       overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
       max-width: 100%;
       flex-shrink: 0;
+    }
+
+    .mode-nav::-webkit-scrollbar {
+      display: none;
     }
 
     .mode-btn {
@@ -166,6 +173,7 @@
       align-items: center;
       gap: 7px;
       white-space: nowrap;
+      flex-shrink: 0;
       transition: all 0.2s var(--ease-out);
     }
 
@@ -191,7 +199,7 @@
       max-width: 1440px;
       width: 100%;
       margin: 0 auto;
-      padding: 20px 24px 48px;
+      padding: 20px max(24px, env(safe-area-inset-right)) 48px max(24px, env(safe-area-inset-left));
       flex: 1;
     }
 
@@ -220,14 +228,6 @@
       display: flex;
       flex-direction: column;
       gap: 14px;
-    }
-
-    .controls-top-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
     }
 
     .search-box {
@@ -266,56 +266,6 @@
       box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.14);
     }
 
-    .search-clear {
-      position: absolute;
-      right: 10px;
-      top: 50%;
-      transform: translateY(-50%);
-      border: none;
-      background: var(--border-color);
-      color: var(--text-secondary);
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      font-size: 13px;
-      line-height: 1;
-    }
-
-    .search-clear.visible {
-      display: flex;
-    }
-
-    .quick-hints {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      flex-wrap: wrap;
-      font-size: 0.78rem;
-      color: var(--text-muted);
-    }
-
-    .hint-chip {
-      border: 1px dashed var(--border-strong);
-      background: var(--bg-page);
-      color: var(--text-secondary);
-      padding: 3px 9px;
-      border-radius: 999px;
-      font-size: 0.76rem;
-      cursor: pointer;
-      transition: all 0.15s ease;
-    }
-
-    .hint-chip:hover {
-      border-style: solid;
-      border-color: var(--brand-primary);
-      color: var(--brand-dark);
-      background: var(--brand-light);
-    }
-
     .layer-toggles {
       display: flex;
       align-items: center;
@@ -351,14 +301,34 @@
       box-shadow: 0 2px 6px rgba(15, 23, 42, 0.18);
     }
 
-    .layer-pill[data-layer="flags"].active {
-      background: #DC2626;
-      border-color: #DC2626;
+    .layer-pill[data-layer="motor"].active {
+      background: #0284C7;
+      border-color: #0284C7;
+    }
+
+    .layer-pill[data-layer="sensory"].active {
+      background: #7E22CE;
+      border-color: #7E22CE;
+    }
+
+    .layer-pill[data-layer="speech"].active {
+      background: #15803D;
+      border-color: #15803D;
+    }
+
+    .layer-pill[data-layer="social"].active {
+      background: #BE185D;
+      border-color: #BE185D;
     }
 
     .layer-pill[data-layer="crisis"].active {
       background: #B45309;
       border-color: #B45309;
+    }
+
+    .layer-pill[data-layer="flags"].active {
+      background: #DC2626;
+      border-color: #DC2626;
     }
 
     /* Mini Map Navigation Strip */
@@ -376,6 +346,7 @@
       align-items: center;
       gap: 6px;
       flex-wrap: wrap;
+      min-width: 0;
     }
 
     .mini-dot-btn {
@@ -390,6 +361,8 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
+      white-space: nowrap;
+      flex-shrink: 0;
       transition: all 0.2s var(--ease-out);
     }
 
@@ -432,7 +405,7 @@
       border-color: var(--border-strong);
     }
 
-    /* Interactive Horizontal Route (Desktop) / Vertical (Mobile) */
+    /* Interactive Horizontal Route (Desktop/Tablet) / Vertical (Mobile) */
     .atlas-route-wrapper {
       position: relative;
       background: var(--bg-surface);
@@ -447,6 +420,8 @@
     .atlas-scroll-area {
       overflow-x: auto;
       overflow-y: visible;
+      -webkit-overflow-scrolling: touch;
+      scroll-snap-type: x proximity;
       padding: 12px 12px 20px;
       scrollbar-width: thin;
       scrollbar-color: var(--border-strong) transparent;
@@ -494,6 +469,7 @@
       z-index: 1;
       width: 288px;
       flex-shrink: 0;
+      scroll-snap-align: center;
       background: var(--bg-surface);
       border: 1.5px solid var(--border-color);
       border-radius: 20px;
@@ -514,20 +490,22 @@
       margin-top: 20px;
     }
 
-    .stage-card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-lg);
-      border-color: var(--stage-accent);
+    @media (hover: hover) {
+      .stage-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-lg);
+        border-color: var(--stage-accent);
+      }
+    }
+
+    .stage-card:focus-visible {
+      outline: 2px solid var(--stage-accent);
+      outline-offset: 2px;
     }
 
     .stage-card.dimmed {
       opacity: 0.35;
       filter: grayscale(35%);
-    }
-
-    .stage-card.search-match {
-      border-color: var(--brand-primary);
-      box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.2), var(--shadow-lg);
     }
 
     .stage-card-top {
@@ -649,43 +627,88 @@
       gap: 4px;
     }
 
-    /* Активный флаг-чип: делаем заметно жирнее и объёмнее */
-  .node-chip.flag-chip.highlighted {
+    /* Подсветка активных чипов (флагов) для всех слоёв фильтрации */
+    .node-chip.highlighted,
+    .crisis-badge.highlighted {
+      --hl-rgb: 2, 132, 199;
       font-weight: 900;
-      font-size: 0.8rem;                /* чуть крупнее базовых 0.74rem */
+      font-size: 0.8rem;
       padding: 5px 10px;
       letter-spacing: 0.01em;
-      background: linear-gradient(135deg, #FEE2E2, #FCA5A5);
-      color: #7F1D1D;
-      border: 2px solid #EF4444;
+      border-width: 2px;
+      border-style: solid;
       box-shadow:
-        0 0 0 3px rgba(239, 68, 68, 0.18),
-        0 3px 10px -2px rgba(239, 68, 68, 0.35);
+        0 0 0 3px rgba(var(--hl-rgb), 0.18),
+        0 3px 10px -2px rgba(var(--hl-rgb), 0.35);
       text-shadow: 0 0 0.01px currentColor;
-      animation: flagChipBold 2.2s ease-in-out infinite;
+      animation: chipHighlightBold 2.2s ease-in-out infinite;
     }
 
-    @keyframes flagChipBold {
+    .node-chip.highlighted[data-layer="motor"] {
+      --hl-rgb: 2, 132, 199;
+      background: linear-gradient(135deg, #E0F2FE, #BAE6FD);
+      color: #0C4A6E;
+      border-color: #0284C7;
+    }
+
+    .node-chip.highlighted[data-layer="sensory"] {
+      --hl-rgb: 126, 34, 206;
+      background: linear-gradient(135deg, #F3E8FF, #DDD6FE);
+      color: #581C87;
+      border-color: #7E22CE;
+    }
+
+    .node-chip.highlighted[data-layer="speech"] {
+      --hl-rgb: 22, 163, 74;
+      background: linear-gradient(135deg, #DCFCE7, #BBF7D0);
+      color: #14532D;
+      border-color: #16A34A;
+    }
+
+    .node-chip.highlighted[data-layer="social"] {
+      --hl-rgb: 219, 39, 119;
+      background: linear-gradient(135deg, #FCE7F3, #FBCFE8);
+      color: #831843;
+      border-color: #DB2777;
+    }
+
+    .node-chip.highlighted[data-layer="crisis"],
+    .crisis-badge.highlighted {
+      --hl-rgb: 217, 119, 6;
+      background: linear-gradient(135deg, #FEF3C7, #FDE68A);
+      color: #78350F;
+      border-color: #D97706;
+    }
+
+    .node-chip.flag-chip.highlighted {
+      --hl-rgb: 239, 68, 68;
+      background: linear-gradient(135deg, #FEE2E2, #FCA5A5);
+      color: #7F1D1D;
+      border-color: #EF4444;
+    }
+
+    @keyframes chipHighlightBold {
       0%, 100% {
         box-shadow:
-          0 0 0 3px rgba(239, 68, 68, 0.18),
-          0 3px 10px -2px rgba(239, 68, 68, 0.35);
+          0 0 0 3px rgba(var(--hl-rgb), 0.18),
+          0 3px 10px -2px rgba(var(--hl-rgb), 0.35);
       }
       50% {
         box-shadow:
-          0 0 0 7px rgba(239, 68, 68, 0.05),
-          0 3px 12px -2px rgba(239, 68, 68, 0.5);
+          0 0 0 7px rgba(var(--hl-rgb), 0.05),
+          0 3px 12px -2px rgba(var(--hl-rgb), 0.5);
       }
     }
 
-    /* Плашка «🚩» внутри активного флага — тоже жирнее */
     .node-chip.flag-chip.highlighted::first-letter {
       font-weight: 900;
     }
 
-    /* Disabled для reduced-motion */
     @media (prefers-reduced-motion: reduce) {
-      .node-chip.flag-chip.highlighted { animation: none; }
+      .node-chip.highlighted,
+      .crisis-badge.highlighted {
+        animation: none;
+      }
     }
 
     .node-chip.flag-chip {
@@ -748,7 +771,7 @@
       gap: 6px;
       padding-bottom: 8px;
       border-bottom: 1px solid var(--border-color);
-      font-size: 0.74rem;
+      font-size: clamp(0.66rem, 0.85vw, 0.74rem);
       font-weight: 700;
       color: var(--text-muted);
       text-align: center;
@@ -758,7 +781,8 @@
     .gantt-axis span {
       min-width: 0;
       line-height: 1.25;
-      overflow-wrap: break-word;
+      overflow-wrap: anywhere;
+      hyphens: auto;
     }
 
     .gantt-axis span:first-child {
@@ -786,14 +810,15 @@
       grid-template-columns: repeat(7, minmax(0, 1fr));
       gap: 6px;
       position: relative;
-      height: 30px;
-      align-items: center;
+      min-height: 30px;
+      align-items: stretch;
       min-width: 0;
     }
 
     .gantt-bg-slot {
       grid-row: 1;
-      height: 30px;
+      min-height: 30px;
+      height: 100%;
       background: rgba(241, 245, 249, 0.8);
       border-radius: 7px;
       pointer-events: none;
@@ -803,7 +828,8 @@
       grid-row: 1;
       position: relative;
       z-index: 1;
-      height: 24px;
+      min-height: 26px;
+      align-self: center;
       width: 100%;
       min-width: 0;
       border-radius: 8px;
@@ -811,7 +837,7 @@
       cursor: pointer;
       display: flex;
       align-items: center;
-      padding: 0 10px;
+      padding: 3px 10px;
       font-size: 0.74rem;
       font-weight: 700;
       white-space: nowrap;
@@ -911,6 +937,7 @@
       width: 100%;
       max-width: 960px;
       max-height: 90vh;
+      max-height: 90dvh;
       background: var(--bg-surface);
       border-radius: 24px;
       box-shadow: 0 28px 60px -12px rgba(15, 23, 42, 0.35);
@@ -1033,7 +1060,13 @@
       border-bottom: 1px solid var(--border-color);
       background: var(--bg-page);
       overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
       flex-shrink: 0;
+    }
+
+    .modal-tabs::-webkit-scrollbar {
+      display: none;
     }
 
     .modal-tab-btn {
@@ -1046,6 +1079,7 @@
       border-bottom: 2.5px solid transparent;
       cursor: pointer;
       white-space: nowrap;
+      flex-shrink: 0;
       transition: all 0.18s ease;
     }
 
@@ -1063,6 +1097,7 @@
     .modal-body {
       padding: 22px 24px 28px;
       overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
       flex: 1;
     }
 
@@ -1211,7 +1246,7 @@
     }
 
     .section-heading h2 {
-      font-size: 1.4rem;
+      font-size: clamp(1.18rem, 2vw, 1.4rem);
       font-weight: 800;
       color: var(--text-primary);
     }
@@ -1363,6 +1398,7 @@
       position: relative;
       width: 100%;
       overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
     }
 
     .chart-point-info {
@@ -1398,6 +1434,7 @@
 
     .table-scroll {
       overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
     }
 
     .matrix-table {
@@ -1672,31 +1709,108 @@
     .app-footer {
       border-top: 1px solid var(--border-color);
       background: var(--bg-surface);
-      padding: 16px 24px;
+      padding: 16px max(24px, env(safe-area-inset-right)) max(16px, env(safe-area-inset-bottom)) max(24px, env(safe-area-inset-left));
       text-align: center;
       font-size: 0.8rem;
       color: var(--text-muted);
     }
 
-    /* Responsive Adjustments */
+    /* =======================================================
+       RESPONSIVE BREAKPOINTS (TABLET, MOBILE, ORIENTATION)
+       ======================================================= */
+    @media (max-width: 1120px) {
+      .gantt-axis {
+        grid-template-columns: 180px repeat(7, minmax(0, 1fr));
+      }
+      .gantt-row {
+        grid-template-columns: 180px minmax(0, 1fr);
+      }
+      .gantt-bar {
+        white-space: normal;
+        line-height: 1.18;
+        height: auto;
+        padding: 4px 8px;
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .atlas-track {
+        gap: 16px;
+      }
+      .stage-card {
+        width: 260px;
+      }
+    }
+
     @media (max-width: 980px) {
       .trainer-layout {
         grid-template-columns: 1fr;
       }
+
+      /* Keep 7-stage Gantt axis visible and aligned via touch horizontal scroll */
+      .gantt-grid {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 6px;
+      }
+      .gantt-axis,
+      .gantt-row {
+        min-width: 720px;
+      }
       .gantt-axis {
-        grid-template-columns: 160px repeat(7, minmax(0, 1fr));
+        grid-template-columns: 165px repeat(7, minmax(0, 1fr));
       }
       .gantt-row {
-        grid-template-columns: 160px minmax(0, 1fr);
+        grid-template-columns: 165px minmax(0, 1fr);
+      }
+      .gantt-label,
+      .gantt-axis span:first-child {
+        position: sticky;
+        left: 0;
+        z-index: 3;
+        background: var(--bg-surface);
+        padding-top: 4px;
+        padding-bottom: 4px;
+        box-shadow: 4px 0 8px -4px rgba(15, 23, 42, 0.08);
+      }
+
+      /* Sticky first column in Matrix on tablet/mobile */
+      .matrix-table thead th:first-child,
+      .matrix-table tbody td:first-child {
+        position: sticky;
+        left: 0;
+        z-index: 2;
+      }
+      .matrix-table thead th:first-child {
+        background: var(--bg-subtle);
+        z-index: 3;
+      }
+      .matrix-table tbody td:first-child {
+        background: var(--bg-surface);
+        box-shadow: 4px 0 8px -4px rgba(15, 23, 42, 0.08);
+      }
+      .matrix-table tbody tr:hover td:first-child {
+        background: #F8FAFC;
       }
     }
 
     @media (max-width: 768px) {
       .header-inner {
-        padding: 10px 14px;
+        padding: 10px max(14px, env(safe-area-inset-right)) 10px max(14px, env(safe-area-inset-left));
+        gap: 10px;
+      }
+      .brand {
+        flex: 1 1 100%;
+      }
+      .mode-nav {
+        width: 100%;
+      }
+      .mode-btn {
+        padding: 7px 12px;
+        font-size: 0.82rem;
       }
       .main-container {
-        padding: 14px 14px 36px;
+        padding: 14px max(14px, env(safe-area-inset-right)) 36px max(14px, env(safe-area-inset-left));
       }
       .scroll-arrows {
         display: none;
@@ -1706,6 +1820,7 @@
       }
       .atlas-scroll-area {
         overflow-x: visible;
+        scroll-snap-type: none;
         padding: 6px 0;
       }
       .atlas-track {
@@ -1729,6 +1844,7 @@
       }
       .stage-card {
         width: 100%;
+        scroll-snap-align: none;
       }
       article.stage-card:nth-of-type(odd),
       article.stage-card:nth-of-type(even) {
@@ -1747,17 +1863,6 @@
         border: 2px solid #FFFFFF;
         box-shadow: 0 0 0 2px var(--stage-border);
       }
-      .gantt-axis {
-        display: none;
-      }
-      .gantt-row {
-        grid-template-columns: 1fr;
-        gap: 4px;
-        margin-bottom: 6px;
-      }
-      .gantt-bar-wrap {
-        grid-column: 1;
-      }
       .modal-header {
         padding: 16px;
       }
@@ -1766,6 +1871,174 @@
       }
       .modal-body {
         padding: 16px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .brand-logo {
+        width: 38px;
+        height: 38px;
+      }
+      .map-controls {
+        padding: 12px;
+        gap: 10px;
+        margin-bottom: 14px;
+      }
+      .layer-pill {
+        padding: 6px 10px;
+        font-size: 0.77rem;
+      }
+      .mini-dots {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        width: 100%;
+        padding-bottom: 2px;
+      }
+      .mini-dots::-webkit-scrollbar {
+        display: none;
+      }
+      .sensitive-panel,
+      .chart-card,
+      .trainer-card,
+      .sources-card,
+      .law-card {
+        padding: 14px;
+        border-radius: 18px;
+      }
+      .curve-btn {
+        font-size: 0.76rem;
+        padding: 6px 10px;
+      }
+      .matrix-table {
+        min-width: 720px;
+      }
+      .matrix-table thead th,
+      .matrix-table tbody td {
+        padding: 10px 12px;
+        font-size: 0.8rem;
+      }
+      .modal-backdrop {
+        padding: 8px;
+      }
+      .modal-dialog {
+        max-height: 94vh;
+        max-height: 94dvh;
+        border-radius: 18px;
+      }
+      .modal-header {
+        padding: 12px 14px;
+        gap: 10px;
+      }
+      .modal-icon-wrap {
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+      }
+      .modal-title-group h2 {
+        font-size: 1.06rem;
+      }
+      .modal-subtitle {
+        font-size: 0.79rem;
+      }
+      .modal-nav-actions {
+        width: 100%;
+        justify-content: space-between;
+      }
+      .modal-nav-btn {
+        padding: 6px 10px;
+        font-size: 0.76rem;
+        flex: 1;
+        text-align: center;
+      }
+      .modal-tab-btn {
+        padding: 8px 10px;
+        font-size: 0.8rem;
+      }
+      .modal-body {
+        padding: 14px;
+      }
+      .case-box {
+        padding: 14px;
+      }
+      .case-opt-btn {
+        padding: 11px 13px;
+        font-size: 0.84rem;
+      }
+      .trainer-actions .primary-btn,
+      .trainer-actions .secondary-btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    /* Short Landscape Mode (e.g. Smartphones rotated horizontally) */
+    @media (max-height: 520px) and (orientation: landscape) {
+      .app-header {
+        position: relative;
+      }
+      .header-inner {
+        padding: 8px max(16px, env(safe-area-inset-right)) 8px max(16px, env(safe-area-inset-left));
+        gap: 8px;
+      }
+      .brand-logo {
+        width: 34px;
+        height: 34px;
+      }
+      .brand-text p {
+        display: none;
+      }
+      .main-container {
+        padding: 12px max(16px, env(safe-area-inset-right)) 28px max(16px, env(safe-area-inset-left));
+      }
+      .map-controls {
+        padding: 10px 14px;
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+      .atlas-route-wrapper {
+        padding: 12px;
+        margin-bottom: 16px;
+      }
+      article.stage-card:nth-of-type(odd),
+      article.stage-card:nth-of-type(even) {
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+      .stage-card {
+        padding: 12px 14px;
+        gap: 8px;
+      }
+      .stage-summary {
+        -webkit-line-clamp: 2;
+      }
+      .modal-backdrop {
+        padding: 8px;
+      }
+      .modal-dialog {
+        max-height: 95vh;
+        max-height: 95dvh;
+        border-radius: 16px;
+      }
+      .modal-header {
+        padding: 10px 16px;
+        gap: 8px;
+      }
+      .modal-icon-wrap {
+        width: 38px;
+        height: 38px;
+        border-radius: 10px;
+      }
+      .modal-title-group h2 {
+        font-size: 1.02rem;
+      }
+      .modal-tab-btn {
+        padding: 7px 10px;
+        font-size: 0.79rem;
+      }
+      .modal-body {
+        padding: 12px 16px 16px;
       }
     }
   </style>
@@ -1795,7 +2068,7 @@
         </div>
         <div class="brand-text">
           <h1>Периоды детского возраста. Нервно-психическое развитие</h1>
-          <p>Интерактивная педиатрическая и нейропсихологическая карта</p>
+          <p>Интерактивная карта по педиатрии и возрастной психологии</p>
         </div>
       </div>
 
@@ -1826,30 +2099,14 @@
          ========================================================= -->
     <section id="view-map" class="view-section active">
       <div class="map-controls">
-        <div class="controls-top-row">
-          <div class="search-box">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-            <input type="text" id="mapSearchInput" class="search-input" placeholder="Поиск по этапам и вехам (напр.: пинцетный, кризис, Моро, речь)..." aria-label="Поиск по карте развития" />
-            <button id="mapSearchClear" class="search-clear" title="Очистить поиск" aria-label="Очистить поиск">&times;</button>
-          </div>
-          <div class="quick-hints">
-            <span>Быстрый поиск:</span>
-            <button class="hint-chip" data-query="кризис">кризис</button>
-            <button class="hint-chip" data-query="пинцетный">пинцетный</button>
-            <button class="hint-chip" data-query="Моро">Моро</button>
-            <button class="hint-chip" data-query="речь">речь</button>
-            <button class="hint-chip" data-query="префронтальн">префронтальная кора</button>
-          </div>
-        </div>
-
         <div class="layer-toggles" role="group" aria-label="Фильтры слоёв карты">
           <button class="layer-pill active" data-layer="all">Все слои</button>
-          <button class="layer-pill" data-layer="motor">🧠 ЦНС и Моторика</button>
-          <button class="layer-pill" data-layer="sensory">👁️ Сенсорика и Когниция</button>
-          <button class="layer-pill" data-layer="speech">💬 Речь и Коммуникация</button>
-          <button class="layer-pill" data-layer="social">🤝 Эмоции и Социум</button>
-          <button class="layer-pill" data-layer="crisis">⚡ Ведущая деятельность и Кризисы</button>
-          <button class="layer-pill" data-layer="flags">🚩 Красные флаги</button>
+          <button class="layer-pill" data-layer="motor">🧠 ЦНС и моторика</button>
+          <button class="layer-pill" data-layer="sensory">👁️ Органы чувств и мышление</button>
+          <button class="layer-pill" data-layer="speech">💬 Речь и общение</button>
+          <button class="layer-pill" data-layer="social">🤝 Эмоции и социум</button>
+          <button class="layer-pill" data-layer="crisis">⚡ Ведущая деятельность и кризисы</button>
+          <button class="layer-pill" data-layer="flags">🚩 Тревожные признаки</button>
         </div>
       </div>
 
@@ -1887,12 +2144,12 @@
         </div>
       </div>
 
-      <!-- Sensitive Periods Gantt Bars -->
+      <!-- Sensitive Periods Gantt Strip -->
       <div class="sensitive-panel">
         <div class="sensitive-header">
           <div>
-            <h2>Сенситивные периоды развития (окна максимальной нейропластичности)</h2>
-            <p>Нажмите на любую цветную полосу, чтобы увидеть нейробиологическое обоснование высокой восприимчивости мозга в данный интервал.</p>
+            <h2>Сенситивные периоды развития (окна максимальной восприимчивости мозга)</h2>
+            <p>Нажмите на любую цветную полосу, чтобы узнать, почему именно в этом возрасте мозг лучше всего усваивает данный навык.</p>
           </div>
         </div>
         <div class="gantt-grid" id="sensitiveGantt"></div>
@@ -1908,8 +2165,8 @@
          ========================================================= -->
     <section id="view-analytics" class="view-section">
       <div class="section-heading">
-        <h2>Фундаментальные закономерности нервно-психического развития</h2>
-        <p>Интерактивные нейробиологические модели и психолого-педагогические законы онтогенеза (нажимайте на элементы схем и точки графика).</p>
+        <h2>Основные закономерности нервно-психического развития</h2>
+        <p>Наглядные медицинские схемы и графики развития нервной системы и психики (нажимайте на элементы схем и точки графика).</p>
       </div>
 
       <div class="laws-grid">
@@ -1930,25 +2187,25 @@
               <line x1="38" y1="20" x2="38" y2="158" stroke="#0369A1" stroke-width="3" marker-end="url(#arrowDown)"/>
               <text x="18" y="90" text-anchor="middle" fill="#0369A1" font-size="10.5" font-weight="700" transform="rotate(-90 18 90)">ОСЬ СОЗРЕВАНИЯ</text>
               <!-- Head -->
-              <g class="svg-interactive-zone" data-law="cephalo" data-info="1. Голова и шея (1–3 мес.): миелинизация шейного отдела и глазодвигательных нервов опережает ноги — ребёнок сначала фиксирует взгляд и удерживает голову.">
+              <g class="svg-interactive-zone" data-law="cephalo" data-info="1. Голова и шея (1–3 мес.): созревание и покрытие миелином нервных путей шеи и глаз опережают нижележащие отделы — ребёнок сначала учится следить глазами и удерживать голову.">
                 <rect x="92" y="14" width="124" height="42" rx="21" fill="#E0F2FE" stroke="#0369A1" stroke-width="2.2"/>
                 <text x="154" y="39" text-anchor="middle" font-size="11.5" font-weight="700" fill="#0C4A6E">Голова (2–3 мес.)</text>
               </g>
               <!-- Trunk -->
-              <g class="svg-interactive-zone" data-law="cephalo" data-info="2. Туловище и плечевой пояс (4–7 мес.): созревание грудного и поясничного отделов позволяет переворачиваться, опираться на руки и самостоятельно сидеть.">
+              <g class="svg-interactive-zone" data-law="cephalo" data-info="2. Туловище и плечевой пояс (4–7 мес.): укрепление мышц спины и созревание грудного отдела спинного мозга позволяют переворачиваться, опираться на руки и самостоятельно сидеть.">
                 <rect x="86" y="64" width="136" height="46" rx="12" fill="#DCFCE7" stroke="#15803D" stroke-width="2.2"/>
                 <text x="154" y="91" text-anchor="middle" font-size="11.5" font-weight="700" fill="#14532D">Корпус (6–7 мес.)</text>
               </g>
               <!-- Legs -->
-              <g class="svg-interactive-zone" data-law="cephalo" data-info="3. Таз и нижние конечности (8–12 мес.): завершение контроля над крестцово-поясничными путями открывает путь к четверенькам, стоянию и ходьбе.">
-                <rect x="102" y="118" width="44" height="46" rx="10" fill="#FEF3C7" stroke="#B45309" stroke-width="2.2"/>
-                <rect x="162" y="118" width="44" height="46" rx="10" fill="#FEF3C7" stroke="#B45309" stroke-width="2.2"/>
-                <rect x="94" y="129" width="120" height="24" rx="8" fill="#FEF3C7" stroke="#B45309" stroke-width="1.6"/>
+              <g class="svg-interactive-zone" data-law="cephalo" data-info="3. Таз и нижние конечности (8–12 мес.): созревание пояснично-крестцовых нервных путей и мозжечка открывает путь к ползанию на четвереньках, стоянию и ходьбе.">
+                <rect x="104" y="118" width="42" height="46" rx="10" fill="#FEF3C7" stroke="#B45309" stroke-width="2.2"/>
+                <rect x="162" y="118" width="42" height="46" rx="10" fill="#FEF3C7" stroke="#B45309" stroke-width="2.2"/>
+                <rect x="94" y="129" width="120" height="24" rx="8" fill="#FFFBEB" stroke="#B45309" stroke-width="1.8"/>
                 <text x="154" y="145" text-anchor="middle" font-size="11" font-weight="700" fill="#78350F">Ноги (10–12 мес.)</text>
               </g>
             </svg>
           </div>
-          <div class="law-interactive-note" id="note-cephalo">Нажмите на уровень тела (голова, корпус, ноги), чтобы увидеть последовательность моторного контроля.</div>
+          <div class="law-interactive-note" id="note-cephalo">Нажмите на уровень тела (голова, корпус, ноги), чтобы увидеть последовательность развития движений.</div>
         </div>
 
         <!-- Law 2: Proximodistal -->
@@ -1966,86 +2223,89 @@
               </defs>
               <line x1="28" y1="34" x2="248" y2="34" stroke="#7E22CE" stroke-width="2.8" marker-end="url(#arrowRight)"/>
               <text x="140" y="21" text-anchor="middle" font-size="10.5" font-weight="700" fill="#581C87">ОТ ОСИ ТЕЛА К КОНЧИКАМ ПАЛЬЦЕВ</text>
+              <!-- Connecting arm axis -->
+              <line x1="76" y1="100" x2="92" y2="100" stroke="#CBD5E1" stroke-width="4" stroke-linecap="round"/>
+              <line x1="168" y1="100" x2="184" y2="100" stroke="#CBD5E1" stroke-width="4" stroke-linecap="round"/>
               <!-- Shoulder -->
-              <g class="svg-interactive-zone" data-law="proximo" data-info="1. Плечевой пояс (3–4 мес.): хаотичные взмахи от плеча сменяются направленным движением всей руки к игрушке.">
+              <g class="svg-interactive-zone" data-law="proximo" data-info="1. Плечевой пояс (3–4 мес.): хаотичные взмахи от плеча сменяются направленным движением всей руки к висящей игрушке.">
                 <circle cx="48" cy="100" r="28" fill="#F3E8FF" stroke="#7E22CE" stroke-width="2.2"/>
                 <text x="48" y="104" text-anchor="middle" font-size="11.5" font-weight="700" fill="#581C87">Плечо</text>
               </g>
               <!-- Palm -->
-              <g class="svg-interactive-zone" data-law="proximo" data-info="2. Предплечье и ладонь (5–6 мес.): формируется ульнарный и ладонный захват всей кистью без участия отдельных пальцев.">
+              <g class="svg-interactive-zone" data-law="proximo" data-info="2. Предплечье и кисть (5–6 мес.): формируется захват предмета всей ладонью без участия отдельных пальцев.">
                 <rect x="92" y="78" width="76" height="44" rx="12" fill="#FCE7F3" stroke="#BE185D" stroke-width="2.2"/>
                 <text x="130" y="104" text-anchor="middle" font-size="11.5" font-weight="700" fill="#831843">Ладонь</text>
               </g>
               <!-- Fingers / Pincer -->
-              <g class="svg-interactive-zone" data-law="proximo" data-info="3. Пинцетный захват (9–10 мес.): кортикоспинальный тракт обеспечивает тонкую оппозицию большого и указательного пальцев.">
+              <g class="svg-interactive-zone" data-law="proximo" data-info="3. Пинцетный захват (9–10 мес.): созревание двигательных путей коры позволяет точно брать мелкие предметы двумя пальцами — большим и указательным.">
                 <rect x="184" y="74" width="84" height="52" rx="14" fill="#E0F2FE" stroke="#0369A1" stroke-width="2.2"/>
                 <text x="226" y="96" text-anchor="middle" font-size="11" font-weight="700" fill="#0C4A6E">Пинцетный</text>
                 <text x="226" y="111" text-anchor="middle" font-size="11" font-weight="700" fill="#0C4A6E">захват</text>
               </g>
             </svg>
           </div>
-          <div class="law-interactive-note" id="note-proximo">Нажмите на сегмент руки, чтобы проследить эволюцию от размашистых движений к тонкой моторике.</div>
+          <div class="law-interactive-note" id="note-proximo">Нажмите на отдел руки, чтобы проследить переход от крупных движений к мелкой моторике.</div>
         </div>
 
         <!-- Law 3: Heterochrony -->
         <div class="law-card">
           <div class="law-card-head">
             <h3>3. Гетерохронность созревания</h3>
-            <span class="law-tag">Неравномерность</span>
+            <span class="law-tag">Неравномерность развития</span>
           </div>
           <div class="law-svg-box">
             <svg viewBox="0 0 300 175" aria-label="Схема гетерохронности созревания отделов ЦНС">
-              <g class="svg-interactive-zone" data-law="hetero" data-info="Ствол мозга и подкорка (внутриутробно – 1 мес.): созревают первыми, обеспечивая дыхание, сосание, терморегуляцию и базовые рефлексы.">
+              <g class="svg-interactive-zone" data-law="hetero" data-info="Ствол мозга и подкорковые ядра (внутриутробно – 1 мес.): созревают первыми, обеспечивая дыхание, кровообращение, сосание, терморегуляцию и врождённые рефлексы.">
                 <rect x="10" y="16" width="280" height="42" rx="10" fill="#FCE7F3" stroke="#BE185D" stroke-width="2"/>
                 <text x="22" y="34" font-size="11" font-weight="700" fill="#831843">Ствол мозга и подкорка</text>
-                <text x="22" y="48" font-size="9.5" font-weight="500" fill="#9D174D">витальные функции и рефлексы</text>
+                <text x="22" y="48" font-size="9.5" font-weight="500" fill="#9D174D">жизненно важные функции и рефлексы</text>
                 <rect x="226" y="27" width="54" height="20" rx="7" fill="#BE185D"/>
                 <text x="253" y="41" text-anchor="middle" font-size="10" font-weight="700" fill="#FFF">0 мес.</text>
               </g>
-              <g class="svg-interactive-zone" data-law="hetero" data-info="Сенсомоторная и височная кора (3 мес. – 3 года): пик синаптогенеза в зонах зрения, слуха, движений и речи (зоны Брока и Вернике).">
+              <g class="svg-interactive-zone" data-law="hetero" data-info="Зоны восприятия и речи в коре (3 мес. – 3 года): бурный рост нервных связей (синапсов) в центрах зрения, слуха, движений и речи (зоны Брока и Вернике).">
                 <rect x="10" y="66" width="280" height="42" rx="10" fill="#DCFCE7" stroke="#15803D" stroke-width="2"/>
                 <text x="22" y="84" font-size="11" font-weight="700" fill="#14532D">Сенсорная и речевая кора</text>
-                <text x="22" y="98" font-size="9.5" font-weight="500" fill="#166534">пик синаптогенеза и речи</text>
+                <text x="22" y="98" font-size="9.5" font-weight="500" fill="#166534">образование связей, восприятие и речь</text>
                 <rect x="226" y="77" width="54" height="20" rx="7" fill="#15803D"/>
                 <text x="253" y="91" text-anchor="middle" font-size="10" font-weight="700" fill="#FFF">1–3 г.</text>
               </g>
-              <g class="svg-interactive-zone" data-law="hetero" data-info="Префронтальная кора (7 – 20+ лет): миелинизируется последней! Отвечает за произвольность, планирование, торможение импульсов и самоконтроль.">
+              <g class="svg-interactive-zone" data-law="hetero" data-info="Префронтальная (лобная) кора (7 – 25 лет): покрывается миелином и созревает последней! Отвечает за планирование, самоконтроль, торможение импульсов и оценку последствий.">
                 <rect x="10" y="116" width="280" height="42" rx="10" fill="#E0E7FF" stroke="#4338CA" stroke-width="2"/>
                 <text x="22" y="134" font-size="11" font-weight="700" fill="#312E81">Префронтальная кора</text>
-                <text x="22" y="148" font-size="9.5" font-weight="500" fill="#3730A3">произвольность и самоконтроль</text>
+                <text x="22" y="148" font-size="9.5" font-weight="500" fill="#3730A3">планирование, воля и самоконтроль</text>
                 <rect x="226" y="127" width="54" height="20" rx="7" fill="#4338CA"/>
-                <text x="253" y="141" text-anchor="middle" font-size="10" font-weight="700" fill="#FFF">18+ лет</text>
+                <text x="253" y="141" text-anchor="middle" font-size="10" font-weight="700" fill="#FFF">21–25 л.</text>
               </g>
             </svg>
           </div>
-          <div class="law-interactive-note" id="note-hetero">Нажмите на слой мозга: эволюционно более древние и базовые структуры созревают раньше высших ассоциативных зон.</div>
+          <div class="law-interactive-note" id="note-hetero">Нажмите на уровень мозга: более древние структуры созревают раньше высших отделов коры.</div>
         </div>
 
         <!-- Law 4: ZPD Vygotsky -->
         <div class="law-card">
           <div class="law-card-head">
             <h3>4. Зона ближайшего развития (ЗБР)</h3>
-            <span class="law-tag">Л.С. Выготский</span>
+            <span class="law-tag">По Л.С. Выготскому</span>
           </div>
           <div class="law-svg-box">
             <svg viewBox="0 0 280 190" aria-label="Диаграмма Зоны ближайшего развития Выготского">
-              <g class="svg-interactive-zone" data-law="zpd" data-info="Внешний контур — пока недоступно даже с поддержкой (требует созревания структур мозга и накопления предшествующего опыта).">
+              <g class="svg-interactive-zone" data-law="zpd" data-info="Внешний контур — пока недоступно даже с помощью взрослого (требует дальнейшего созревания нервной системы и накопления опыта).">
                 <circle cx="140" cy="95" r="88" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2" stroke-dasharray="5 4"/>
                 <text x="140" y="30" text-anchor="middle" font-size="10.5" font-weight="700" fill="#475569">Пока недоступно</text>
               </g>
-              <g class="svg-interactive-zone" data-law="zpd" data-info="Зона ближайшего развития (ЗБР) — то, что ребёнок делает в сотрудничестве со взрослым сегодня и сможет делать самостоятельно завтра. Именно на неё должно опираться обучение!">
+              <g class="svg-interactive-zone" data-law="zpd" data-info="Зона ближайшего развития (ЗБР) — действия, которые ребёнок выполняет с подсказкой взрослого сегодня, а завтра сможет делать сам. Именно на неё опирается обучение!">
                 <circle cx="140" cy="110" r="68" fill="#FEF3C7" stroke="#D97706" stroke-width="2.2"/>
                 <text x="140" y="64" text-anchor="middle" font-size="10.5" font-weight="800" fill="#92400E">Могу с помощью</text>
                 <text x="140" y="77" text-anchor="middle" font-size="10" font-weight="800" fill="#92400E">(ЗБР)</text>
               </g>
-              <g class="svg-interactive-zone" data-law="zpd" data-info="Зона актуального развития (ЗАР) — задачи, которые ребёнок уже уверенно решает полностью самостоятельно.">
+              <g class="svg-interactive-zone" data-law="zpd" data-info="Зона актуального развития (ЗАР) — навыки и задачи, с которыми ребёнок уже уверенно справляется полностью самостоятельно.">
                 <circle cx="140" cy="128" r="35" fill="#DCFCE7" stroke="#15803D" stroke-width="2.2"/>
                 <text x="140" y="125" text-anchor="middle" font-size="11" font-weight="800" fill="#14532D">Могу</text>
                 <text x="140" y="139" text-anchor="middle" font-size="11" font-weight="800" fill="#14532D">сам</text>
               </g>
             </svg>
           </div>
-          <div class="law-interactive-note" id="note-zpd">Нажмите на концентрическую зону: «Обучение ведёт за собой развитие» (Л.С. Выготский).</div>
+          <div class="law-interactive-note" id="note-zpd">Нажмите на любую зону круга: «Обучение должно идти впереди развития» (Л.С. Выготский).</div>
         </div>
       </div>
 
@@ -2054,7 +2314,7 @@
         <div class="chart-controls">
           <div>
             <h3 style="font-size: 1.15rem; font-weight: 800;">Динамические кривые интенсивности развития ЦНС и психики</h3>
-            <p style="margin: 2px 0 0; font-size: 0.84rem; color: var(--text-muted);">Включайте и отключайте траектории и наводите/нажимайте на узлы графика для чтения клинического комментария.</p>
+            <p style="margin: 2px 0 0; font-size: 0.84rem; color: var(--text-muted);">Включайте и отключайте линии графика и нажимайте на точки, чтобы прочитать медицинский комментарий.</p>
           </div>
           <div class="curve-toggles" id="curveToggles"></div>
         </div>
@@ -2062,7 +2322,7 @@
           <svg id="dynamicsChartSvg" viewBox="0 0 920 340" style="width: 100%; min-width: 680px; height: auto; display: block;"></svg>
         </div>
         <div class="chart-point-info" id="chartPointInfo">
-          Нажмите или наведите курсор на любую точку на графике, чтобы увидеть научное объяснение пика или спада на данном возрастном этапе.
+          Нажмите или наведите курсор на любую точку на графике, чтобы увидеть объяснение пика или снижения темпов развития на данном этапе.
         </div>
       </div>
     </section>
@@ -2072,14 +2332,13 @@
          ========================================================= -->
     <section id="view-matrix" class="view-section">
       <div class="section-heading">
-        <h2>Сравнительная матрица возрастных периодов</h2>
-        <p>Сводный анализ по периодизации Д.Б. Эльконина, стадиям интеллекта Ж. Пиаже, Э. Эриксону и клиническим шкалам НПР. Нажмите на любую строку для открытия полной карты этапа.</p>
+        <h2>Сравнительная таблица возрастных периодов</h2>
       </div>
 
       <div class="matrix-controls">
         <div class="search-box" style="max-width: 380px;">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          <input type="text" id="matrixSearchInput" class="search-input" placeholder="Фильтр матрицы (напр.: игра, Пиаже, кризис)..." />
+          <input type="text" id="matrixSearchInput" class="search-input" placeholder="Поиск (напр.: игра, Пиаже, адаптация...)" />
         </div>
         <div class="layer-toggles">
           <button class="layer-pill active" data-matrix-filter="all">Все 7 периодов</button>
@@ -2111,8 +2370,8 @@
          ========================================================= -->
     <section id="view-trainer" class="view-section">
       <div class="section-heading">
-        <h2>Клинико-психологический тренажёр и научная база</h2>
-        <p>Проверьте умение дифференцировать физиологическую норму, возрастной кризис и «красные флаги» задержки НПР.</p>
+        <h2>Клинико-психологический тренажёр и использованные источники</h2>
+        <p>Проверьте умение отличать возрастную норму, нормативный возрастной кризис и тревожные симптомы («красные флаги») задержки НПР.</p>
       </div>
 
       <div class="trainer-layout">
@@ -2148,48 +2407,48 @@
 
         <!-- Scientific Sources -->
         <div class="sources-card">
-          <h3 style="font-size: 1.12rem; font-weight: 800; margin-bottom: 4px;">Научные источники и клинические стандарты</h3>
-          <p style="margin: 0; font-size: 0.83rem; color: var(--text-muted);">Контент атласа верифицирован по отечественным и международным протоколам педиатрии и психологии развития.</p>
+          <h3 style="font-size: 1.12rem; font-weight: 800; margin-bottom: 4px;">Использованные источники и клинические стандарты</h3>
+          <p style="margin: 0; font-size: 0.83rem; color: var(--text-muted);">Содержание карты сверено с учебниками для медицинских вузов и колледжей, а также с действующими протоколами Минздрава РФ и ВОЗ.</p>
           <div class="sources-list">
             <div class="source-item">
               <strong>ВОЗ (WHO Multicentre Growth Reference Study)</strong>
-              <span>«Стандарты моторного развития детей: окна достижения шести основных этапов крупной моторики» (сидение без поддержки, ползание, стояние и ходьба).</span>
+              <span>«Стандарты моторного развития детей: окна достижения шести основных этапов крупной моторики» (самостоятельное сидение, стояние, ползание и ходьба).</span>
               <span class="source-tag">Международный стандарт</span>
             </div>
             <div class="source-item">
-              <strong>Приказ Минздрава РФ № 514н (ред. актуальная)</strong>
-              <span>«О Порядке проведения профилактических медицинских осмотров несовершеннолетних» — скрининг НПР и раннее выявление расстройств развития.</span>
+              <strong>Приказ Минздрава РФ от 14.04.2025 № 211н (взамен № 514н)</strong>
+              <span>«Об утверждении порядка прохождения несовершеннолетними профилактических медицинских осмотров» — актуальный график осмотров (невролог с 3 мес., скрининг психического развития в 1,5 и 2 года, оценка слуха).</span>
               <span class="source-tag">Клинический протокол</span>
             </div>
             <div class="source-item">
               <strong>Шабалов Н.П.</strong>
-              <span>«Детские болезни» (учебник в 2 томах) — анатомо-физиологические особенности ЦНС, рефлексы новорожденного и возрастная периодизация.</span>
+              <span>«Детские болезни» (учебник в 2 томах) — анатомо-физиологические особенности ЦНС, врождённые рефлексы новорождённого и возрастная периодизация.</span>
               <span class="source-tag">Педиатрия</span>
             </div>
             <div class="source-item">
               <strong>Воронцов И.М., Мазурин А.В.</strong>
-              <span>«Пропедевтика детских болезней» — законы цефалокаудального и проксимодистального развития, оценка нервно-психического статуса.</span>
+              <span>«Пропедевтика детских болезней» — законы цефалокаудального и проксимодистального развития, методика оценки нервно-психического развития.</span>
               <span class="source-tag">Пропедевтика</span>
             </div>
             <div class="source-item">
-              <strong>Печора К.Л., Пантюхина Г.В., Фрухт Э.Л.</strong>
-              <span>«Диагностика нервно-психического развития детей первых трёх лет жизни» — помесячные линии НПР (моторика, сенсорика, речь, игра).</span>
+              <strong>Пантюхина Г.В., Печора К.Л., Фрухт Э.Л.</strong>
+              <span>«Методы диагностики нервно-психического развития детей раннего возраста» — помесячная оценка линий НПР (моторика, сенсорика, речь, игра, навыки).</span>
               <span class="source-tag">Диагностика НПР</span>
             </div>
             <div class="source-item">
               <strong>Выготский Л.С.</strong>
-              <span>«Вопросы детской психологии» — учение о возрастных кризисах, социальной ситуации развития, зоне ближайшего развития (ЗБР).</span>
+              <span>«Вопросы детской психологии» — учение о возрастных кризисах, социальной ситуации развития и зоне ближайшего развития (ЗБР).</span>
               <span class="source-tag">Культурно-историческая школа</span>
             </div>
             <div class="source-item">
               <strong>Эльконин Д.Б.</strong>
-              <span>«К проблеме периодизации психического развития в детском возрасте» — чередование мотивационно-потребностной и операционально-технической сфер.</span>
+              <span>«К проблеме периодизации психического развития в детском возрасте» — закономерная смена ведущих видов деятельности.</span>
               <span class="source-tag">Возрастная психология</span>
             </div>
             <div class="source-item">
               <strong>Пиаже Ж. / Эриксон Э.</strong>
-              <span>Теория стадий когнитивного развития интеллекта (сенсомоторная, дооперациональная, конкретные и формальные операции) и эпигенетическая теория психосоциального развития.</span>
-              <span class="source-tag">Когнитивная и психосоциальная модели</span>
+              <span>Стадии развития интеллекта (сенсомоторная, дооперациональная, конкретные и формальные операции) и этапы психосоциального развития личности.</span>
+              <span class="source-tag">Возрастная и когнитивная психология</span>
             </div>
           </div>
         </div>
@@ -2197,8 +2456,7 @@
     </section>
   </main>
 
-  <footer class="app-footer">
-    Интерактивная карта «Периоды детского возраста» • Авторы: Скребцов Николай Сергеевич, Салфетников Артем Викторович; Ф-931, 2 бригада • Урюпинский филиал ГАПОУ "Волгоградский медицинский колледж"
+  <footer class="app-footer">Интерактивная карта «Периоды детского возраста» • Авторы: Скребцов Николай Сергеевич, Салфетников Артем Викторович; Ф-931, 2 бригада • Урюпинский филиал ГАПОУ "Волгоградский медицинский колледж"</footer>
 
   <!-- FLOATING TOOLTIP -->
   <div class="atlas-tooltip" id="atlasTooltip" role="tooltip"></div>
@@ -2249,94 +2507,94 @@
           colors: { bg: 'var(--s1-bg)', accent: 'var(--s1-accent)', text: 'var(--s1-text)', border: 'var(--s1-border)' },
           swatch: '#7E22CE',
           hasCrisis: false,
-          crisisShort: 'Родовой стресс на границе',
-          summary: 'Закладка нервной трубки (3–4 нед.), бурная пролиферация нейронов, первые шевеления (18–20 нед.) и формирование слуховых реакций.',
-          tooltipMain: 'Закладка ЦНС (3–4 нед.), 1-е шевеления плода (18–20 нед.), созревание слуха (24–26 нед.). Высокая уязвимость к тератогенам.',
+          crisisShort: 'Родовой стресс',
+          summary: 'Закладка нервной трубки (3–4-я нед.), активный рост нервных клеток, первые шевеления плода (18–20-я нед.) и формирование слуха.',
+          tooltipMain: 'Закладка ЦНС (3–4-я нед.), первые шевеления (18–20-я нед.), созревание слуха (24–26-я нед.). Высокая уязвимость к инфекциям и токсинам.',
           nodes: [
-            { label: 'Нервная трубка 3–4 нед.', layer: 'motor', tip: 'Нейруляция: закрытие переднего и заднего нейропоров к 28-му дню.' },
-            { label: 'Шевеления 18–20 нед.', layer: 'motor', tip: 'Первые ощущаемые матерью генерализованные движения плода.' },
-            { label: 'Слух 24–26 нед.', layer: 'sensory', tip: 'Созревание улитки: плод слышит сердцебиение и голос матери.' },
-            { label: 'Риск тератогенов 🚩', layer: 'flags', tip: 'Критическое окно уязвимости ЦНС к гипоксии, инфекциям и токсинам.' }
+            { label: 'Нервная трубка 3–4 нед.', layer: 'motor', tip: 'Закладка и закрытие нервной трубки (будущего головного и спинного мозга) к 28-му дню развития.' },
+            { label: 'Шевеления 18–20 нед.', layer: 'motor', tip: 'Первые шевеления плода, которые начинает отчётливо ощущать беременная женщина.' },
+            { label: 'Слух 24–26 нед.', layer: 'sensory', tip: 'Созревание внутреннего уха: плод слышит сердцебиение, кровоток и голос матери.' },
+            { label: 'Риск тератогенов 🚩', layer: 'flags', tip: 'Высокая чувствительность зародыша и плода к гипоксии, инфекциям, алкоголю и лекарствам.' }
           ],
           cns: {
-            structures: 'Эмбриональный период (до 8–10 нед.): нейруляция, формирование 3 и затем 5 мозговых пузырей. Фетальный период: миграция нейробластов (пик 12–20 нед.), закладка извилин и борозд коры (с 24–26 нед.).',
-            myelination: 'Начинается со ствола мозга, вестибулярного и слухового трактов (с 20–24 нед.). Синаптогенез запускается во II триместре, к рождению мозг весит ~350–400 г (около 25% веса мозга взрослого).',
-            reflexes: 'К 7–8 нед. появляются первые рефлекторные сгибания шеи; к 12–14 нед. — глотательные и сосательные движения; к 28–32 нед. — чёткие циклы «сон–бодрствование» (REM-фаза занимает до 80% сна, стимулируя эндогенную активность коры).'
+            structures: 'Эмбриональный период (до 8–10 нед.): закладка нервной трубки, образование мозговых пузырей — зачатков отделов головного мозга. Плодный (фетальный) период: бурное деление и перемещение молодых нервных клеток (пик на 12–20-й нед.), появление крупных борозд и извилин коры (с 24–26-й нед.).',
+            myelination: 'Покрытие нервных волокон защитной оболочкой (миелином) начинается ещё до рождения — со ствола мозга, вестибулярных и слуховых путей (с 20–24-й нед.). Во II триместре начинают формироваться первые связи между нейронами (синапсы). К рождению масса мозга составляет ~350–400 г (около 10% массы тела новорождённого и ~25% массы мозга взрослого).',
+            reflexes: 'К 7–8-й нед. появляются первые рефлекторные сгибания шеи; к 12–14-й нед. — сосательные и глотательные движения; к 28–32-й нед. устанавливаются циклы «сон–бодрствование». Быстрый сон (с движениями глаз) занимает до 70–80% времени сна плода, стимулируя и «тренируя» созревающую кору.'
           },
           npr: {
-            motor: 'Первые спонтанные движения с 7–8 нед. (УЗИ). К 18–20 нед. мать ощущает толчки; к 28 нед. движения координируются в виде отталкивания, сгибания конечностей и сосания пальца.',
-            sensory: 'Тактильная чувствительность вокруг рта появляется с 8 нед. Вестибулярный аппарат созревает к 16–20 нед. Слух — к 24–26 нед. (реакция вздрагиванием на резкий звук и успокоение на низкочастотный голос матери). Реакция зрачков на яркий свет через брюшную стенку — с 28–32 нед.',
-            speech: 'Предпосылки речи: слуховое научение просодике (ритму и интонации родного языка матери) в III триместре. Плод запоминает повторяющиеся мелодии и тембр голоса.',
-            social: 'Формирование биологического диалога «мать–плод»: гормональный ответ плода на кортизол и катехоламины матери при хроническом стрессе, ритмическая синхронизация циклов активности.'
+            motor: 'Первые спонтанные движения видны на УЗИ с 7–8-й нед. К 18–20-й нед. мать ощущает толчки; к 28-й нед. движения становятся более скоординированными (отталкивание, сгибание рук и ног, сосание пальца).',
+            sensory: 'Кожная чувствительность вокруг рта появляется уже с 8-й нед. Орган равновесия созревает к 16–20-й нед., слух — к 24–26-й нед. (плод вздрагивает от резкого звука и успокаивается под голос матери). Зрачки реагируют на яркий свет через стенку живота с 28–32-й нед.',
+            speech: 'Предпосылки будущей речи: в III триместре плод привыкает к ритму, темпу и интонациям родного языка матери и после рождения узнаёт её голос.',
+            social: 'Формирование биологической связи «мать — плод»: при сильном или длительном стрессе матери её гормоны (кортизол, адреналин) проникают через плаценту и меняют частоту сердцебиения и двигательную активность плода.'
           },
           psychology: {
-            situation: 'Симбиотическая биологическая общность с организмом матери (пренатальная психофизиологическая диада).',
-            leadingActivity: 'Внутриутробное созревание и сенсомоторная адаптация к водно-акустической среде матки.',
-            newFormations: 'Первичная сенсорная память, суточные ритмы сна–бодрствования, готовность к внеутробному переходу.',
-            piaget: 'Пренатальная подготовка сенсомоторных рефлекторных схем.',
-            erikson: 'Предпосылки базового доверия через стабильность внутриутробной среды.',
-            crisis: 'Критический переход в конце периода — родовой стресс (выброс катехоламинов, резкая смена среды от невесомости и 37 °C к гравитации, воздуху и яркому свету).'
+            situation: 'Полное физиологическое единство с организмом матери (система «мать — плацента — плод»).',
+            leadingActivity: 'Внутриутробный рост, созревание органов и приспособление органов чувств к водно-звуковой среде матки.',
+            newFormations: 'Первичная слуховая и двигательная память, суточные ритмы активности, готовность к переходу в новый мир.',
+            piaget: 'Внутриутробная подготовка простейших двигательных рефлексов (сосание, схватывание).',
+            erikson: 'Физиологические предпосылки базового доверия к миру через стабильность условий беременности.',
+            crisis: 'На границе периода происходит родовой стресс — резкий переход от невесомости и температуры +37 °C к земной гравитации, прохладному воздуху, яркому свету и самостоятельному дыханию (сопровождается выбросом гормонов адаптации).'
           },
           practice: [
-            { title: 'Антенатальная профилактика', text: 'Приём фолиевой кислоты (профилактика дефектов нервной трубки), йода, отказ от алкоголя, никотина и несогласованных препаратов.' },
-            { title: 'Эмоциональная стабильность матери', text: 'Снижение хронического стресса: высокий уровень материнского кортизола меняет реактивность гипоталамо-гипофизарной оси плода.' },
-            { title: 'Мягкая сенсорная стимуляция', text: 'Спокойные разговоры с ребёнком, чтение вслух, спокойная музыка в III триместре способствуют формированию слуховой памяти.' }
+            { title: 'Профилактика пороков развития', text: 'Планирование беременности, приём фолиевой кислоты (профилактика дефектов нервной трубки) и йода по назначению врача, полный отказ от алкоголя, курения и несогласованных лекарств.' },
+            { title: 'Спокойная эмоциональная обстановка', text: 'Снижение хронического стресса и полноценный отдых будущей матери помогают нормальному кровотоку в плаценте и стабильному развитию нервной системы плода.' },
+            { title: 'Бережное звуковое общение', text: 'Спокойная речь родителей, чтение вслух и тихая мелодичная музыка в III триместре тренируют слуховые пути плода.' }
           ],
           flags: [
-            'Отсутствие или резкое снижение шевелений плода после 20–24 недель гестации (менее 10 шевелений за 12 часов бодрствования в III триместре).',
-            'Внутриутробные инфекции (TORCH-комплекс: ЦМВ, токсоплазмоз, краснуха) и тяжёлая фетоплацентарная недостаточность с гипоксией.',
-            'Признаки аномалий ЦНС по УЗИ (вентрикуломегалия, spina bifida, задержка роста окружности головы).'
+            'Отсутствие или резкое ослабление шевелений плода после 20–24 недель (в III триместре — менее 10 шевелений за 12 часов дневного бодрствования).',
+            'Внутриутробные инфекции (краснуха, цитомегаловирус, токсоплазмоз и др.) и тяжёлая плацентарная недостаточность с кислородным голоданием (гипоксией) плода.',
+            'Выявление пороков развития ЦНС на скрининговом УЗИ (расширение желудочков мозга, расщепление позвоночника, задержка роста головы плода).'
           ],
-          iconSvg: '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7.5a2.5 2.5 0 1 0 0 5c1.8 0 3 1.3 3 3a2.5 2.5 0 0 1-5 0"/><circle cx="11.5" cy="9.5" r="0.8" fill="currentColor"/></svg>'
+          iconSvg: '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><circle cx="13" cy="8.2" r="2.2"/><path d="M11 9.5c-2.3 1.3-2.8 4.8-.7 6.6 1.2 1 3.2 1.1 4.2-.1.7-.8.5-2-.4-2.5-.8-.4-1.7 0-2 .7"/><path d="M12.2 11.3l1.6 1.1"/></svg>'
         },
         {
           id: 2,
           shortName: 'Новорожденность',
-          title: 'Период новорожденности (неонатальный)',
+          title: 'Период новорождённости (неонатальный)',
           age: '0–28 дней жизни',
           colors: { bg: 'var(--s2-bg)', accent: 'var(--s2-accent)', text: 'var(--s2-text)', border: 'var(--s2-border)' },
           swatch: '#BE185D',
           hasCrisis: true,
-          crisisShort: 'Кризис ⚡',
-          summary: 'Адаптация к внеутробной жизни, доминирование подкорки, гипертонус сгибателей и комплекс безусловных рефлексов (Моро, Робинсона и др.).',
-          tooltipMain: 'Кризис новорожденности, физиологический гипертонус сгибателей, безусловные рефлексы, 1-я фиксация взгляда на лице матери.',
+          crisisShort: 'Кризис новорождённости',
+          summary: 'Приспособление к жизни вне утробы матери, ведущая роль подкорки, физиологический гипертонус сгибателей и комплекс врождённых рефлексов.',
+          tooltipMain: 'Адаптация к внеутробной жизни, гипертонус сгибателей, врождённые рефлексы (Моро, сосательный и др.), первая фиксация взгляда на лице матери.',
           nodes: [
-            { label: 'Рефлексы Моро/Робинсона', layer: 'motor', tip: 'Базовые безусловные рефлексы спинального и стволового уровня.' },
-            { label: 'Фиксация взгляда', layer: 'sensory', tip: 'Кратковременное удержание взгляда на ярком предмете или лице (20–30 см).' },
-            { label: 'Кризис ⚡', layer: 'crisis', tip: 'Переход от полной физиологической зависимости к индивидуальной жизни и психической общности «Пра-мы».' },
-            { label: 'Атония / судороги 🚩', layer: 'flags', tip: 'Отсутствие сосательного рефлекса, слабый крик или резкая мышечная гипотония.' }
+            { label: 'Рефлексы Моро/Робинсона', layer: 'motor', tip: 'Врождённые безусловные рефлексы спинного мозга и ствола, нужные для выживания и оценки зрелости ЦНС.' },
+            { label: 'Фиксация взгляда', layer: 'sensory', tip: 'Кратковременное удержание взгляда на ярком предмете или лице взрослого на расстоянии 20–30 см.' },
+            { label: 'Адаптация к новому миру ⚡', layer: 'crisis', tip: 'Кризис новорождённости: перестройка дыхания, кровообращения, питания и терморегуляции.' },
+            { label: 'Гипотония / судороги 🚩', layer: 'flags', tip: 'Вялое сосание или его отсутствие, резкая мышечная слабость, монотонный пронзительный крик или судороги.' }
           ],
           cns: {
-            structures: 'Функционально преобладают ствол мозга и таламо-паллидарная система (подкорка). Кора больших полушарий анатомически сформирована, но её нейроны имеют мало дендритных ветвлений и незрелы; процессы возбуждения легко иррадиируют.',
-            myelination: 'Активна миелинизация черепных нервов и проводящих путей проприоцепции. Физиологический гипертонус мышц-сгибателей конечностей («эмбриональная поза») обусловлен незрелостью тормозных влияний пирамидной системы.',
-            reflexes: 'Обязательные безусловные рефлексы: поисковый (Куссмауля), хоботковый, сосательный, ладонно-ротовой (Бабкина), хватательный (Робинсона), рефлекс Моро (испуг с разведением и сведением рук), опоры и автоматической походки, ползания (Бауэра), защитный (поворот головы на животе), Бабинского.'
+            structures: 'Работой организма управляют преимущественно ствол мозга и подкорковые ядра. Кора больших полушарий анатомически сформирована, но её клетки ещё незрелые, с малым числом отростков. Тормозные процессы слабы, поэтому возбуждение легко распространяется по всей нервной системе.',
+            myelination: 'Усиленно покрываются миелином черепные нервы и пути чувствительности. Из-за незрелости тормозных влияний коры у здорового доношенного ребёнка отмечается физиологический гипертонус мышц-сгибателей рук и ног («поза эмбриона»).',
+            reflexes: 'В норме вызываются безусловные рефлексы: поисковый (Куссмауля), хоботковый, сосательный, ладонно-ротовой (Бабкина), хватательный (Робинсона), рефлекс Моро (вскидывание и сведение рук при испуге), опоры и автоматической походки, ползания (Бауэра), защитный (поворот головы на бок в положении на животе), физиологический рефлекс Бабинского.'
           },
           npr: {
-            motor: 'Хаотические, атетозоподобные движения конечностей без чёткой координации. В положении на животе к концу 1-го месяца ребёнок пытается приподнять и на 1–2 секунды удержать голову.',
-            sensory: 'Зрение: врождённая дальнозоркость, оптимальный фокус — 20–30 см (расстояние от груди до лица матери). Кратковременная фиксация взгляда на лице/ярком предмете, физиологическое непостоянное косоглазие. Слух: вздрагивание и мигание на громкий звук (акустико-пальпебральный рефлекс). Хорошо развиты вкус (предпочтение сладкого) и обоняние (узнавание запаха матери).',
-            speech: 'Коммуникация через крик (голод, дискомфорт, холод). К 3–4 неделям крик становится интонационно дифференцированным, появляются отдельные гортанные звуки при комфорте.',
-            social: 'Формирование симбиотической связи с матерью. Насыщение базовых витальных и тактильных потребностей закладывает основу эмоциональной безопасности («контакт кожа к коже»).'
+            motor: 'Беспорядочные, некоординированные движения ручек и ножек. В положении на животе к концу 1-го месяца малыш пытается приподнять и на 1–2 секунды удержать голову.',
+            sensory: 'Зрение: физиологическая дальнозоркость; лучше всего ребёнок видит объекты в 20–30 см (расстояние от груди до лица матери). Появляется кратковременная фиксация взгляда, возможно непостоянное косоглазие. Слух: вздрагивание и зажмуривание на громкий звук. Хорошо развиты вкус (предпочитает сладкое) и обоняние (узнаёт запах матери).',
+            speech: 'Главный сигнал — крик (голод, холод, мокрые пелёнки, боль). К 3–4-й неделе крик приобретает разные оттенки, а в состоянии комфорта появляются отдельные гортанные звуки.',
+            social: 'Формируется тесная эмоциональная и телесная привязанность к матери. Своевременный уход, кормление и контакт «кожа к коже» дают малышу ощущение безопасности.'
           },
           psychology: {
-            situation: 'По Л.С. Выготскому — «Пра-мы»: физически ребёнок отделён от матери, но психически и биологически полностью зависит от взрослого.',
-            leadingActivity: 'Переход к непосредственно-эмоциональному общению (предпосылки формируются к концу месяца).',
-            newFormations: 'Индивидуальная психическая жизнь, появление зрительного и слухового сосредоточения (замирание при рассматривании лица или слушании голоса).',
-            piaget: 'Сенсомоторная стадия, подстадия 1 (0–1 мес.): упражнение врождённых рефлексов (сосание, схватывание).',
+            situation: 'По Л.С. Выготскому — ситуация «Пра-Мы»: физически младенец уже отделён от матери (перерезана пуповина), но полностью зависит от заботы взрослого.',
+            leadingActivity: 'К концу первого месяца закладывается ведущая деятельность — непосредственно-эмоциональное общение со взрослым.',
+            newFormations: 'Зарождение индивидуальной психической жизни, появление зрительного и слухового сосредоточения (малыш замирает, глядя на лицо или прислушиваясь к голосу).',
+            piaget: 'Сенсомоторная стадия (подстадия 1, 0–1 мес.): тренировка врождённых рефлексов (сосание, схватывание, слежение взглядом).',
             erikson: 'Начало стадии «Базовое доверие против базового недоверия» (0–1 год).',
-            crisis: 'Кризис ⚡ — резкий скачок от внутриутробного гомеостаза к самостоятельному дыханию, терморегуляции и энтеральному питанию; в первые дни — физиологическая потеря массы тела (до 6–8%) и транзиторные состояния.'
+            crisis: 'Кризис новорождённости ⚡ — резкий переход к лёгочному дыханию, самостоятельному поддержанию температуры и питанию через ЖКТ. На первой неделе наблюдаются пограничные (транзиторные) состояния: физиологическая потеря массы тела (до 6–8%), физиологическая желтуха и др.'
           },
           practice: [
-            { title: 'Контакт «кожа к коже» и отклик на крик', text: 'Немедленный отзыв взрослого на плач не «разбалует» младенца, а стабилизирует уровень кортизола и формирует базовое доверие к миру.' },
-            { title: 'Выкладывание на живот', text: 'Короткие сессии на твёрдой поверхности перед кормлением (под присмотром) тренируют мышцы шеи и профилактируют кишечные колики.' },
-            { title: 'Оптимальная дистанция общения', text: 'Разговаривайте с малышом мягким, мелодичным голосом на расстоянии 20–30 см от его лица, ловя моменты зрительного сосредоточения.' }
+            { title: 'Контакт «кожа к коже» и отклик на плач', text: 'Быстрый ответ взрослого на крик не «приучает к рукам», а снижает уровень гормонов стресса у младенца и формирует чувство защищённости.' },
+            { title: 'Выкладывание на живот', text: 'Короткое выкладывание на ровную твёрдую поверхность перед кормлением (только под присмотром!) укрепляет мышцы шеи, спины и помогает отхождению газов.' },
+            { title: 'Общение в зоне чёткого зрения', text: 'Разговаривайте с малышом ласковым голосом на расстоянии 20–30 см от его лица, улыбаясь и удерживая зрительный контакт.' }
           ],
           flags: [
-            'Отсутствие или резкое ослабление сосательного и глотательного рефлексов, срыгивания «фонтаном».',
-            'Выраженная асимметрия мышечного тонуса и рефлексов (например, отсутствие движения одной рукой — подозрение на парез Эрба) или резкая общая гипотония («поза лягушки»).',
-            'Отсутствие реакции вздрагивания или замирания на резкий громкий звук (риск тугоухости).',
-            'Монотонный пронзительный «мозговой» крик, судороги, постоянный тремор подбородка и конечностей в покое.'
+            'Отсутствие или резкое ослабление сосательного и глотательного рефлексов, частые обильные срыгивания «фонтаном».',
+            'Выраженная асимметрия тонуса и рефлексов (например, одна рука не двигается — подозрение на родовую травму плечевого сплетения) или резкая общая мышечная слабость («поза лягушки»).',
+            'Отсутствие реакции вздрагивания или мигания на внезапный громкий звук (риск врождённой тугоухости).',
+            'Монотонный пронзительный «мозговой» крик, судороги, постоянное дрожание (тремор) подбородка и рук в спокойном состоянии.'
           ],
-          iconSvg: '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="9" r="4.5"/><path d="M5 19c0-3.5 3.1-5.5 7-5.5s7 2 7 5.5"/><path d="M10 9h.01M14 9h.01"/></svg>'
+          iconSvg: '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7" r="3"/><path d="M8.5 11.5C7 13 6.8 17 8.5 19.5c1 1.3 2.2 2 3.5 2s2.5-.7 3.5-2c1.7-2.5 1.5-6.5 0-8-1-.9-2.2-1.2-3.5-1.2s-2.5.3-3.5 1.2z"/><path d="M7.8 14.2l8.4 3.2M16.2 14.2l-4.2 1.6"/></svg>'
         },
         {
           id: 3,
@@ -2346,84 +2604,84 @@
           colors: { bg: 'var(--s3-bg)', accent: 'var(--s3-accent)', text: 'var(--s3-text)', border: 'var(--s3-border)' },
           swatch: '#0369A1',
           hasCrisis: true,
-          crisisShort: 'Кризис 1 года ⚡',
-          summary: 'Самый бурный темп развития за всю жизнь: от удержания головы и «комплекса оживления» до пинцетного захвата, первых шагов и первых слов.',
+          crisisShort: 'Быстрое развитие',
+          summary: 'Самый быстрый темп развития за всю жизнь: от удержания головы и «комплекса оживления» до пинцетного захвата, первых шагов и первых слов.',
           tooltipMain: 'Комплекс оживления (2–3 мес.), перевороты и сидение (5–7 мес.), пинцетный захват (9 мес.), первые шаги и слова (12 мес.).',
           nodes: [
-            { label: '1–3 м: Комплекс оживления', layer: 'social', tip: 'Улыбка, гуление и двигательная радость при виде взрослого — граница конца новорожденности.' },
-            { label: '4–6 м: Перевороты и лепет', layer: 'motor', tip: 'Целенаправленный захват игрушек, переворот со спины на живот, слоговой лепет.' },
-            { label: '7–9 м: Ползание и пинцетный захват', layer: 'motor', tip: 'Четвереньки, вставание у опоры, точный захват двумя пальцами.' },
-            { label: '10–12 м: Шаги, указ. жест, слова ⚡', layer: 'speech', tip: 'Совместное внимание, первые 5–10 слов, кризис 1 года.' },
-            { label: 'Нет гуления/сидения 🚩', layer: 'flags', tip: 'Отсутствие гуления к 4–5 мес., сидения к 9 мес. или указательного жеста к 12 мес.' }
+            { label: '1–3 м: Комплекс оживления', layer: 'social', tip: 'Радостная улыбка, гуление и оживление рук и ног при появлении взрослого.' },
+            { label: '4–6 м: Перевороты и лепет', layer: 'motor', tip: 'Осознанный захват игрушек ладонью, переворот со спины на живот, слоговой лепет.' },
+            { label: '7–9 м: Ползание и пинцетный захват', layer: 'motor', tip: 'Сидение, ползание на четвереньках, вставание у опоры, захват двумя пальцами.' },
+            { label: '10–12 м: Шаги, указ. жест, слова', layer: 'speech', tip: 'Указательный жест, разделение интереса со взрослым, первые 5–10 слов, кризис 1 года.' },
+            { label: 'Нет гуления/сидения 🚩', layer: 'flags', tip: 'Отсутствие гуления к 4–5 мес., самостоятельного сидения к 9 мес. или указательного жеста к 12 мес.' }
           ],
           cns: {
-            structures: 'К 1 году масса мозга удваивается (с ~380–400 г до 850–950 г) за счёт стремительного роста дендритных связей и глиальных клеток. Плотность синапсов в сенсорной и моторной коре взлетает в десятки раз.',
-            myelination: 'Идёт волнообразная миелинизация по цефалокаудальному и проксимодистальному законам: от шейного отдела и глазодвигательных путей к корково-спинномозговому (пирамидному) тракту, позволяющему контролировать кисть и ноги.',
-            reflexes: 'Угасание большинства врождённых безусловных рефлексов к 3–5 месяцам (рефлекс Моро, автоматическая походка, Бауэра) — критический маркер зрелости тормозных функций коры! На их месте формируются условные рефлексы и произвольные движения (установочные рефлексы Ландау и цепные выпрямительные).'
+            structures: 'К 9 месяцам масса головного мозга удваивается, а к 1 году увеличивается в 2–2,5 раза (до 850–950 г) за счёт бурного роста отростков нейронов (дендритов) и вспомогательных клеток. Количество межнейронных связей (синапсов) в коре возрастает многократно.',
+            myelination: 'Нервные пути покрываются миелином сверху вниз (от шеи к ногам) и от центра к периферии (от плеча к пальцам кисти). Созревают пирамидные пути, позволяющие управлять точными движениями рук и ног.',
+            reflexes: 'К 3–5 месяцам угасает большинство врождённых рефлексов новорождённого (Моро, автоматической походки, ползания Бауэра, хватательный) — это важный признак созревания тормозного контроля коры. Вместо них формируются условные рефлексы, выпрямительные реакции (рефлекс Ландау) и осознанные движения.'
           },
           nprMonthly: [
             {
               month: '1 мес.',
-              motor: 'В положении на животе пытается удерживать голову 5–10 сек. Физиологический гипертонус сгибателей сохраняется, кисти сжаты в кулачки.',
-              sensory: 'Плавное прослеживание за ярким предметом в горизонтальной плоскости; зрительное и слуховое сосредоточение на лице взрослого.',
-              speech: 'Первые короткие гортанные звуки («кх», «а-а») в ответ на разговор взрослого; дифференцированный крик.',
-              social: 'Первая спонтанная («физиологическая») улыбка во сне и робкая ответная улыбка к концу месяца.'
+              motor: 'Лёжа на животе пытается приподнять и удержать голову 5–10 сек. Сохраняется физиологический гипертонус сгибателей, кисти сжаты в кулачки.',
+              sensory: 'Плавно следит глазами за яркой игрушкой в горизонтальной плоскости; сосредоточивается на лице и голосе взрослого.',
+              speech: 'Первые короткие гортанные звуки («кх», «а-а») в ответ на ласковую речь; крик различается по оттенкам.',
+              social: 'Появляется первая робкая ответная улыбка при общении со взрослым (к концу 1-го месяца).'
             },
             {
               month: '3 мес.',
-              motor: 'Уверенно держит голову в вертикальном положении и на животе с опорой на предплечья. Тонус рук снижается, кисти раскрываются, тянется к игрушкам.',
-              sensory: 'Следит за предметом во всех направлениях, поворачивает голову на звук, активно рассматривает свои руки («открытие рук»).',
-              speech: 'Протяжное певучее гуление («агу», «гы», «а-а-а») с гласными звуками, вокализирует при общении.',
-              social: 'Яркий «КОМПЛЕКС ОЖИВЛЕНИЯ» при приближении взрослого: улыбка, двигательное оживление рук и ног, радостное гуление.'
+              motor: 'Уверенно держит голову в вертикальном положении и на животе, опираясь на предплечья. Повышенный тонус в руках снижается, ладошки раскрываются, тянется к игрушкам.',
+              sensory: 'Следит за предметом во всех направлениях, поворачивает голову на источник звука, с интересом рассматривает свои руки.',
+              speech: 'Протяжное певучее гуление («агу», «гы», распев гласных) во время общения.',
+              social: 'Яркий «КОМПЛЕКС ОЖИВЛЕНИЯ» при приближении близкого человека: улыбка, активные движения рук и ног, радостное гуление.'
             },
             {
               month: '6 мес.',
-              motor: 'Свободно переворачивается со спины на живот и обратно, опирается на выпрямленные руки, начинает присаживаться (некоторые сидят с поддержкой). Уверенный захват игрушки всей ладонью и перекладывание из руки в руку.',
-              sensory: 'Дифференцирует формы, тянется к упавшей игрушке, изучает предметы ртом и ощупыванием.',
-              speech: 'Активный ЛЕПЕТ — произносит повторные слоги («ба-ба», «ма-ма», «та-та»). Прислушивается к интонациям.',
-              social: 'Чёткое различение «свой–чужой»: радуется близким, настораживается или плачет при виде незнакомца; понимает эмоциональный тон голоса.'
+              motor: 'Свободно переворачивается со спины на живот и обратно, опирается на выпрямленные руки, начинает присаживаться (некоторые сидят с поддержкой). Захватывает игрушку всей ладонью и перекладывает из руки в руку.',
+              sensory: 'Ищет упавшую игрушку, различает форму предметов, изучает их ощупыванием и ртом.',
+              speech: 'Начало СЛОГОВОГО ЛЕПЕТА — повторные слоги («ба-ба», «ма-ма», «та-та»). Улавливает интонацию речи.',
+              social: 'Чётко делит людей на «своих» и «чужих»: радуется родным, настораживается или плачет при виде незнакомца; понимает тон голоса.'
             },
             {
               month: '9 мес.',
-              motor: 'Самостоятельно сидит с прямой спиной, ползает на четвереньках, встаёт на ноги, держась за опору. Формируется точный ПИНЦЕТНЫЙ ЗАХВАТ (большим и указательным пальцами).',
-              sensory: 'Понимает постоянство объекта (по Пиаже): ищет игрушку, спрятанную на его глазах под платком. Открывает коробочки, стучит предметом о предмет.',
-              speech: 'Разнообразный лепет с интонацией диалога; понимает простые слова-инструкции («дай», «нельзя», «где мама?»), откликается на имя.',
-              social: 'Страх сепарации от матери, играет в «ладушки» и «ку-ку», активно подражает мимике и жестам взрослых.'
+              motor: 'Самостоятельно сидит с прямой спиной (окно ВОЗ: 3,8–9,2 мес.), ползает на четвереньках (окно ВОЗ: 5,2–13,5 мес.), встаёт у опоры. Формируется точный ПИНЦЕТНЫЙ ЗАХВАТ (большим и указательным пальцами).',
+              sensory: 'Понимает постоянство предмета: ищет игрушку, спрятанную на его глазах под платком. Открывает коробочки, стучит одним предметом о другой.',
+              speech: 'Разнообразный лепет с интонацией диалога; понимает простые слова и просьбы («дай», «ладушки», «где мама?»), откликается на своё имя.',
+              social: 'Тревога при разлуке с матерью, играет в «ладушки» и «ку-ку», активно повторяет мимику и жесты взрослых.'
             },
             {
               month: '12 мес.',
-              motor: 'Стоит без опоры, делает первые самостоятельные шаги (норма ВОЗ для ходьбы без поддержки: 8,5–17,5 мес.). Уверенно пьёт из чашки, вкладывает мелкие предметы в ёмкость.',
-              sensory: 'Устанавливает причинно-следственные связи (тянет за верёвочку, чтобы достать машинку). Различает простые формы (круг/куб).',
-              speech: 'Произносит первые 5–10 осмысленных слов (включая звукоподражания «ав-ав», «би-би»); понимает до 30–50 слов и простые просьбы.',
-              social: 'Ключевой маркер: УКАЗАТЕЛЬНЫЙ ЖЕСТ (протоимперативный и протодекларативный — деление интересом со взрослым). Начало кризиса 1 года.'
+              motor: 'Стоит без опоры, делает первые самостоятельные шаги (окно ВОЗ для ходьбы без поддержки: 8,2–17,6 мес.). Пьёт из чашки, складывает мелкие предметы в ёмкость.',
+              sensory: 'Понимает простые причинно-следственные связи (тянет за верёвочку, чтобы подтянуть машинку). Собирает пирамидку без учёта размера колец.',
+              speech: 'Произносит первые 5–10 осмысленных облегчённых слов («мама», «дай», звукоподражания «ав-ав», «би-би»); понимает десятки слов и выполняет простые поручения.',
+              social: 'Ключевой маркер — УКАЗАТЕЛЬНЫЙ ЖЕСТ (просит предмет и делится интересом со взрослым, переводя взгляд с игрушки на родителя). Начало кризиса 1 года.'
             }
           ],
           npr: {
-            motor: 'Революция мобильности: от лёжа на спине -> удержание головы (2–3 м) -> перевороты (4–5 м) -> сидение (6–8 м) -> четвереньки (7–9 м) -> стояние и ходьба (10–14 м). Тонкая моторика: ладонный захват -> пинцетный захват (9–10 м).',
-            sensory: 'Бинокулярное зрение, зрительно-моторная координация «глаз–рука», формирование перцептивной схемы постоянства объекта (игрушка продолжает существовать, даже если её накрыли платком).',
-            speech: 'Чёткая стадийность: крик -> гуление (2–4 м) -> лепет (5–8 м) -> лепетные цепи (9–10 м) -> первые осмысленные слова и понимание обращённой речи (11–12 м).',
-            social: 'Центральное достижение — формирование надёжной привязанности (по Дж. Боулби) и указательного жеста как основы совместного внимания.'
+            motor: 'Быстрый скачок двигательных умений: удержание головы (2–3 м) -> перевороты (4–5 м) -> сидение (6–8 м) -> ползание на четвереньках (7–9 м) -> стояние и ходьба (10–14 м). Мелкая моторика: захват ладонью -> пинцетный захват (9–10 м).',
+            sensory: 'Формирование объёмного (бинокулярного) зрения, координации «глаз–рука», понимание постоянства предмета (игрушка существует, даже если её накрыли платком).',
+            speech: 'Чёткая последовательность: крик -> гуление (2–4 м) -> слоговой лепет (5–8 м) -> лепетные цепочки (9–10 м) -> первые осмысленные слова и понимание обращённой речи (11–12 м).',
+            social: 'Главное достижение — надёжная привязанность к близкому взрослому (по Дж. Боулби) и указательный жест как основа совместного внимания.'
           },
           psychology: {
-            situation: 'Эмоциональное единство со взрослым (младенец открывает предметный мир только через руки и эмоции матери).',
+            situation: 'Эмоциональное единство со взрослым: младенец познаёт мир предметов только через руки и эмоциональные реакции матери.',
             leadingActivity: 'Непосредственно-эмоциональное общение со взрослым (по Д.Б. Эльконину).',
-            newFormations: 'Комплекс оживления (в 2–3 мес.), потребность в общении, первичная привязанность, прямохождение и первые слова (к 1 году).',
-            piaget: 'Сенсомоторная стадия (подстадии 2–4): от первичных круговых реакций к координации схем и поиску спрятанного предмета.',
-            erikson: '«Базовое доверие против базового недоверия» (исход — чувство безопасности или тревожная настороженность).',
-            crisis: 'Кризис 1 года ⚡ — возникает при овладении ходьбой и появлении «автономной речи» (понятной только близким). Ребёнок уже хочет действовать сам, но ещё не умеет, отсюда первые бурные аффекты протеста (падает на пол, кричит при запрете).'
+            newFormations: 'Комплекс оживления (к 2–3 мес.), потребность в общении, первичная привязанность, прямохождение и первые слова (к 1 году).',
+            piaget: 'Сенсомоторная стадия (подстадии 2–4): от повторения случайных приятных движений к поиску спрятанного предмета.',
+            erikson: '«Базовое доверие против базового недоверия» (результат — чувство безопасности или тревожная настороженность к миру).',
+            crisis: 'Быстрое развитие ⚡ — возникает с началом самостоятельной ходьбы и появлением «автономной речи» (слогов-обозначений, понятных только близким). Малыш уже хочет действовать сам, но ещё не умеет, поэтому при запретах возникают первые бурные протесты (крик, плач, падение на пол).'
           },
           practice: [
-            { title: 'Эмоциональный отклик и «речь матери»', text: 'Отвечайте на гуление и лепет в режиме диалога с паузами («бэби-ток»), называйте все действия и предметы — это питает речевые зоны мозга.' },
-            { title: 'Безопасное пространство на полу', text: 'Минимизируйте манежи и ходунки: свободное ползание на тёплом полу укрепляет межполушарные связи и правильную осанку.' },
-            { title: 'Сенсорно-моторные игры', text: 'Игры «ку-ку» (постоянство объекта), пирамидки, стаканчики-вкладыши и пальчиковые игры («сорока-ворона»).' }
+            { title: 'Диалог и напевная речь взрослого', text: 'Отвечайте на гуление и лепет с небольшими паузами, как в настоящем разговоре; чётко и ласково называйте действия и предметы вокруг малыша.' },
+            { title: 'Свободное пространство на полу', text: 'Не злоупотребляйте манежем и ходунками: ползание по тёплому безопасному полу естественно укрепляет мышцы спины, координацию и готовит к ходьбе.' },
+            { title: 'Развивающие игры по возрасту', text: 'Игры «ку-ку» и «ладушки», погремушки разной фактуры, стаканчики-вкладыши, пирамидки и простые пальчиковые игры.' }
           ],
           flags: [
-            'К 3–4 месяцам: не держит голову, отсутствует зрительный контакт, ответная улыбка и комплекс оживления.',
-            'К 6 месяцам: не переворачивается, не тянется к игрушкам, сохраняются ранние патологические рефлексы или выраженный гипертонус; нет гуления.',
-            'К 9 месяцам: не сидит самостоятельно без опоры, отсутствует лепет со слогами («ба», «ма», «да»), не реагирует на своё имя.',
-            'К 12 месяцам: отсутствует указательный жест, нет разделённого внимания (не смотрит туда, куда показывает взрослый), не использует жесты («пока-пока»), не понимает простые слова; потеря ранее приобретённых навыков в любом возрасте!'
+            'К 3–4 месяцам: не держит голову, не фиксирует взгляд на лице взрослого, нет ответной улыбки и комплекса оживления.',
+            'К 6 месяцам: не переворачивается, не тянется к игрушкам, сохраняется выраженный гипертонус или врождённые рефлексы (например, Моро); отсутствует гуление.',
+            'К 9 месяцам: не сидит самостоятельно без поддержки, нет слогового лепета («ба», «ма», «да»), не откликается на имя.',
+            'К 12 месяцам: нет указательного жеста и совместного внимания (не смотрит туда, куда показывает взрослый), не использует жесты («пока-пока»), не понимает простые слова; утрата ранее приобретённых навыков в любом возрасте!'
           ],
-          iconSvg: '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="3.5"/><path d="M8 14c0-1.5 1.8-2.5 4-2.5s4 1 4 2.5v3.5a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2V14z"/><path d="M9.5 6.5c.8-1.2 4.2-1.2 5 0"/></svg>'
+          iconSvg: '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="15.5" cy="8.5" r="4.5"/><path d="M12.3 5.3l6.4 6.4"/><path d="M12.3 11.7L7.5 16.5"/><circle cx="6" cy="18" r="2.1"/><circle cx="15.8" cy="6.8" r="0.7" fill="currentColor"/><circle cx="17.2" cy="8.2" r="0.7" fill="currentColor"/></svg>'
         },
         {
           id: 4,
@@ -2433,45 +2691,45 @@
           colors: { bg: 'var(--s4-bg)', accent: 'var(--s4-accent)', text: 'var(--s4-text)', border: 'var(--s4-border)' },
           swatch: '#15803D',
           hasCrisis: true,
-          crisisShort: 'Кризис 3 лет «Я сам!» ⚡',
-          summary: 'Предметно-манипулятивная деятельность, прямохождение, взрывной рост словаря (до 1000+ слов), наглядно-действенное мышление и кризис 3 лет.',
-          tooltipMain: 'Ведущая деятельность — предметная; взрыв речи (фраза из 3+ слов к 3 г.); кризис 3 лет (негативизм, упрямство, «Я сам!»).',
+          crisisShort: 'Кризис «Я сам!»',
+          summary: 'Освоение действий с предметами, уверенная ходьба, резкий рост словарного запаса (до 1000+ слов), наглядно-действенное мышление и кризис 3 лет.',
+          tooltipMain: 'Ведущая деятельность — предметная; взрыв речи (фразы из 3+ слов к 3 годам); кризис 3 лет (негативизм, упрямство, «Я сам!»).',
           nodes: [
-            { label: 'Предметная деятельность', layer: 'crisis', tip: 'Освоение культурного назначения предметов: ложкой едят, расчёской чешут, кубики ставят.' },
-            { label: 'Словарный взрыв (1000+ слов)', layer: 'speech', tip: 'От первых слов к двухсловной фразе (1,5–2 г.) и развёрнутым предложениям (2,5–3 г.).' },
-            { label: 'Мышление в действии', layer: 'sensory', tip: 'Наглядно-действенное мышление и освоение сенсорных эталонов (форма, цвет, величина).' },
-            { label: 'Кризис 3 лет ⚡', layer: 'crisis', tip: 'Семизвездие симптомов Л.С. Выготского: негативизм, упрямство, строптивость, своеволие, протест, обесценивание, деспотизм.' },
-            { label: 'Нет фразовой речи к 2,5 г. 🚩', layer: 'flags', tip: 'Отсутствие двусловных фраз к 2 годам, эхолалия или отсутствие зрительного контакта.' }
+            { label: 'Предметная деятельность', layer: 'crisis', tip: 'Освоение правильного назначения бытовых вещей: ложкой едят, расчёской причёсываются, из кубиков строят.' },
+            { label: 'Словарный взрыв (1000+ слов)', layer: 'speech', tip: 'Переход от отдельных слов к фразам из 2 слов (1,5–2 г.) и связным предложениям (2,5–3 г.).' },
+            { label: 'Мышление в действии', layer: 'sensory', tip: 'Наглядно-действенное мышление: решение задач через реальные пробы с предметами.' },
+            { label: 'Кризис «Я сам!» ⚡', layer: 'crisis', tip: '«Семизвездие» симптомов Л.С. Выготского: негативизм, упрямство, строптивость, своеволие, протест, обесценивание, деспотизм.' },
+            { label: 'Нет фразовой речи к 2,5 г. 🚩', layer: 'flags', tip: 'Отсутствие фраз из 2 слов к 2 годам, механическое повторение чужих фраз (эхолалии) или избегание контакта.' }
           ],
           cns: {
-            structures: 'К 3 годам масса мозга достигает 1000–1100 г (~75–80% от мозга взрослого). Максимальная плотность синапсов в коре («синаптическое изобилие» — в 2 раза больше синапсов, чем у взрослого). Начинается избирательный синаптический прунинг (сохраняются используемые связи).',
-            myelination: 'Интенсивная миелинизация ассоциативных волокон, соединяющих речевые центры Вернике (понимание) и Брока (продукция речи), а также мозолистого тела (межполушарное взаимодействие).',
-            reflexes: 'Совершенствуется координация двигательной коры и мозжечка: формируются сложные моторные автоматизмы (ходьба по лестнице, бег, прыжки, удержание ложки и карандаша), контроль над сфинктерами (готовность к горшку в 18–24 мес.).'
+            structures: 'К 3 годам масса мозга утраивается и достигает 1050–1150 г (~75–80% от массы мозга взрослого). В коре формируется максимальное число нервных связей (синапсов) — почти вдвое больше, чем у взрослого. Далее начинается естественный отбор связей: активно используемые укрепляются, а лишние удаляются.',
+            myelination: 'Быстро покрываются миелином волокна, соединяющие центры понимания речи (зона Вернике) и произнесения речи (зона Брока), а также мозолистое тело (связь между левым и правым полушариями).',
+            reflexes: 'Совершенствуется совместная работа двигательной коры и мозжечка: формируются сложные навыки (ходьба по лестнице, бег, прыжки, удержание ложки и карандаша), а также сознательный контроль мочеиспускания и дефекации (готовность к горшку в 1,5–2 года).'
           },
           npr: {
-            motor: '1,5 года: уверенная ходьба, приседает за игрушкой, поднимается по лестнице за руку. 2 года: бегает, пинает мяч, перелистывает страницы по одной, строит башню из 4–6 кубиков. 3 года: прыгает на двух ногах, едет на трёхколёсном велосипеде, самостоятельно ест, держит карандаш пальцами и рисует круг/крест.',
-            sensory: 'Усвоение сенсорных эталонов (3–4 основных цвета, круг–квадрат–треугольник, большой–маленький). Мышление НАГЛЯДНО-ДЕЙСТВЕННОЕ: ребёнок решает задачу через реальные пробы и ошибки с предметами («орудийные действия»).',
-            speech: 'К 1,5 г. — 30–50 слов; в 1,8–2 года — лексический взрыв и 2-словная фраза («дай пить», «мама би-би»); к 2,5 г. — вопросы «Что это?», «Где?»; к 3 годам — словарь 1000–1500 слов, грамматически оформленные предложения из 3–5 слов, употребляет местоимение «Я».',
-            social: 'Переход от игры «рядом» к процессуальной игре с предметами-заместителями. Осознаёт своё имя, пол и границы «Я» (узнаёт себя в зеркале — тест с пятном с 18–24 мес.).'
+            motor: '1,5 года: уверенно ходит, приседает за игрушкой, поднимается по лестнице за руку, сам ест густую пищу ложкой. 2 года: бегает, пинает мяч, перелистывает страницы по одной, строит башню из 4–6 кубиков. 3 года: прыгает на двух ногах, ездит на трёхколёсном велосипеде, держит карандаш пальцами и рисует круг/крест.',
+            sensory: 'Усваивает сенсорные эталоны: основные цвета, простые формы (круг, квадрат, треугольник), величину (большой–маленький). Мышление НАГЛЯДНО-ДЕЙСТВЕННОЕ: ребёнок решает задачу руками, путём реальных проб с предметами.',
+            speech: 'К 1,5 годам — 20–50 слов; к 1,8–2 годам — быстрый рост словаря и двухсловная фраза («дай пить», «мама би-би»); к 2,5 годам — вопросы «Что это?», «Где?»; к 3 годам — словарь 1000–1500 слов, предложения из 3–5 слов, активно говорит о себе «Я».',
+            social: 'Переход от игры «рядом» с другими детьми к игре с предметами-заместителями (палочка как ложка или градусник). Осознаёт своё имя, пол и границы «Я» (узнаёт себя в зеркале с 1,5–2 лет).'
           },
           psychology: {
-            situation: 'Совместная деятельность со взрослым в предметном мире («Ребёнок – Предмет – Взрослый»). Взрослый — образец способа действия с вещами.',
-            leadingActivity: 'Предметно-манипулятивная (орудийно-предметная) деятельность (по Д.Б. Эльконину).',
-            newFormations: 'Речь как средство мышления и общения, наглядно-действенное мышление, «Я-система» (личностное действие «Я сам!»), гордость за достижения.',
-            piaget: 'Завершение сенсомоторной стадии (к 2 г. — символизация) и начало дооперациональной стадии (символическая функция, игра-понарошку).',
-            erikson: '«Автономия против стыда и сомнений» (1–3 года): ребёнок учится управлять телом и выбором.',
-            crisis: 'Кризис 3 лет ⚡ — перестройка социальной ситуации из-за психологического отделения «Я» от взрослого. Классическое «семизвездие» Л.С. Выготского: 1) негативизм (делаю наоборот именно потому, что попросили), 2) упрямство (настаиваю, потому что сказал я), 3) строптивость (против всего уклада), 4) своеволие («я сам!»), 5) протест-бунт, 6) обесценивание (ругает любимые вещи/близких), 7) деспотизм (требует подчинения взрослых).'
+            situation: 'Совместная деятельность со взрослым в мире предметов («Ребёнок – Предмет – Взрослый»). Взрослый показывает правильный способ действия с вещами.',
+            leadingActivity: 'Предметно-манипулятивная (предметно-орудийная) деятельность (по Д.Б. Эльконину).',
+            newFormations: 'Речь как инструмент мышления и общения, наглядно-действенное мышление, осознание собственного «Я» («Я сам!»), гордость за собственные успехи.',
+            piaget: 'Завершение сенсомоторной стадии (к 2 г. — появление символических игр «понарошку») и начало дооперациональной стадии.',
+            erikson: '«Автономия против стыда и сомнений» (1–3 года): ребёнок учится управлять своим телом, навыками опрятности и делать простой выбор.',
+            crisis: 'Кризис «Я сам!» ⚡ — переломный момент, связанный с отделением «Я» от взрослого. Семь симптомов по Л.С. Выготскому: 1) негативизм (отказ от просьбы именно потому, что попросил взрослый), 2) упрямство (настаивает на своём решении), 3) строптивость (протест против привычного режима), 4) своеволие («Я сам!»), 5) протест-бунт, 6) обесценивание (грубость к любимым игрушкам/близким), 7) деспотизм (попытка командовать взрослыми).'
           },
           practice: [
-            { title: 'Поддержка самостоятельности в границах', text: 'Предлагайте «выбор без выбора» («Ты наденешь синюю куртку или зелёную?»): это снижает негативизм и тренирует автономию.' },
-            { title: 'Сенсорно-предметная среда', text: 'Сортеры, конструкторы, пластилин, шнуровки, игры с водой и крупами под присмотром развивают ручной праксис и речь.' },
-            { title: 'Ограничение гаджетов (по рекомендациям ВОЗ)', text: 'До 2 лет — исключить пассивный экран, в 2–3 года — не более 30–40 мин/сутки с совместным обсуждением, чтобы не тормозить живую диалоговую речь.' }
+            { title: 'Самостоятельность в разумных границах', text: 'Предлагайте «выбор без выбора» («Ты наденешь синюю футболку или жёлтую?»): это даёт ребёнку чувство самостоятельности и снижает число истерик.' },
+            { title: 'Предметная среда для развития рук и речи', text: 'Сортеры, вкладыши, крупные конструкторы, лепка, шнуровки и бытовые поручения («помоги протереть стол») напрямую стимулируют развитие речевых центров.' },
+            { title: 'Ограничение экранов (по рекомендациям ВОЗ)', text: 'До 2 лет — исключить пассивный просмотр мультфильмов и гаджетов; в 2–3 года — не более 30–60 минут в день (чем меньше, тем лучше) с живым обсуждением увиденного.' }
           ],
           flags: [
-            'К 18 месяцам: не ходит самостоятельно, не использует указательный жест, не произносит даже простых слов-обозначений (мама, дай).',
-            'К 2 годам: менее 20–30 слов, нет двухсловной фразы, не понимает простых двухступенчатых инструкций («возьми мяч и дай папе»), нет имитации действий.',
-            'К 3 годам: речь непонятна даже близким, нет развёрнутой фразы, выраженные эхолалии (механическое повторение фраз без смысла), избегание контакта со сверстниками, стереотипные движения или фиксация только на одном действии.',
-            'Любой регресс речи, навыков самообслуживания или социальных контактов.'
+            'К 18 месяцам: не ходит самостоятельно, не использует указательный жест, нет даже простых слов-обозначений (мама, дай).',
+            'К 2 годам: менее 20–30 слов, нет фразы из 2 слов, не понимает простые просьбы («возьми мяч и принеси»), не повторяет действия взрослых.',
+            'К 3 годам: речь непонятна даже близким, нет связных фраз, выраженные эхолалии (механическое повторение чужих слов без смысла), избегание общения с детьми, однообразные повторяющиеся движения.',
+            'Утрата уже сформированной речи, навыков опрятности или контакта с близкими в любом возрасте.'
           ],
           iconSvg: '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/><rect x="8.5" y="5" width="7" height="7" rx="1.5"/></svg>'
         },
@@ -2483,47 +2741,47 @@
           colors: { bg: 'var(--s5-bg)', accent: 'var(--s5-accent)', text: 'var(--s5-text)', border: 'var(--s5-border)' },
           swatch: '#B45309',
           hasCrisis: true,
-          crisisShort: 'Кризис 7 лет ⚡',
-          summary: 'Расцвет сюжетно-ролевой игры, воображения и наглядно-образного мышления; появление произвольности, соподчинения мотивов и готовности к школе.',
-          tooltipMain: 'Сюжетно-ролевая игра, наглядно-образное мышление (Пиаже), «возраст почемучек», произвольность и кризис 7 лет.',
+          crisisShort: 'Изменение самосознания',
+          summary: 'Расцвет сюжетно-ролевой игры, воображения и наглядно-образного мышления; развитие самоконтроля, соподчинения мотивов и готовности к школе.',
+          tooltipMain: 'Сюжетно-ролевая игра, наглядно-образное мышление (Пиаже), «возраст почемучек», самоконтроль и кризис 7 лет.',
           nodes: [
-            { label: 'Сюжетно-ролевая игра', layer: 'social', tip: 'Моделирование социальных отношений («доктор», «семья», «школа») и добровольное подчинение правилам роли.' },
-            { label: 'Наглядно-образное мышление', layer: 'sensory', tip: 'Дооперациональная стадия по Пиаже, преодоление когнитивного эгоцентризма к 6–7 годам.' },
-            { label: 'Связная речь и фонематика', layer: 'speech', tip: 'К 5–6 годам освоение всех звуков, пересказ историй, внутренняя речь для планирования.' },
-            { label: 'Кризис 7 лет ⚡', layer: 'crisis', tip: 'Утрата детской непосредственности, внутренняя позиция школьника, обобщение переживаний.' },
-            { label: 'Нарушение внимания/звуков 🚩', layer: 'flags', tip: 'Отсутствие ролевой игры к 4–5 г., грубые речевые нарушения к 5,5 г. или неумение удерживать правило.' }
+            { label: 'Сюжетно-ролевая игра', layer: 'social', tip: 'Разыгрывание взрослых ролей («больница», «семья», «магазин») и добровольное соблюдение правил игры.' },
+            { label: 'Наглядно-образное мышление', layer: 'sensory', tip: 'Решение задач с опорой на образы в уме (дооперациональная стадия по Пиаже).' },
+            { label: 'Связная речь и все звуки', layer: 'speech', tip: 'К 5–6 годам ребёнок правильно произносит все звуки, пересказывает сказки и осваивает звуковой анализ.' },
+            { label: 'Изменение самосознания ⚡', layer: 'crisis', tip: 'Утрата детской непосредственности, осознание своих переживаний и внутренняя позиция школьника.' },
+            { label: 'Трудности с вниманием/речью 🚩', layer: 'flags', tip: 'Нет ролевой игры к 4–5 г., грубые дефекты речи к 5,5 г. или неспособность соблюдать простые правила.' }
           ],
           cns: {
-            structures: 'К 6–7 годам вес мозга достигает ~90% веса мозга взрослого (1250–1350 г). Происходит скачкообразный рост связей между лобной корой и лимбической системой (эмоциональная саморегуляция).',
-            myelination: 'Завершается миелинизация зрительно-пространственных и речевых трактов; активно созревает третичная височно-теменно-затылочная область (зона ТРО), отвечающая за пространственный синтез и предпосылки счёта и письма.',
-            reflexes: 'К 6–7 годам резко возрастает уровень произвольного коркового торможения (появляется способность сидеть на месте, подавлять импульсивный порыв ради правила игры — «школьная зрелость»).'
+            structures: 'К 6–7 годам масса мозга достигает около 90% массы мозга взрослого (1250–1350 г). Укрепляются связи между лобной корой и эмоциональными центрами (лимбической системой), что помогает лучше управлять своими эмоциями.',
+            myelination: 'Заканчивается миелинизация зрительно-пространственных и речевых путей; активно созревают теменно-височно-затылочные отделы коры, отвечающие за ориентировку в пространстве и готовность к письму и счёту.',
+            reflexes: 'К 6–7 годам заметно усиливается тормозной контроль коры: ребёнок может сидеть спокойно, слушать взрослого и сдерживать импульсивные порывы ради правила («школьная зрелость»).'
           },
           npr: {
-            motor: 'Тонкая моторика: правильный пинцетно-трёхпальцевый захват карандаша, рисование человека (от «головонога» в 3 г. до детализированной фигуры в 6 л.), вырезание ножницами по контуру, застёгивание пуговиц, шнуровка. Крупная моторика: прыжки на одной ноге, ловля мяча, езда на двухколёсном велосипеде.',
-            sensory: 'Доминирует НАГЛЯДНО-ОБРАЗНОЕ мышление (оперирует образами в уме без опоры на реальное действие). Развивается наглядно-схематическое мышление (понимание карт, схем, пиктограмм). К 6–7 годам формируются «модель психического» (Theory of Mind — понимание, что у других людей свои знания и чувства).',
-            speech: '«Возраст почемучек» (4–5 лет). Словотворчество («отмухиваться»), освоение всех групп звуков (шипящие, соноры «Р/Л» к 5–6 годам), развёрнутый рассказ по серии картинок, фонематический слух — база для обучения чтению.',
-            social: 'Переход от эгоцентризма к кооперативной игре по правилам со сверстниками. Формирование моральных оценок («хорошо–плохо»), соподчинение мотивов (способен сделать неинтересное дело ради похвалы или цели), развитие самооценки.'
+            motor: 'Мелкая моторика: правильный трёхпальцевый захват карандаша, рисунок человека (от «головонога» в 3 г. до фигуры с деталями в 6 лет), вырезание ножницами по контуру, застёгивание пуговиц, шнуровка. Крупная моторика: прыжки на одной ноге, ловля мяча, езда на двухколёсном велосипеде.',
+            sensory: 'Преобладает НАГЛЯДНО-ОБРАЗНОЕ мышление (решение задач при помощи представлений и образов в уме), к 6 годам появляются элементы логики и понимания простых схем. Формируется способность понимать мысли и чувства других людей.',
+            speech: '«Возраст почемучек» (4–5 лет) и детское словотворчество. К 5–6 годам осваивается правильное произношение всех звуков (включая шипящие и «Р/Л»), развивается умение связно пересказать рассказ и слышать отдельные звуки в слове (основа чтения и письма).',
+            social: 'Переход к совместным играм по правилам со сверстниками. Появляются моральные оценки («хорошо–плохо»), соподчинение мотивов (умение выполнить скучное, но нужное дело ради цели или похвалы) и осознанная самооценка.'
           },
           psychology: {
-            situation: 'Выход за пределы семьи в мир социальных отношений и норм; взрослый выступает как носитель общественной функции.',
-            leadingActivity: 'Сюжетно-ролевая игра (по Д.Б. Эльконину) — «девятый вал» детского воображения и саморегуляции.',
-            newFormations: 'Соподчинение мотивов, произвольность поведения и внимания, первичные этические инстанции, воображение, внутренняя позиция школьника (к 6–7 г.).',
-            piaget: 'Дооперациональная стадия (2–7 лет): эгоцентризм мышления, анимизм (одушевление неживого), отсутствие понимания сохранения количества (феномены Пиаже со стаканами воды).',
-            erikson: '«Инициатива против чувства вины» (3–6 лет): ребёнок активно придумывает игры, пробует роли, задаёт вопросы.',
-            crisis: 'Кризис 7 лет ⚡ — утрата детской непосредственности (между переживанием и поступком вклинивается интеллектуальная оценка «как это выглядит со стороны?»). Внешние симптомы: манерничанье, кривляние, закрытость, споры о правилах.'
+            situation: 'Выход за пределы узкого круга семьи в мир человеческих отношений; взрослый воспринимается как носитель профессии и общественных норм.',
+            leadingActivity: 'Сюжетно-ролевая игра (по Д.Б. Эльконину) — главная школа общения, воображения и самоконтроля.',
+            newFormations: 'Соподчинение мотивов, произвольное поведение и внимание, первые нравственные нормы, творческое воображение, внутренняя позиция школьника (к 6–7 г.).',
+            piaget: 'Дооперациональная стадия (2–7 лет): эгоцентризм мышления (трудность встать на чужую точку зрения), одушевление неживых предметов, непонимание сохранения объёма (например, считает, что в высоком узком стакане воды больше, чем в широком низком).',
+            erikson: '«Инициатива против чувства вины» (3–6 лет): ребёнок активно придумывает сюжеты, проявляет любознательность, стремится к полезным делам.',
+            crisis: 'Изменение самосознания ⚡ — утрата детской непосредственности (между желанием и поступком появляется раздумье: «как я выгляжу со стороны?»). Симптомы: манерничанье, кривляние, скрытность, споры о правилах, стремление казаться старше.'
           },
           practice: [
-            { title: 'Не заменяйте игру ранним «сидением за партой»', text: 'Именно ролевая игра со сверстниками и настольные игры с правилами лучше всего развивают произвольность (префронтальную кору), нужную в 1 классе.' },
-            { title: 'Подготовка руки и речи без перегрузок', text: 'Лепка, оригами, рисование, чтение вслух с пересказом и обсуждением мотивов героев («Почему заяц так поступил?»).' },
-            { title: 'Приучение к бытовым правилам и режиму', text: 'Посильные домашние обязанности и чёткий режим сна (10–11 часов) поддерживают созревание регуляторных систем мозга.' }
+            { title: 'Не заменяйте игру ранним «сидением за партой»', text: 'Именно ролевая игра с детьми и настольные игры по правилам лучше всего тренируют внимание, память и самоконтроль (лобные доли) к 1 классу.' },
+            { title: 'Развитие руки и связной речи без перегрузки', text: 'Лепка, аппликация, конструирование, рисование, ежедневное чтение вслух с пересказом и вопросы («Почему герой так поступил?»).' },
+            { title: 'Посильные обязанности и режим сна', text: 'Уборка игрушек, помощь по дому и стабильный сон (10–11 часов в сутки) поддерживают созревание регуляторных систем мозга.' }
           ],
           flags: [
-            'В 4–5 лет: отсутствие сюжетно-ролевой игры, неспособность играть с другими детьми, эгоцентрическая замкнутость.',
-            'К 5–5,5 годам: выраженная неразборчивость речи, грубый аграмматизм, неспособность пересказать короткую сказку из 3–4 фраз.',
-            'Трудности моторной координации: не может прыгать на двух/одной ноге к 5 годам, не держит карандаш, постоянно роняет предметы.',
-            'К 6,5–7 годам: неспособность удерживать простую инструкцию более 5 минут, импульсивная агрессия, энурез/энкопрез, панические страхи или тики.'
+            'В 4–5 лет: отсутствие сюжетно-ролевой игры, неспособность играть в коллективе, выраженная замкнутость и избегание контакта с детьми.',
+            'К 5–5,5 годам: малопонятная речь, грубые ошибки в согласовании слов, неспособность пересказать короткую сказку из 3–4 предложений.',
+            'Выраженная неловкость движений: не умеет прыгать на двух или одной ноге к 5 годам, не держит карандаш, постоянно роняет предметы.',
+            'К 6,5–7 годам: не может удерживать простую инструкцию даже 5 минут, приступы неконтролируемой агрессии, ночное недержание мочи (энурез), навязчивые страхи или нервные тики.'
           ],
-          iconSvg: '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2l3 6 6.5.9-4.7 4.6 1.1 6.5L12 17l-5.9 3 1.1-6.5L2.5 8.9 9 8l3-6z"/></svg>'
+          iconSvg: '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5c3 2.8 4.5 6.5 4.5 10.5l-2 2h-5l-2-2c0-4 1.5-7.7 4.5-10.5z"/><circle cx="12" cy="9.5" r="1.6"/><path d="M7.5 11.5L4.5 14v3l3-1.5M16.5 11.5L19.5 14v3l-3-1.5"/><path d="M10 17.5l2 3.5 2-3.5"/></svg>'
         },
         {
           id: 6,
@@ -2533,44 +2791,44 @@
           colors: { bg: 'var(--s6-bg)', accent: 'var(--s6-accent)', text: 'var(--s6-text)', border: 'var(--s6-border)' },
           swatch: '#C2410C',
           hasCrisis: false,
-          crisisShort: 'Адаптация к школе (1 класс)',
-          summary: 'Ведущая учебная деятельность, созревание лобных долей, стадия конкретных операций по Пиаже, словесно-логическое мышление и рефлексия.',
+          crisisShort: 'Адаптация к школе',
+          summary: 'Ведущая учебная деятельность, созревание лобных долей, стадия конкретных операций по Пиаже, словесно-логическое мышление и самоанализ.',
           tooltipMain: 'Учебная деятельность, произвольное внимание и логическая память, конкретные операции (закон сохранения по Пиаже), трудолюбие (Эриксон).',
           nodes: [
-            { label: 'Учебная деятельность', layer: 'crisis', tip: 'Умение учиться ради результата и по правилам: «надо» становится сильнее сиюминутного «хочу».' },
-            { label: 'Конкретные операции (Пиаже)', layer: 'sensory', tip: 'Понимание сохранения числа, массы и объёма; обратимость мыслительных операций, классификация.' },
-            { label: 'Письмо, чтение, диалог', layer: 'speech', tip: 'Автоматизация чтения и письма, письменная речь как новый уровень абстракции.' },
-            { label: 'Лобные доли и произвольность', layer: 'motor', tip: 'Возрастает контроль движений, почерк, устойчивость произвольного внимания до 25–35 мин.' },
-            { label: 'Трудности чтения/СДВГ 🚩', layer: 'flags', tip: 'Стойкие дислексия/дисграфия, выраженная гиперактивность или школьная дезадаптация.' }
+            { label: 'Учебная деятельность', layer: 'crisis', tip: 'Переход к учёбе по правилам и программе: «надо» становится сильнее сиюминутного «хочу».' },
+            { label: 'Конкретные операции (Пиаже)', layer: 'sensory', tip: 'Понимание сохранения числа, массы и объёма; умение классифицировать и рассуждать логически.' },
+            { label: 'Письмо, чтение, диалог', layer: 'speech', tip: 'Освоение беглого чтения и письменной речи, умение аргументированно отвечать на уроке.' },
+            { label: 'Лобные доли и внимание', layer: 'motor', tip: 'Развитие тонкой координации при письме, устойчивое внимание в течение 25–35 минут.' },
+            { label: 'Трудности чтения/СДВГ 🚩', layer: 'flags', tip: 'Стойкие нарушения чтения и письма (дислексия, дисграфия), выраженная гиперактивность или школьная тревога.' }
           ],
           cns: {
-            structures: 'Интенсивно развиваются лобные (префронтальные) доли и их связи с гиппокампом и базальными ганглиями. В электроэнцефалограмме (ЭЭГ) к 9–10 годам доминирует зрелый альфа-ритм (8–12 Гц), отражающий готовность к сложной умственной работе.',
-            myelination: 'Завершается миелинизация комиссуральных путей (мозолистого тела) — оба полушария эффективно интегрируют зрительно-пространственные и вербально-логические операции (ключ к письму и математике).',
-            reflexes: 'Высокая пластичность моторной коры позволяет автоматизировать сложные тонкокоординированные навыки (беглое письмо, игра на музыкальных инструментах, спортивная техника).'
+            structures: 'Активно развиваются лобные (префронтальные) доли и их связи с центрами памяти (гиппокампом). На электроэнцефалограмме (ЭЭГ) к 9–10 годам формируется устойчивый альфа-ритм (8–12 Гц), что говорит о зрелости коры для систематической учёбы.',
+            myelination: 'Завершается созревание мозолистого тела — связей между двумя полушариями. Это позволяет быстро объединять зрительно-пространственные и речевые процессы (основа чтения, письма и математики).',
+            reflexes: 'Высокая пластичность двигательной коры помогает довести до автоматизма сложные точные навыки: беглое письмо, игру на музыкальных инструментах, спортивные движения.'
           },
           npr: {
-            motor: 'Твёрдое освоение зрительно-моторного навыка письма, точная координация глаз–рука, выносливость мелких мышц кисти, ловкость в командных и индивидуальных видах спорта.',
-            sensory: 'Интеллектуализация всех психических процессов: память становится осмысленной и логической, внимание — произвольным (способность удерживать цель при наличии отвлекающих факторов). Мышление переходит от наглядно-образного к СЛОВЕСНО-ЛОГИЧЕСКОМУ (в пределах наглядного/конкретного опыта).',
-            speech: 'Овладение письменной речью (самой сложной и осознанной формой речи), расширение понятийного словаря, понимание переносных смыслов, метафор, пословиц, умение аргументировать свою мысль.',
-            social: 'Референтным взрослым наряду с родителями становится учитель. Формируется рефлексия (оценка своих действий и знаний), внутренний план действий («делаю в уме»), самооценка тесно связана с учебной успешностью.'
+            motor: 'Овладение навыком письма, точная зрительно-моторная координация, выносливость мелких мышц кисти, ловкость и координация в командных и индивидуальных играх.',
+            sensory: 'Все психические процессы становятся произвольными и осмысленными: развивается логическая память, устойчивое внимание, умение не отвлекаться на посторонние раздражители. Мышление становится СЛОВЕСНО-ЛОГИЧЕСКИМ (с опорой на конкретные примеры и наглядность).',
+            speech: 'Освоение письменной речи (самой сложной и осознанной формы речи), обогащение словаря научными понятиями, понимание переносных смыслов, пословиц и метафор, умение рассуждать и доказывать свою мысль.',
+            social: 'Важным авторитетом наряду с родителями становится учитель. Формируется рефлексия (умение оценивать свои поступки и знания), внутренний план действий («решаю в уме»), самооценка сильно зависит от школьных успехов.'
           },
           psychology: {
-            situation: 'Система «Ребёнок – Учитель (общественный взрослый)»: впервые деятельность ребёнка оценивается по объективным социальным критериям (отметки, нормативы).',
-            leadingActivity: 'Учебная деятельность (направленная на усвоение научных понятий и способов действия).',
-            newFormations: 'Произвольность всех психических функций, внутренний план действий (умение планировать шаги в уме), рефлексия, теоретическое отношение к действительности.',
-            piaget: 'Стадия КОНКРЕТНЫХ ОПЕРАЦИЙ (7–11 лет): преодоление эгоцентризма, децентрация, понимание законов сохранения вещества/числа/длины, сериация и обратимость операций.',
-            erikson: '«Трудолюбие против чувства неполноценности» (6–11 лет): успех в учебе и делах рождает компетентность, постоянные неудачи и критика — выученную беспомощность.',
-            crisis: 'Кризис адаптации в 1 классе и предпубертатный сдвиг к 10–11 годам (нарастает важность оценки сверстников, снижается безусловный авторитет учителя и родителей).'
+            situation: 'Система «Ребёнок – Учитель (представитель общества)»: впервые работа ребёнка оценивается по единым общественным правилам (оценки, требования дисциплины).',
+            leadingActivity: 'Учебная деятельность, направленная на усвоение знаний и способов решения задач.',
+            newFormations: 'Произвольность внимания, памяти и поведения, внутренний план действий (умение планировать в уме), самоанализ (рефлексия).',
+            piaget: 'Стадия КОНКРЕТНЫХ ОПЕРАЦИЙ (7–11 лет): преодоление эгоцентризма, учёт нескольких признаков сразу, понимание законов сохранения количества, массы и объёма, обратимость мысленных действий.',
+            erikson: '«Трудолюбие против чувства неполноценности» (6–11 лет): ощущение успеха в учёбе и делах формирует уверенность в себе, а постоянная критика и неудачи — чувство беспомощности.',
+            crisis: 'Период адаптации к 1 классу и первые признаки приближения подросткового возраста к 10–11 годам (растёт ценность мнения одноклассников, снижается безоговорочный авторитет взрослых).'
           },
           practice: [
-            { title: 'Акцент на усилиях, а не только на оценке', text: 'Поддерживайте «мышление роста»: хвалите стратегию и старание, чтобы избежать страха ошибок и чувства неполноценности (по Эриксону).' },
-            { title: 'Двигательная разгрузка и сон 9–10 часов', text: 'После школы ребёнку критически нужна физическая активность на свежем воздухе, так как длительное статическое сидение утомляет неокрепшую систему контроля.' },
-            { title: 'Развитие метакогнитивных навыков', text: 'Учите составлять план, проверять свою работу, разбивать большое задание на шаги — это тренирует префронтальную кору.' }
+            { title: 'Хвалите за старание и стратегию, а не только за оценки', text: 'Поддерживайте уверенность ребёнка («если потренироваться — получится»), чтобы не сформировать страх ошибок и чувство неполноценности.' },
+            { title: 'Подвижные игры и сон 9–10 часов', text: 'После уроков школьнику необходима физическая разгрузка на свежем воздухе, так как долгое статическое сидение за партой быстро утомляет нервную систему.' },
+            { title: 'Обучение планированию', text: 'Учите составлять простой план дня, проверять уроки по пунктам и разбивать большие задания на маленькие шаги.' }
           ],
           flags: [
-            'Стойкие трудности освоения чтения (дислексия) и письма (дисграфия: зеркальное письмо, пропуски и замены букв после 1–2 класса) при сохранном интеллекте.',
-            'Выраженная невнимательность, импульсивность и двигательное беспокойство в нескольких средах (школа + дом), мешающие учёбе (признаки СДВГ).',
-            'Хроническая школьная тревожность, психосоматические боли (живот/голова по утрам перед школой), тики, энурез или социальная изоляция (буллинг).'
+            'Стойкие нарушения чтения (дислексия) и письма (дисграфия: зеркальное письмо, пропуски и замены букв после 1–2 класса) при нормальном интеллекте и слухе.',
+            'Выраженная невнимательность, импульсивность и двигательное беспокойство и в школе, и дома, мешающие учёбе (признаки синдрома дефицита внимания и гиперактивности — СДВГ).',
+            'Стойкая школьная тревожность, утренние боли в животе или голове перед уроками (психосоматика), нервные тики, энурез или травля в классе (буллинг).'
           ],
           iconSvg: '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M8 7h8M8 11h5"/></svg>'
         },
@@ -2578,49 +2836,49 @@
           id: 7,
           shortName: 'Подростковый',
           title: 'Подростковый (пубертатный) и ранний юношеский возраст',
-          age: '11/12–17/18 лет',
+          age: '11–18 лет',
           colors: { bg: 'var(--s7-bg)', accent: 'var(--s7-accent)', text: 'var(--s7-text)', border: 'var(--s7-border)' },
           swatch: '#4338CA',
           hasCrisis: true,
-          crisisShort: 'Подростковый кризис ⚡',
-          summary: 'Интимно-личностное общение со сверстниками, «чувство взрослости», дисбаланс между активной лимбической системой и зреющей префронтальной корой, формальное мышление.',
-          tooltipMain: 'Общение со сверстниками, формальные операции (Пиаже), идентичность (Эриксон), нейродисбаланс «лимбика vs префронтальная кора».',
+          crisisShort: 'Пубертат',
+          summary: 'Общение со сверстниками на первом месте, «чувство взрослости», перестройка гормонов и мозга (дисбаланс эмоций и самоконтроля), абстрактное мышление.',
+          tooltipMain: 'Общение со сверстниками, формальные операции (Пиаже), поиск себя (Эриксон), нейродисбаланс между эмоциональной системой и лобными долями.',
           nodes: [
-            { label: 'Нейродисбаланс: лимбика vs ПФК', layer: 'motor', tip: 'Половые гормоны активируют лимбику (эмоции, риск), а префронтальный тормоз созревает лишь к 21–25 г.' },
-            { label: 'Формальные операции (Пиаже)', layer: 'sensory', tip: 'Гипотетико-дедуктивное и абстрактное мышление, философия, критический анализ систем.' },
-            { label: 'Общение со сверстниками', layer: 'social', tip: 'Ведущая деятельность (11–15 л.), сменяющаяся учебно-профессиональной (15–17 л.).' },
-            { label: 'Кризис идентичности ⚡', layer: 'crisis', tip: '«Чувство взрослости», сепарация от родителей, поиск ответа на вопрос «Кто Я?».' },
-            { label: 'Депрессия / аутоагрессия 🚩', layer: 'flags', tip: 'Стойкая апатия >2 недель, самоповреждение, резкий отрыв от реальности или зависимости.' }
+            { label: 'Дисбаланс: эмоции vs самоконтроль', layer: 'motor', tip: 'Половые гормоны резко активируют центры эмоций в 12–14 лет, а лобные доли (самоконтроль) дозревают только к 21–25 годам.' },
+            { label: 'Формальные операции (Пиаже)', layer: 'sensory', tip: 'Абстрактно-логическое мышление, умение выдвигать гипотезы, философствовать и спорить о системах.' },
+            { label: 'Общение со сверстниками', layer: 'social', tip: 'Ведущая деятельность (11–15 л.), сменяющаяся выбором профессии и учёбой (15–17 л.).' },
+            { label: 'Кризис самоопределения ⚡', layer: 'crisis', tip: '«Чувство взрослости», отделение от родителей, поиск ответа на вопрос «Кто Я и зачем живу?».' },
+            { label: 'Депрессия / самоповреждение 🚩', layer: 'flags', tip: 'Стойкая подавленность >2 недель, самоповреждение, резкие нарушения питания или зависимости.' }
           ],
           cns: {
-            structures: 'Вторая масштабная волна реорганизации мозга («генеральная уборка»): активный синаптический прунинг в коре (удаление неиспользуемых связей, повышение КПД нейросетей) на фоне всплеска половых гормонов и дофаминергической системы.',
-            myelination: 'Дисбаланс созревания (модель «двух систем»): лимбическая система (миндалина, прилежащее ядро — эмоции, азарт, поиск новизны и одобрения сверстников) резко активируется в 12–14 лет, тогда как префронтальная кора (самоконтроль, оценка долгосрочных рисков) завершает миелинизацию только к 20–25 годам!',
-            reflexes: 'Вследствие быстрого пубертатного скачка роста тела возможна временная «подростковая неуклюжесть» (схема тела в теменной коре не успевает перестроиться за длиной костей) и вегетативная лабильность.'
+            structures: 'Вторая крупная волна перестройки мозга: на фоне всплеска половых гормонов в коре происходит массовое сокращение лишних и укрепление нужных нервных связей (синаптическая обрезка), благодаря чему мозг работает быстрее и точнее.',
+            myelination: 'Дисбаланс созревания: эмоциональные центры (лимбическая система — острые переживания, жажда новых впечатлений, зависимость от мнения друзей) резко активируются уже в 12–14 лет, а лобная (префронтальная) кора, отвечающая за торможение импульсов и расчёт последствий, полностью покрывается миелином лишь к 21–25 годам!',
+            reflexes: 'Из-за быстрого пубертатного скачка роста тела возможны временная «подростковая неуклюжесть» (мозг не сразу перестраивает схему тела под выросшие руки и ноги) и вегетативная неустойчивость (перепады давления, потливость, головокружения).'
           },
           npr: {
-            motor: 'Быстрый рост мышечной массы и силы (особенно у юношей), завершение тонкой дифференцировки двигательных программ; после временной дискоординации (12–14 л.) достигается взрослая точность и выносливость движений.',
-            sensory: 'Формирование АБСТРАКТНО-ЛОГИЧЕСКОГО и гипотетико-дедуктивного мышления: способность оперировать отвлечёнными понятиями (справедливость, бесконечность, вероятность), строить гипотезы, анализировать противоречия, формировать собственное мировоззрение.',
-            speech: 'Индивидуальный стиль речи, освоение сложной научной терминологии и риторики, сленг как маркер групповой принадлежности («код своих»), способность к глубокой рефлексивной дискуссии и иронии.',
-            social: 'Смещение авторитета с родителей на референтную группу сверстников. Болезненная чувствительность к оценке внешности и статуса («воображаемая аудитория» по Элкинду). Первые романтические чувства, осознание ценностей и выбор жизненного пути.'
+            motor: 'Быстрый прирост мышечной массы и силы (особенно у юношей); после временной неловкости в 12–14 лет достигается взрослая точность, скорость и выносливость движений.',
+            sensory: 'Формирование АБСТРАКТНО-ЛОГИЧЕСКОГО мышления: способность рассуждать о сложных и отвлечённых понятиях (справедливость, смысл жизни, вероятность), строить гипотезы и проверять их, критически оценивать правила и формировать своё мировоззрение.',
+            speech: 'Индивидуальный стиль речи, освоение научной терминологии и аргументации, молодёжный сленг как способ почувствовать себя «своим» в группе, способность к тонкой иронии и глубокой беседе.',
+            social: 'Главным ориентиром вместо родителей становится группа сверстников. Повышенная ранимость к оценке внешности и статуса («ощущение, что все на меня смотрят»). Первая влюблённость, осознание своих ценностей и выбор будущей профессии.'
           },
           psychology: {
-            situation: 'Противоречие между физической зрелостью и социальным статусом зависимого ученика; перестройка отношений с родителями на равноправные и уважительные.',
-            leadingActivity: 'В младшем подростковом возрасте (11–15 лет) — интимно-личностное общение со сверстниками; в старшем (15–17 лет) — учебно-профессиональная деятельность (Д.Б. Эльконин).',
-            newFormations: '«Чувство взрослости» (ключевое новообразование по Т.В. Драгуновой и Д.Б. Эльконину), самосознание, Я-идентичность, жизненное самоопределение и личностная рефлексия.',
+            situation: 'Противоречие между биологическим созреванием и социальным положением зависимого школьника; перестройка отношений с родителями в сторону равноправного диалога.',
+            leadingActivity: 'В 11–15 лет — интимно-личностное общение со сверстниками; в 15–17 лет — учебно-профессиональная деятельность и выбор жизненного пути (Д.Б. Эльконин).',
+            newFormations: '«Чувство взрослости» (центральное новообразование по Т.В. Драгуновой и Д.Б. Эльконину), самосознание, Я-идентичность, жизненное самоопределение и глубокая рефлексия.',
             piaget: 'Стадия ФОРМАЛЬНЫХ ОПЕРАЦИЙ (с 11–12 лет): мышление «о возможном», системный перебор вариантов, научное теоретическое рассуждение.',
-            erikson: '«Идентичность против ролевой спутанности» (12–18 лет): интеграция ролей, ценностей и призвания в целостное «Я» или диффузия идентичности.',
-            crisis: 'Подростковый кризис ⚡ — кризис сепарации и самоопределения. Проявления: протест против директивного контроля, скрытность, поляризация эмоций (максимализм), обесценивание прежних правил ради обретения собственной позиции.'
+            erikson: '«Идентичность против ролевой спутанности» (12–18 лет): объединение своих способностей, ценностей и целей в целостное «Я» или растерянность перед будущим.',
+            crisis: 'Подростковый кризис ⚡ — кризис отделения (сепарации) и поиска себя. Проявляется спорами с диктатом взрослых, скрытностью, резкой сменой настроения, максимализмом и обесцениванием прежних правил ради выработки собственной позиции.'
           },
           practice: [
-            { title: 'Переход от приказа к партнёрству и договору', text: 'Уважайте границы и личное пространство подростка; обсуждайте правила и последствия, а не диктуйте их авторитарно.' },
-            { title: 'Безопасный выход для дофамина и самореализации', text: 'Спорт, творческие проекты, волонтёрство, олимпиады или подработка дают здоровое ощущение компетентности и признания среди сверстников.' },
-            { title: 'Учёт физиологического сдвига циркадного ритма', text: 'В пубертате выработка мелатонина смещается на ~1,5–2 часа позже: хронический недосып (<8 часов) резко усиливает тревожность и импульсивность.' }
+            { title: 'Переход от приказов к договору и уважению', text: 'Уважайте личные границы и комнату подростка; обсуждайте правила и последствия поступков на равных, без унижений и жёсткого давления.' },
+            { title: 'Здоровый выход для энергии и признания', text: 'Спорт, творческие студии, проекты, волонтёрство или первые заработки дают безопасное ощущение успеха и уважения среди сверстников.' },
+            { title: 'Учёт сдвига режима сна в пубертате', text: 'У подростков выработка гормона сна (мелатонина) физиологически сдвигается на 1,5–2 часа позже: хронический недосып (<8 часов) резко усиливает раздражительность и тревожность.' }
           ],
           flags: [
-            'Стойкое снижение настроения, ангедония (ничего не радует), выраженная апатия или раздражительность более 2 недель подряд.',
-            'Любые признаки самоповреждения (селфхарм), суицидальные высказывания или прощальные намёки — требуют немедленной помощи психиатра/психотерапевта!',
-            'Экстремальное похудение/отказ от еды или приступы переедания (расстройства пищевого поведения — РПП).',
-            'Употребление психоактивных веществ, полный разрыв социальных связей, уход в деструктивные онлайн-сообщества, стойкие нарушения сна.'
+            'Стойкое снижение настроения, апатия, потеря интереса и радости от любимых дел (ангедония) или сильная раздражительность дольше 2 недель подряд.',
+            'Любые признаки самоповреждения (порезы, ожоги), суицидальные высказывания или прощальные намёки — требуют немедленной консультации психиатра или кризисной службы!',
+            'Резкое похудение, отказ от еды или приступы переедания с вызовом рвоты (расстройства пищевого поведения).',
+            'Употребление алкоголя, никотина или психоактивных веществ, полный уход от общения в реальной жизни, стойкая бессонница.'
           ],
           iconSvg: '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>'
         }
@@ -2636,35 +2894,35 @@
           startCol: 2, spanCols: 3,
           bg: '#E0F2FE', border: '#7DD3FC', text: '#0C4A6E',
           barText: '0–3,5 года (пик: грудной – ранний)',
-          detailTitle: 'Сенситивный период развития моторики (0–4 года)',
-          detailText: 'Миелинизация пирамидного тракта и мозжечковых путей идёт максимально быстро в первые 3 года. Двигательная свобода (выкладывание, ползание, ходьба, лепка, пинцетный захват) напрямую стимулирует развитие коры и межполушарных связей.'
+          detailTitle: 'Сенситивный период развития движений (0–4 года)',
+          detailText: 'Миелинизация двигательных путей и мозжечка идёт максимально быстро в первые 3 года жизни. Свобода движений (выкладывание на живот, ползание, ходьба, лепка, захват мелких предметов) напрямую стимулирует развитие коры головного мозга.'
         },
         {
           id: 'sens-speech',
-          label: 'Речь и фонематический слух',
+          label: 'Речь и речевой слух',
           startCol: 3, spanCols: 3,
           bg: '#DCFCE7', border: '#86EFAC', text: '#14532D',
           barText: '6 мес. – 5,5 лет (пик: 1–3,5 г.)',
           detailTitle: 'Сенситивный период развития речи (0,5–6 лет)',
-          detailText: 'В период с 1 до 3,5 лет пластичность височно-лобных речевых зон (Вернике и Брока) максимальна: ребёнок впитывает лексику и грамматику родного (и второго) языка без усилий. После 6–7 лет освоение фонологии нового языка требует уже осознанных когнитивных усилий.'
+          detailText: 'С 1 до 3,5 лет пластичность речевых центров мозга (зон Вернике и Брока) максимальна: ребёнок легко усваивает словарный запас и грамматику родного языка. После 6–7 лет освоение правильного произношения и нового языка требует уже заметно больших усилий.'
         },
         {
           id: 'sens-sensory',
-          label: 'Сенсорные эталоны и предметность',
+          label: 'Восприятие и предметный мир',
           startCol: 3, spanCols: 3,
           bg: '#F3E8FF', border: '#D8B4FE', text: '#581C87',
-          barText: '1–5 лет (восприятие форм, цвета, пространства)',
-          detailTitle: 'Сенситивный период сенсорного развития (1–5 лет)',
-          detailText: 'Мозг тонко настраивает перцептивные каналы (зрение, осязание, слух, проприоцепцию). Игры с формами, величинами, цветами и фактурами создают фундамент для будущего пространственного и математического мышления.'
+          barText: '1–5 лет (освоение форм, цвета, величины)',
+          detailTitle: 'Сенситивный период развития органов чувств (1–5 лет)',
+          detailText: 'Мозг тонко настраивает зрение, слух, осязание и мышечное чувство. Игры с различными формами, цветами, размерами и фактурами создают прочную основу для будущего счёта и пространственного мышления.'
         },
         {
           id: 'sens-play',
           label: 'Воображение и ролевая игра',
           startCol: 4, spanCols: 2,
           bg: '#FEF3C7', border: '#FCD34D', text: '#78350F',
-          barText: '3–7 лет (расцвет символической игры)',
+          barText: '3–7 лет (расцвет сюжетной игры)',
           detailTitle: 'Сенситивный период игры и воображения (3–7 лет)',
-          detailText: 'В сюжетно-ролевой игре ребёнок добровольно сдерживает импульсивные желания ради роли («я врач, я лечу, а не убегаю»), что впервые запускает механизмы произвольной саморегуляции и социального интеллекта.'
+          detailText: 'В сюжетно-ролевой игре ребёнок добровольно сдерживает мимолётные желания ради правил роли («я врач, я лечу пациента, а не убегаю»), что впервые запускает механизмы воли, самоконтроля и понимания других людей.'
         },
         {
           id: 'sens-logic',
@@ -2672,17 +2930,17 @@
           startCol: 5, spanCols: 3,
           bg: '#FFEDD5', border: '#FDBA74', text: '#7C2D12',
           barText: '6–13 лет (созревание лобных долей)',
-          detailTitle: 'Сенситивный период учебной логики и произвольности (6–13 лет)',
-          detailText: 'Миелинизация ассоциативных связей коры позволяет переходить к систематическим знаниям, чтению, счёту и планированию собственных действий в уме (внутренний план действий).'
+          detailTitle: 'Сенситивный период логики и учебной саморегуляции (6–13 лет)',
+          detailText: 'Созревание связей лобной коры позволяет переходить к систематическому обучению: чтению, письму, счёту, логическим выводам и планированию своих шагов в уме.'
         },
         {
           id: 'sens-identity',
-          label: 'Самосознание и идентичность',
+          label: 'Самосознание и выбор пути',
           startCol: 6, spanCols: 2,
           bg: '#E0E7FF', border: '#A5B4FC', text: '#312E81',
           barText: '10–18 лет (поиск «Кто Я?» и ценностей)',
-          detailTitle: 'Сенситивный период социальной идентичности (10–18 лет)',
-          detailText: 'Перестройка префронтальной коры и социальной нейросети («social brain») делает подростка сверхчувствительным к нормам группы, справедливости, дружбе и поиску собственного жизненного призвания.'
+          detailTitle: 'Сенситивный период поиска себя и общения (10–18 лет)',
+          detailText: 'Перестройка лобных отделов и зон мозга, отвечающих за социальные связи, делает подростка особенно восприимчивым к нормам коллектива, дружбе, вопросам справедливости и выбору профессии.'
         }
       ];
 
@@ -2692,17 +2950,17 @@
       const CURVES_DATA = [
         {
           id: 'plasticity',
-          name: 'Синаптогенез и нейропластичность',
+          name: 'Образование связей и пластичность мозга',
           color: '#7E22CE',
           active: true,
           points: [
-            { stageIdx: 0, val: 65, note: 'Внутриутробно: стремительная пролиферация и миграция нейронов (~250 тыс./мин на пике).' },
-            { stageIdx: 1, val: 82, note: 'Новорожденность: взрывной старт образования синапсов в ответ на внеутробные стимулы.' },
-            { stageIdx: 2, val: 96, note: 'Грудной возраст: пик скорости синаптогенеза; мозг удваивает массу за 1 год.' },
-            { stageIdx: 3, val: 100, note: 'Раннее детство (2–3 г.): абсолютный максимум плотности синапсов (~1000 триллионов — вдвое больше, чем у взрослого).' },
-            { stageIdx: 4, val: 80, note: 'Дошкольный: продолжается активный синаптический прунинг («отсечение» неиспользуемых связей).' },
-            { stageIdx: 5, val: 62, note: 'Младший школьный: высокая обучаемость при оптимизации уже сложившихся нейросетей.' },
-            { stageIdx: 6, val: 54, note: 'Подростковый: вторая волна ремоделирования и прунинга преимущественно в лобных долях.' }
+            { stageIdx: 0, val: 65, note: 'Внутриутробно: стремительное деление и перемещение молодых нервных клеток.' },
+            { stageIdx: 1, val: 82, note: 'Новорождённость: быстрое появление новых связей (синапсов) в ответ на свет, звуки и прикосновения.' },
+            { stageIdx: 2, val: 96, note: 'Грудной возраст: пик скорости роста мозга — к году его масса увеличивается в 2–2,5 раза.' },
+            { stageIdx: 3, val: 100, note: 'Раннее детство (2–3 г.): максимальное число межнейронных связей (вдвое больше, чем у взрослого).' },
+            { stageIdx: 4, val: 80, note: 'Дошкольный: продолжается активная сортировка — нужные связи укрепляются, неиспользуемые удаляются.' },
+            { stageIdx: 5, val: 62, note: 'Младший школьный: высокая способность к обучению за счёт отлаженной работы нейронных сетей.' },
+            { stageIdx: 6, val: 54, note: 'Подростковый: вторая волна перестройки связей, преимущественно в лобных долях.' }
           ]
         },
         {
@@ -2711,43 +2969,43 @@
           color: '#0369A1',
           active: true,
           points: [
-            { stageIdx: 0, val: 25, note: 'Внутриутробно: генерализованные спонтанные движения плода в водной среде.' },
-            { stageIdx: 1, val: 38, note: 'Новорожденность: доминируют подкорковые безусловные двигательные рефлексы.' },
-            { stageIdx: 2, val: 98, note: 'Грудной возраст: колоссальный рывок — от полной беспомощности до сидения, ползания и ходьбы!' },
-            { stageIdx: 3, val: 82, note: 'Раннее детство: совершенствование бега, прыжков, равновесия и орудийных движений рук.' },
+            { stageIdx: 0, val: 25, note: 'Внутриутробно: спонтанные плавательные и толчковые движения плода.' },
+            { stageIdx: 1, val: 38, note: 'Новорождённость: преобладают врождённые подкорковые двигательные рефлексы.' },
+            { stageIdx: 2, val: 98, note: 'Грудной возраст: колоссальный рывок — от лежания на спине до сидения, ползания и первых шагов!' },
+            { stageIdx: 3, val: 82, note: 'Раннее детство: освоение бега, прыжков, равновесия и точных действий с предметами.' },
             { stageIdx: 4, val: 60, note: 'Дошкольный: автоматизация сложных координаций (велосипед, мяч, ножницы).' },
-            { stageIdx: 5, val: 45, note: 'Младший школьный: оттачивание ловкости, выносливости и скорости движений.' },
-            { stageIdx: 6, val: 35, note: 'Подростковый: временная неловкость из-за скачка роста костей, затем выход на взрослые показатели силы.' }
+            { stageIdx: 5, val: 45, note: 'Младший школьный: развитие ловкости, выносливости и скорости движений.' },
+            { stageIdx: 6, val: 35, note: 'Подростковый: временная неловкость из-за быстрого роста костей, затем выход на взрослые показатели силы.' }
           ]
         },
         {
           id: 'speech',
-          name: 'Сенситивность к развитию речи',
+          name: 'Восприимчивость к развитию речи',
           color: '#15803D',
           active: true,
           points: [
-            { stageIdx: 0, val: 30, note: 'Внутриутробно (III триместр): настройка слуха на ритм и интонации голоса матери.' },
-            { stageIdx: 1, val: 48, note: 'Новорожденность: слуховое сосредоточение на человеческой речи и дифференциация крика.' },
-            { stageIdx: 2, val: 84, note: 'Грудной возраст: гуление, лепет, фонематическая настройка под родной язык и первые слова.' },
-            { stageIdx: 3, val: 100, note: 'Раннее детство: взрыв словаря (с 10 до 1500 слов) и становление фразовой грамматики.' },
-            { stageIdx: 4, val: 86, note: 'Дошкольный: связная монологическая речь, чистое звукопроизношение и база для чтения.' },
-            { stageIdx: 5, val: 58, note: 'Младший школьный: овладение письменной речью и научными понятиями.' },
-            { stageIdx: 6, val: 42, note: 'Подростковый: развитие риторики, метафор и стилистики; базовые речевые схемы уже зрелые.' }
+            { stageIdx: 0, val: 30, note: 'Внутриутробно (III триместр): привыкание слуха к ритму и интонациям голоса матери.' },
+            { stageIdx: 1, val: 48, note: 'Новорождённость: слуховое сосредоточение на речи взрослого и появление разных оттенков крика.' },
+            { stageIdx: 2, val: 84, note: 'Грудной возраст: гуление, слоговой лепет, настройка слуха на родной язык и первые слова.' },
+            { stageIdx: 3, val: 100, note: 'Раннее детство: словарный взрыв (от 10 до 1500 слов) и построение первых фраз.' },
+            { stageIdx: 4, val: 86, note: 'Дошкольный: связная речь, освоение всех звуков и подготовка к чтению.' },
+            { stageIdx: 5, val: 58, note: 'Младший школьный: овладение письменной речью и научными терминами.' },
+            { stageIdx: 6, val: 42, note: 'Подростковый: развитие стиля речи, аргументации и метафор; базовые речевые навыки уже сформированы.' }
           ]
         },
         {
           id: 'prefrontal',
-          name: 'Зрелость префронтальной коры и саморегуляции',
+          name: 'Зрелость лобных долей и самоконтроля',
           color: '#C2410C',
           active: true,
           points: [
-            { stageIdx: 0, val: 5, note: 'Внутриутробно: закладка префронтальных областей, функционально незрелы.' },
-            { stageIdx: 1, val: 8, note: 'Новорожденность: корковый контроль минимален, преобладают стволово-подкорковые реакции.' },
-            { stageIdx: 2, val: 16, note: 'Грудной возраст: появляются первые следы коркового торможения врождённых рефлексов.' },
-            { stageIdx: 3, val: 28, note: 'Раннее детство: эмоции импульсивны, самоконтроль только формируется (через взрослого).' },
-            { stageIdx: 4, val: 50, note: 'Дошкольный: скачок произвольности через игру по правилам; к 7 г. — готовность к школьной дисциплине.' },
-            { stageIdx: 5, val: 72, note: 'Младший школьный: устойчивое произвольное внимание, планирование и учебная рефлексия.' },
-            { stageIdx: 6, val: 86, note: 'Подростковый: продолжается активная миелинизация (полная зрелость наступает к 21–25 годам!).' }
+            { stageIdx: 0, val: 5, note: 'Внутриутробно: закладка лобных отделов, функционально они ещё не работают.' },
+            { stageIdx: 1, val: 8, note: 'Новорождённость: сознательный контроль отсутствует, преобладают подкорковые рефлексы.' },
+            { stageIdx: 2, val: 16, note: 'Грудной возраст: появляются первые признаки тормозного влияния коры (угасают врождённые рефлексы).' },
+            { stageIdx: 3, val: 28, note: 'Раннее детство: эмоции бурные и импульсивные, контроль поведения пока опирается на взрослого.' },
+            { stageIdx: 4, val: 50, note: 'Дошкольный: скачок произвольности через игры с правилами; к 7 г. — готовность к школьному режиму.' },
+            { stageIdx: 5, val: 72, note: 'Младший школьный: устойчивое внимание, планирование и самоконтроль на уроках.' },
+            { stageIdx: 6, val: 86, note: 'Подростковый: продолжается покрытие миелином лобной коры (полное созревание завершается к 21–25 годам).' }
           ]
         }
       ];
@@ -2760,79 +3018,79 @@
           id: 1,
           stageId: 3,
           ageTag: 'Грудной возраст • 9 месяцев',
-          question: 'На приёме ребёнок 9 месяцев: активно улыбается родителям, но до сих пор не сидит самостоятельно без поддержки, не ползает, при попытке опоры ноги подгибаются, в речи нет слогового лепета (лишь редкие гласные звуки). Как расценить данную картину?',
+          question: 'На профилактическом приёме ребёнок 9 месяцев: улыбается родителям, но до сих пор не сидит самостоятельно без поддержки, не ползает, при попытке поставить на ножки они подгибаются, в речи нет слогового лепета (произносит лишь редкие гласные звуки). Как оценить эту картину?',
           options: [
-            { text: 'Вариант физиологической нормы (индивидуальный темп)', type: 'norm' },
+            { text: 'Вариант возрастной нормы (индивидуальный темп развития)', type: 'norm' },
             { text: 'Типичный возрастной кризис развития', type: 'crisis' },
-            { text: 'Красный флаг 🚩 (требуется углублённая диагностика невролога и сурдолога)', type: 'flag' }
+            { text: 'Тревожный признак («красный флаг» 🚩) — нужен осмотр невролога и проверка слуха', type: 'flag' }
           ],
           correctIdx: 2,
-          explanation: 'Верно! Отсутствие самостоятельного сидения и слогового лепета к 9 месяцам — это классические «красные флаги» задержки моторного и доречевого развития (в 9 мес. ребёнок должен сидеть с прямой спиной, ползать/пытаться вставать и лепетать слоги). Необходимо проверить мышечный тонус у невролога и исключить снижение слуха.'
+          explanation: 'Верно! Отсутствие самостоятельного сидения и слогового лепета к 9 месяцам — это «красные флаги» задержки двигательного и доречевого развития (в 9 мес. ребёнок должен уверенно сидеть, ползать или пытаться вставать и лепетать слоги). Необходимо оценить мышечный тонус у невролога и исключить снижение слуха у сурдолога.'
         },
         {
           id: 2,
           stageId: 4,
           ageTag: 'Раннее детство • 2 года 10 месяцев',
-          question: 'Родители обеспокоены: послушный ранее мальчик внезапно стал говорить «Нет!» на любые просьбы, даже на любимую прогулку; требует сам застёгивать сложную молнию, а при попытке помочь бросает куртку на пол и кричит «Я сам!». Что происходит с ребёнком?',
+          question: 'Родители жалуются: послушный ранее мальчик внезапно стал отвечать «Нет!» на любые предложения, даже на любимую прогулку; требует сам застёгивать сложную молнию, а при попытке помочь бросает куртку на пол и кричит «Я сам!». Что происходит с ребёнком?',
           options: [
-            { text: 'Патологическое расстройство поведения (требует медикаментов)', type: 'flag' },
-            { text: 'Возрастной кризис 3 лет (нормативный этап становления «Я»)', type: 'crisis' },
+            { text: 'Тяжёлое расстройство поведения (требуется медикаментозное лечение)', type: 'flag' },
+            { text: 'Возрастной кризис 3 лет (нормальный этап становления личности)', type: 'crisis' },
             { text: 'Задержка речевого и эмоционального развития', type: 'norm' }
           ],
           correctIdx: 1,
-          explanation: 'Точно! Это хрестоматийная картина кризиса 3 лет по Л.С. Выготскому (симптомы негативизма, упрямства и своеволия «Я сам!»). Так ребёнок психологически отделяется от взрослого и открывает собственную волю. Важно давать безопасную самостоятельность и «выбор без выбора».'
+          explanation: 'Точно! Это классическая картина кризиса 3 лет по Л.С. Выготскому (негативизм, упрямство и своеволие «Я сам!»). Так ребёнок психологически отделяется от взрослого и учится проявлять собственную волю. Взрослым важно сохранять спокойствие, предлагать «выбор без выбора» и поддерживать безопасную самостоятельность.'
         },
         {
           id: 3,
           stageId: 3,
           ageTag: 'Грудной возраст • 12 месяцев',
-          question: 'Девочка в 12 месяцев уверенно ходит вдоль дивана, собирает мелкие крошки двумя пальцами, но при этом не откликается на своё имя, не смотрит в глаза матери, не использует указательный жест, чтобы показать интересную игрушку, и не реагирует на жест «смотри туда». Ваш вывод:',
+          question: 'Девочка в 12 месяцев уверенно ходит вдоль дивана, собирает мелкие крошки двумя пальцами, но при этом не откликается на своё имя, не смотрит в глаза матери, не использует указательный жест, чтобы показать интересную игрушку, и не следит за взглядом взрослого. Ваш вывод:',
           options: [
-            { text: 'Вариант нормы: просто у ребёнка «интровертный характер»', type: 'norm' },
-            { text: 'Кризис 1 года (проявление автономности)', type: 'crisis' },
-            { text: 'Красный флаг 🚩 (признаки нарушения коммуникации / риск РАС или тугоухости)', type: 'flag' }
+            { text: 'Вариант нормы: просто у ребёнка «спокойный характер»', type: 'norm' },
+            { text: 'Кризис 1 года (проявление самостоятельности)', type: 'crisis' },
+            { text: 'Красный флаг 🚩 (нарушение общения — риск снижения слуха или РАС)', type: 'flag' }
           ],
           correctIdx: 2,
-          explanation: 'Абсолютно верно! Моторика у девочки сохранна (пинцетный захват, ходьба у опоры), но отсутствуют ключевые маркеры социального мозга в 12 мес.: указательный жест (совместное внимание), отклик на имя и глазной контакт. Это важный красный флаг, требующий раннего скрининга слуха и консультации специалиста по раннему развитию.'
+          explanation: 'Абсолютно верно! Моторика у девочки развита по возрасту (пинцетный захват, ходьба у опоры), но отсутствуют ключевые показатели общения в 12 мес.: указательный жест, отклик на имя и зрительный контакт. Это важный тревожный признак, требующий проверки слуха и консультации специалистов ранней помощи.'
         },
         {
           id: 4,
           stageId: 5,
           ageTag: 'Дошкольный возраст • 4,5 года',
-          question: 'Психолог провёл опыт Ж. Пиаже: при мальчике воду из низкого широкого стакана перелили в высокий узкий стакан. Ребёнок уверенно сказал, что в высоком стакане «воды стало больше, потому что он выше». О чём это свидетельствует?',
+          question: 'Психолог провёл опыт Ж. Пиаже: на глазах у мальчика воду из низкого широкого стакана перелили в высокий узкий стакан. Ребёнок уверенно ответил, что в высоком стакане «воды стало больше, потому что он выше». О чём это говорит?',
           options: [
-            { text: 'Возрастная норма (особенность дооперационального мышления)', type: 'norm' },
-            { text: 'Красный флаг задержки интеллектуального развития', type: 'flag' },
+            { text: 'Возрастная норма (особенность наглядно-образного, дооперационального мышления)', type: 'norm' },
+            { text: 'Красный флаг задержки умственного развития', type: 'flag' },
             { text: 'Возрастной кризис 7 лет', type: 'crisis' }
           ],
           correctIdx: 0,
-          explanation: 'Правильно! В 4–5 лет ребёнок находится на дооперациональной стадии интеллекта по Ж. Пиаже: мышление опирается на один яркий наглядный признак (высоту столба воды) и ещё не владеет принципом сохранения объёма (он сформируется ближе к 7 годам).'
+          explanation: 'Правильно! В 4–5 лет ребёнок находится на дооперациональной стадии мышления по Ж. Пиаже: он опирается на один яркий внешний признак (высоту уровня воды) и ещё не понимает закон сохранения объёма (это понимание сформируется ближе к 7 годам).'
         },
         {
           id: 5,
           stageId: 5,
           ageTag: 'Граница дошкольного и школьного возраста • 6,5–7 лет',
-          question: 'Девочка 6,5 лет, готовящаяся к школе, стала манерничать, отвечать «по-взрослому» с паузами, спорить о правилах домашних дел и обижаться на то, что с ней «разговаривают как с маленькой». Как классифицировать это состояние?',
+          question: 'Девочка 6,5 лет, которая скоро пойдёт в 1 класс, стала манерничать, отвечать «по-взрослому» с паузами, спорить о домашних правилах и обижаться, когда с ней «разговаривают как с маленькой». Как расценить это состояние?',
           options: [
-            { text: 'Признак начинающегося пубертата (раннее половое созревание)', type: 'flag' },
+            { text: 'Признак преждевременного полового созревания', type: 'flag' },
             { text: 'Нормативный кризис 7 лет (утрата детской непосредственности)', type: 'crisis' },
             { text: 'Педагогическая запущенность и нарушение привязанности', type: 'norm' }
           ],
           correctIdx: 1,
-          explanation: 'Верно! Это классические проявления кризиса 7 лет (по Л.С. Выготскому): утрата детской непосредственности и формирование внутренней позиции школьника — ребёнок осознаёт свои переживания и стремится к новой социальной роли.'
+          explanation: 'Верно! Это типичные проявления кризиса 7 лет (по Л.С. Выготскому): ребёнок утрачивает детскую непосредственность, начинает обдумывать, как его слова и поступки выглядят со стороны, и стремится к новой, «взрослой» роли школьника.'
         },
         {
           id: 6,
           stageId: 7,
           ageTag: 'Подростковый возраст • 14 лет',
-          question: 'Подросток 14 лет, ранее успешный в школе, последние 4 недели резко перестал общаться с друзьями, бросил любимую секцию, жалуется на постоянную усталость, спит по 12 часов или не спит ночами и заявил родителям: «Я никому не нужен, всё бессмысленно». На что это указывает?',
+          question: 'Подросток 14 лет, ранее активный и общительный, последние 4 недели резко перестал видеться с друзьями, бросил любимую секцию, жалуется на постоянную усталость, плохо спит ночами и сказал родителям: «Я никому не нужен, всё бессмысленно». На что это указывает?',
           options: [
             { text: 'Обычный подростковый кризис: «само пройдёт к 16 годам»', type: 'crisis' },
-            { text: 'Красный флаг 🚩 (риск клинической депрессии, срочная консультация специалиста)', type: 'flag' },
+            { text: 'Красный флаг 🚩 (риск клинической депрессии — срочная консультация врача)', type: 'flag' },
             { text: 'Вариант нормы для стадии формальных операций по Пиаже', type: 'norm' }
           ],
           correctIdx: 1,
-          explanation: 'Совершенно верно! Важно отличать нормативную подростковую сепарацию (где сохраняется интерес к друзьям и жизни) от депрессивного эпизода. Стойкая ангедония более 2 недель, социальная изоляция и мысли о собственной ненужности — это серьёзный красный флаг, требующий бережного обращения к детскому психиатру/психотерапевту.'
+          explanation: 'Совершенно верно! Важно отличать нормальный подростковый кризис (где сохраняется интерес к друзьям и увлечениям) от депрессивного состояния. Потеря интереса к жизни дольше 2 недель, изоляция от друзей, нарушение сна и слова о бессмысленности — серьёзный красный флаг, требующий бережного обращения к детскому психиатру или психотерапевту.'
         }
       ];
 
@@ -2842,7 +3100,7 @@
       const state = {
         activeView: 'map',
         activeLayer: 'all',
-        searchQuery: '',
+        layerMatchIndex: 0,
         selectedStageId: null,
         selectedModalTab: 'cns',
         selectedInfantMonthIdx: 1,
@@ -2859,10 +3117,7 @@
         atlasTrack: document.getElementById('atlasTrack'),
         atlasScrollArea: document.getElementById('atlasScrollArea'),
         miniStageNav: document.getElementById('miniStageNav'),
-        mapSearchInput: document.getElementById('mapSearchInput'),
-        mapSearchClear: document.getElementById('mapSearchClear'),
         layerPills: document.querySelectorAll('.layer-pill[data-layer]'),
-        hintChips: document.querySelectorAll('.hint-chip'),
         scrollLeftBtn: document.getElementById('scrollLeftBtn'),
         scrollRightBtn: document.getElementById('scrollRightBtn'),
         sensitiveGantt: document.getElementById('sensitiveGantt'),
@@ -2893,6 +3148,7 @@
          ===================================================================== */
       function switchView(viewName) {
         state.activeView = viewName;
+        hideTooltip();
         els.modeBtns.forEach(btn => {
           btn.classList.toggle('active', btn.dataset.view === viewName);
         });
@@ -2911,32 +3167,6 @@
       /* =====================================================================
          7. RENDER INTERACTIVE MAP, MINI-NAV & SENSITIVE PERIODS
          ===================================================================== */
-      function stageMatchesSearch(stage, query) {
-        if (!query) return true;
-        const q = query.toLowerCase().trim();
-        const blob = [
-          stage.title,
-          stage.shortName,
-          stage.age,
-          stage.summary,
-          stage.crisisShort,
-          stage.cns.structures,
-          stage.cns.myelination,
-          stage.cns.reflexes,
-          stage.npr.motor,
-          stage.npr.sensory,
-          stage.npr.speech,
-          stage.npr.social,
-          stage.psychology.leadingActivity,
-          stage.psychology.crisis,
-          stage.psychology.newFormations,
-          stage.flags.join(' '),
-          stage.nodes.map(n => n.label + ' ' + n.tip).join(' '),
-          stage.nprMonthly ? stage.nprMonthly.map(m => m.motor + ' ' + m.speech + ' ' + m.social).join(' ') : ''
-        ].join(' ').toLowerCase();
-        return blob.includes(q);
-      }
-
       function renderMiniStageNav() {
         els.miniStageNav.innerHTML = STAGES_DATA.map(stage => `
           <button class="mini-dot-btn" data-jump-stage="${stage.id}" title="Перейти к этапу: ${stage.title}">
@@ -2950,7 +3180,19 @@
             const id = Number(btn.dataset.jumpStage);
             const card = els.atlasTrack.querySelector(`.stage-card[data-stage-id="${id}"]`);
             if (card) {
-              card.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+              const isMobile = window.matchMedia('(max-width: 768px)').matches;
+              if (isMobile) {
+                const header = document.querySelector('.app-header');
+                const isStickyHeader = header && getComputedStyle(header).position === 'sticky';
+                const headerHeight = isStickyHeader ? header.getBoundingClientRect().height : 0;
+                const cardTop = card.getBoundingClientRect().top + window.scrollY;
+                window.scrollTo({
+                  top: Math.max(0, cardTop - headerHeight - 14),
+                  behavior: 'smooth'
+                });
+              } else {
+                card.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+              }
               card.style.boxShadow = `0 0 0 3px ${STAGES_DATA[id - 1].swatch}44`;
               setTimeout(() => { card.style.boxShadow = ''; }, 900);
             }
@@ -2962,13 +3204,9 @@
         const existingCards = els.atlasTrack.querySelectorAll('.stage-card');
         existingCards.forEach(c => c.remove());
 
-        const q = state.searchQuery.trim();
         const activeLayer = state.activeLayer;
 
         STAGES_DATA.forEach(stage => {
-          const isSearchMatch = stageMatchesSearch(stage, q);
-          const hasLayerNodes = activeLayer === 'all' || stage.nodes.some(n => n.layer === activeLayer) || (activeLayer === 'crisis' && stage.hasCrisis);
-
           const card = document.createElement('article');
           card.className = 'stage-card';
           card.dataset.stageId = stage.id;
@@ -2980,27 +3218,20 @@
           card.style.setProperty('--stage-text', stage.colors.text);
           card.style.setProperty('--stage-border', stage.colors.border);
 
-          if (q && !isSearchMatch) {
-            card.classList.add('dimmed');
-          } else if (q && isSearchMatch) {
-            card.classList.add('search-match');
-          } else if (!hasLayerNodes) {
-            card.classList.add('dimmed');
-          }
-
           const nodesHtml = stage.nodes.map(node => {
             const isHighlighted = activeLayer !== 'all' && node.layer === activeLayer;
-            const isSearchHit = q && (node.label.toLowerCase().includes(q.toLowerCase()) || node.tip.toLowerCase().includes(q.toLowerCase()));
             const isFlag = node.layer === 'flags';
-            return `<span class="node-chip ${isFlag ? 'flag-chip' : ''} ${(isHighlighted || isSearchHit) ? 'highlighted' : ''}" data-tip-title="${node.label}" data-tip-body="${node.tip}">${node.label}</span>`;
+            return `<span class="node-chip ${isFlag ? 'flag-chip' : ''} ${isHighlighted ? 'highlighted' : ''}" data-layer="${node.layer}" data-tip-title="${node.label}" data-tip-body="${node.tip}">${node.label}</span>`;
           }).join('');
+
+          const isCrisisHighlighted = activeLayer === 'crisis';
 
           card.innerHTML = `
             <div class="stage-card-top">
               <div class="stage-icon-badge" aria-hidden="true">${stage.iconSvg}</div>
               <div class="stage-badges">
                 <span class="stage-num-pill">Этап ${stage.id}</span>
-                ${stage.hasCrisis ? `<span class="crisis-badge"><span class="pulse-bolt">⚡</span><span>${stage.crisisShort}</span></span>` : ''}
+                ${stage.hasCrisis ? `<span class="crisis-badge ${isCrisisHighlighted ? 'highlighted' : ''}"><span class="pulse-bolt">⚡</span><span>${stage.crisisShort}</span></span>` : ''}
               </div>
             </div>
             <div class="stage-title-wrap">
@@ -3010,7 +3241,7 @@
             <div class="stage-summary">${stage.summary}</div>
             <div class="stage-nodes">${nodesHtml}</div>
             <div class="stage-card-footer">
-              <span>${stage.id === 3 ? 'Анализ НПР' : 'Анализ НПР'}</span>
+              <span>${stage.id === 3 ? 'НПР по месяцам' : 'Анализ НПР'}</span>
               <span>Открыть →</span>
             </div>
           `;
@@ -3091,12 +3322,14 @@
 
       /* Tooltip Helpers */
       function showTooltip(e, title, body) {
+        if (window.matchMedia('(hover: none)').matches) return;
         els.tooltip.innerHTML = `<strong>${title}</strong>${body}`;
         els.tooltip.classList.add('visible');
         positionTooltip(e);
       }
 
       function positionTooltip(e) {
+        if (!els.tooltip.classList.contains('visible')) return;
         const pad = 14;
         const rect = els.tooltip.getBoundingClientRect();
         let left = e.clientX + pad;
@@ -3115,43 +3348,64 @@
         els.tooltip.classList.remove('visible');
       }
 
-      /* Map Search & Layer Events */
-      els.mapSearchInput.addEventListener('input', (e) => {
-        state.searchQuery = e.target.value;
-        els.mapSearchClear.classList.toggle('visible', state.searchQuery.length > 0);
-        renderMapCards();
-      });
-
-      els.mapSearchClear.addEventListener('click', () => {
-        state.searchQuery = '';
-        els.mapSearchInput.value = '';
-        els.mapSearchClear.classList.remove('visible');
-        renderMapCards();
-      });
-
-      els.hintChips.forEach(chip => {
-        chip.addEventListener('click', () => {
-          state.searchQuery = chip.dataset.query;
-          els.mapSearchInput.value = chip.dataset.query;
-          els.mapSearchClear.classList.add('visible');
-          renderMapCards();
-        });
-      });
-
-      els.layerPills.forEach(pill => {
-        pill.addEventListener('click', () => {
-          state.activeLayer = pill.dataset.layer;
-          els.layerPills.forEach(p => p.classList.toggle('active', p === pill));
-          renderMapCards();
-        });
-      });
+      window.addEventListener('resize', hideTooltip);
+      window.addEventListener('orientationchange', hideTooltip);
+      window.addEventListener('scroll', hideTooltip, { passive: true });
+      els.atlasScrollArea.addEventListener('scroll', hideTooltip, { passive: true });
 
       els.scrollLeftBtn.addEventListener('click', () => {
-        els.atlasScrollArea.scrollBy({ left: -340, behavior: 'smooth' });
+        els.atlasScrollArea.scrollBy({ left: -300, behavior: 'smooth' });
       });
 
       els.scrollRightBtn.addEventListener('click', () => {
-        els.atlasScrollArea.scrollBy({ left: 340, behavior: 'smooth' });
+        els.atlasScrollArea.scrollBy({ left: 300, behavior: 'smooth' });
+      });
+
+      function scrollToMatchingStage() {
+        const allCards = Array.from(els.atlasTrack.querySelectorAll('.stage-card'));
+        if (!allCards.length) return;
+
+        const matchingCards = state.activeLayer === 'all'
+          ? [allCards[0]]
+          : allCards.filter(card => card.querySelector('.node-chip.highlighted, .crisis-badge.highlighted'));
+
+        if (!matchingCards.length) return;
+
+        const targetCard = matchingCards[state.layerMatchIndex % matchingCards.length];
+        if (!targetCard) return;
+
+        requestAnimationFrame(() => {
+          const isMobile = window.matchMedia('(max-width: 768px)').matches;
+          if (isMobile) {
+            const header = document.querySelector('.app-header');
+            const isStickyHeader = header && getComputedStyle(header).position === 'sticky';
+            const headerHeight = isStickyHeader ? header.getBoundingClientRect().height : 0;
+            const cardTop = targetCard.getBoundingClientRect().top + window.scrollY;
+            window.scrollTo({
+              top: Math.max(0, cardTop - headerHeight - 16),
+              behavior: 'smooth'
+            });
+          } else {
+            targetCard.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+          }
+        });
+      }
+
+      /* Map Layer Events */
+      els.layerPills.forEach(pill => {
+        pill.addEventListener('click', () => {
+          const nextLayer = pill.dataset.layer;
+          if (state.activeLayer === nextLayer && nextLayer !== 'all') {
+            state.layerMatchIndex += 1;
+          } else {
+            state.activeLayer = nextLayer;
+            state.layerMatchIndex = 0;
+          }
+
+          els.layerPills.forEach(p => p.classList.toggle('active', p === pill));
+          renderMapCards();
+          scrollToMatchingStage();
+        });
       });
 
       /* =====================================================================
@@ -3173,7 +3427,7 @@
 
         els.modalStageIcon.innerHTML = stage.iconSvg;
         els.modalStageTitle.textContent = `${stage.id}. ${stage.title}`;
-        els.modalStageSubtitle.textContent = `Возрастные границы: ${stage.age}${stage.hasCrisis ? ' • ' + stage.crisisShort : ''}`;
+        els.modalStageSubtitle.textContent = `Возрастные границы: ${stage.age}${stage.hasCrisis ? ' • ⚡ ' + stage.crisisShort : ''}`;
 
         els.modalPrevBtn.disabled = stageId === 1;
         els.modalNextBtn.disabled = stageId === STAGES_DATA.length;
@@ -3204,15 +3458,15 @@
           els.modalBody.innerHTML = `
             <div class="info-grid">
               <div class="info-card">
-                <h4>🧠 Созревание структур мозга</h4>
+                <h4>🧠 Созревание отделов мозга</h4>
                 <p>${stage.cns.structures}</p>
               </div>
               <div class="info-card">
-                <h4>⚡ Миелинизация и синаптогенез</h4>
+                <h4>⚡ Миелинизация и связи нейронов</h4>
                 <p>${stage.cns.myelination}</p>
               </div>
               <div class="info-card" style="grid-column: 1 / -1;">
-                <h4>🔄 Рефлекторная и регуляторная база</h4>
+                <h4>🔄 Рефлексы и регуляция функций</h4>
                 <p>${stage.cns.reflexes}</p>
               </div>
             </div>
@@ -3229,24 +3483,24 @@
               </div>
               <div class="info-grid">
                 <div class="info-card">
-                  <h4>🏃 Моторика (общая и тонкая) — ${mData.month}</h4>
+                  <h4>👌 Моторика (крупная и мелкая) — ${mData.month}</h4>
                   <p>${mData.motor}</p>
                 </div>
                 <div class="info-card">
-                  <h4>👁️ Сенсорика и когниция — ${mData.month}</h4>
+                  <h4>👁️ Органы чувств и мышление — ${mData.month}</h4>
                   <p>${mData.sensory}</p>
                 </div>
                 <div class="info-card">
-                  <h4>💬 Речь (понимаемая и активная) — ${mData.month}</h4>
+                  <h4>💬 Речь (понимание и произнесение) — ${mData.month}</h4>
                   <p>${mData.speech}</p>
                 </div>
                 <div class="info-card">
-                  <h4>🤝 Эмоции и социум — ${mData.month}</h4>
+                  <h4>🤝 Эмоции и общение — ${mData.month}</h4>
                   <p>${mData.social}</p>
                 </div>
               </div>
               <div class="info-card" style="margin-top: 14px; background: #F8FAFC;">
-                <h4>📌 Сводная траектория 1-го года жизни</h4>
+                <h4>📌 Общая картина 1-го года жизни</h4>
                 <p><strong>Моторика:</strong> ${stage.npr.motor}<br/><strong>Речь:</strong> ${stage.npr.speech}</p>
               </div>
             `;
@@ -3261,15 +3515,15 @@
             els.modalBody.innerHTML = `
               <div class="info-grid">
                 <div class="info-card">
-                  <h4>🏃 Моторика (общая и тонкая)</h4>
+                  <h4>👌 Моторика (крупная и мелкая)</h4>
                   <p>${stage.npr.motor}</p>
                 </div>
                 <div class="info-card">
-                  <h4>👁️ Сенсорика и когнитивные функции</h4>
+                  <h4>👁️ Органы чувств и мышление</h4>
                   <p>${stage.npr.sensory}</p>
                 </div>
                 <div class="info-card">
-                  <h4>💬 Речь (понимаемая и активная)</h4>
+                  <h4>💬 Речь (понимание и произнесение)</h4>
                   <p>${stage.npr.speech}</p>
                 </div>
                 <div class="info-card">
@@ -3283,11 +3537,11 @@
           els.modalBody.innerHTML = `
             <div class="info-grid">
               <div class="info-card">
-                <h4>🌍 Социальная ситуация развития</h4>
+                <h4>🌍 Социальное развитие</h4>
                 <p>${stage.psychology.situation}</p>
               </div>
               <div class="info-card">
-                <h4>🎯 Ведущая деятельность (Эльконин)</h4>
+                <h4>🎯 Ведущая деятельность</h4>
                 <p>${stage.psychology.leadingActivity}</p>
               </div>
               <div class="info-card">
@@ -3295,7 +3549,7 @@
                 <p>${stage.psychology.newFormations}</p>
               </div>
               <div class="info-card">
-                <h4>🧩 Интеллект (Пиаже) и Задача (Эриксон)</h4>
+                <h4>🧩 Мышление</h4>
                 <p><strong>Пиаже:</strong> ${stage.psychology.piaget}<br/><strong>Эриксон:</strong> ${stage.psychology.erikson}</p>
               </div>
             </div>
@@ -3326,7 +3580,7 @@
               `).join('')}
             </div>
             <p style="margin-top: 14px; font-size: 0.82rem; color: var(--text-muted);">
-              Примечание: наличие одного или нескольких «красных флагов» — повод не для паники, а для своевременной очной консультации педиатра, детского невролога, логопеда или клинического психолога (окно высокой нейропластичности делает раннюю помощь максимально эффективной).
+              Примечание: выявление одного или нескольких «красных флагов» — повод не для паники, а для своевременного очного осмотра педиатра, детского невролога, логопеда или клинического психолога (в раннем возрасте мозг особенно пластичен, поэтому помощь наиболее эффективна).
             </p>
           `;
         }
